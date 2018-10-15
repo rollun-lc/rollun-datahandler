@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>My Docs</title>
+        <link href="css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href=".">My Docs</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#rollun-datahandler">rollun-datahandler</a></li>
+            <li><a href="#_1">Фильтры</a></li>
+            <li><a href="#_2">Процессоры</a></li>
+            <li><a href="#_3">Валидаторы</a></li>
+            <li><a href="#expression-language">Язык выражений (Expression Language)</a></li>
+            <li><a href="#factories">Factories</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="rollun-datahandler">rollun-datahandler</h1>
+<p>Библиотека <code>rollun-datahandler</code> расширяет стандартные библиотеки 
+<a href="https://github.com/zendframework/zend-filter"><code>zendframework\zend-filter</code></a>,
+<a href="https://github.com/zendframework/zend-validator"><code>zendframework\zend-validator</code></a> и 
+<a href="https://github.com/symfony/expression-language"><code>symfony\expression-language</code></a>, 
+а так же добавляет процессоры.</p>
+<h2 id="_1">Фильтры</h2>
+<p>Фильтры расширяют стандартную библиотеку <a href="https://github.com/zendframework/zend-filter"><code>zendframework\zend-filter</code></a>.</p>
+<p><strong>Список фильтров:</strong></p>
+<ul>
+<li>DuplicateSymbol - заменяет повторяющиеся символи (последовательность символов) на заданный символ (по умолчанию заменяет на то что дублируется)</li>
+<li>Evaluation - вычисляет выражение (Expression Language) над входящей строкой и возвращет его</li>
+<li>RemoveDigits - удаляет все цифры в строке, оставляя после себя один пробел ('a1c' =&gt; 'a c')</li>
+<li>RqlReplace - фильтр, который заменяет все вхождения rql маски на заданную строку</li>
+<li>SortSymbols - сортирует символы в строке (не имеет значение какие символы)</li>
+<li>SortWords - сортирует слова в строке</li>
+</ul>
+<h2 id="_2">Процессоры</h2>
+<p>Процессоры выполняют некоторые действие с входящим массивом. Суть процессора в том что бы 
+он что то сделал с данными. Он может вернуть массив без изменений, при этом 
+обработать данные и выполнить какое то действие над ними: записать в лог, отправить на почту и тд.</p>
+<p>Пример:</p>
+<pre><code class="php">$processor = new Concat([
+    'columns' =&gt; [1, 2],
+    'delimiter' =&gt; '-'
+    'resultColumn' =&gt; 3
+]);
+
+var_dump($processor-&gt;process(['a', 'b'])); // displays ['a', 'b', 'a-b']
+</code></pre>
+
+<p><strong>Список процессоров:</strong></p>
+<ul>
+<li>Concat - объединяет значения массива и записывает результат в столбец этого же массива</li>
+<li>Evaluation - вычисляет выражение над элементами массива (где ключ - название переменной в выражении, 
+а значение - значение этой переменной) и записывает результат в столбец этого же массива</li>
+<li>FilterApplier - применяет фильтры к заданным столбцам массива</li>
+</ul>
+<h4 id="filterapplier">FilterApplier</h4>
+<p>Пример:</p>
+<pre><code class="php">$processor = new FilterApplier($options);
+
+var_dump($processor-&gt;process(['1a2b3', 'b'])); // displays ['1a2b3', '321']
+</code></pre>
+
+<p>Пример масива <code>$options</code> для FilterApplier. <a href="#factories">Подробнее о том как задавать опции используя фабрики</a>.</p>
+<pre><code class="php">$options = [
+    // Filters for applying
+    // Key in array is a priority of filter
+    'filters' =&gt; [
+        0 =&gt; [
+             'service' =&gt; 'digits',
+        ],
+        1 =&gt; [
+            'service' =&gt; 'rqlReplace',
+            'options' =&gt; [ // optional
+                'pattern' =&gt; '123',
+                'replacement' =&gt; '321',
+            ],
+        ],
+    ],
+    'argumentColumn' =&gt; 1,
+    'resultColumn' =&gt; 2, // optional (will save to argumentColumn)
+]
+</code></pre>
+
+<p>Все процессоры, в том числе и FilterApplier могут принимать валидатор вторым параметром.
+Валидатор на входе получит тот же массив что и получил на входе процессор.
+Если массив будет не валидный процессор обрабатывать его не будет.</p>
+<pre><code class="php">$validator = new EmailAddress();
+$processor = new FilterApplier($options, $validator);
+
+var_dump($processor-&gt;process(['1a2b3', '123'])); // displays ['1a2b3', 'b']
+</code></pre>
+
+<p>Для корректной работы валидатора, лучше использовать ArrayAdapter декоратор. Он применяет валидатор для заданого.
+поля/полей</p>
+<pre><code class="php">$validator = ArrayAdapter([
+    'columnsToValidate' =&gt; [1, 2],
+    'validator' =&gt; 'digits',
+]);
+$processor = new FilterApplier($options, $validator);
+
+var_dump($processor-&gt;process(['1a2b3', '123'])); // displays ['1a2b3', '321']
+</code></pre>
+
+<h2 id="_3">Валидаторы</h2>
+<p>Валидаторы расширяют стандартную библиотеку <a href="https://github.com/zendframework/zend-validator"><code>zendframework\zend-validator</code></a>.</p>
+<p>Список валидаторов:</p>
+<ul>
+<li>ArrayAdapter - валидирует заданные столбцы массива</li>
+</ul>
+<h4 id="arrayadapter">ArrayAdapter</h4>
+<pre><code class="php">$array1 = ['abcd', '123'];
+$array2 = ['321', '123'];
+
+$validator = new ArrayValidator([
+    'columnsToValidate' =&gt; [1, 2],
+    'validator' =&gt; 'digits',
+]);
+
+var_dump($validator-&gt;isValid($array1)); // false
+var_dump($validator-&gt;isValid($array2)); // true
+</code></pre>
+
+<p>Если для использования валидатора нужны дополнительные опции, их можна передать через <code>'validatorOptions'</code> ключ.
+<a href="#factories">Подробнее о том как задавать опции используя фабрики</a>.</p>
+<pre><code class="php">$validator = new ArrayValidator([
+    'columnsToValidate' =&gt; [1, 2],
+    'validator' =&gt; 'inArray',
+    'validatorOptions' =&gt; [
+        'haystack' =&gt; $array2
+    ],
+]);
+
+var_dump($validator-&gt;isValid($array2)); // false
+</code></pre>
+
+<h2 id="expression-language">Язык выражений (Expression Language)</h2>
+<p>Расширение до библиотеки <a href="https://github.com/symfony/expression-language"><code>symfony\expression-language</code></a>.
+Компонент ExpressionLanguage может компилировать и вычислять выражения.</p>
+<p>Пример:</p>
+<pre><code class="php">$expressionLanguage = new ExpressionLanguage();
+
+var_dump($expressionLanguage-&gt;evaluate('1 + 2')); // displays 3
+var_dump($expressionLanguage-&gt;compile('1 + 2')); // displays (1 + 2)
+
+// Array for variables in expression
+$values = [
+    'a' =&gt; 2,
+    'b' =&gt; 5,
+];
+var_dump($expressionLanguage-&gt;evaluate('a * b'), $values)); // displays 10
+var_dump($expressionLanguage-&gt;compile('a * b'), $values)); // displays (2 * 5)
+</code></pre>
+
+<h4 id="expression-functions">Expression functions</h4>
+<p>Callback - предоставляет возможность создание ExpressionFunction с колбэка.
+Такая функция не может быть скомпилирована, поэтому при попытки компиляции выражения которое использует это функцию
+будет выброшено исключение.</p>
+<pre><code class="php">$callback = function($value) {
+    return $value . $value;
+};
+$expressionFunction = new ExpressionFunction\Callback($callback, 'foo');
+$expressionLanguage = new ExpressionLanguage();
+$expressionLanguage-&gt;addFunction($expressionFunction);
+
+var_dump($expressionLanguage-&gt;evaluate(&quot;foo('a')&quot;)); // displays 'aa'
+var_dump($expressionLanguage-&gt;compile(&quot;foo('a')&quot;)); // exception will be thrown
+</code></pre>
+
+<h4 id="expression-function-providers">Expression function providers</h4>
+<p>PluginExpressionFunctionProvider - предоставляет возможность создание ExpressionFunctionProvider с AbstractPluginManager,
+указав список сервисов и вызываемый метод.</p>
+<pre><code class="php">$pluginManager = new FilterPluginManager(new ServiceManager());
+$services = ['digits', 'stringTrim'];
+$expressionFunctionProvider = new PluginExpressionFunctionProvider($pluginManager, $services, 'filter');
+$expressionLanguage = new ExpressionLanguage();
+$expressionLanguage-&gt;registerProvider($expressionFunctionProvider);
+
+var_dump($expressionLanguage-&gt;evaluate(&quot;digits('123abc')&quot;)); // displays '123'
+var_dump($expressionLanguage-&gt;compile(&quot;stringTrim('   ad   ')&quot;)); displays 'ad'
+</code></pre>
+
+<h2 id="factories">Factories</h2>
+<p>Процессоры, валидаторы и фильтры (далее 'плагины') могут бить созданы как с помощью плагин менеджера, </p>
+<pre><code class="php">$filterPluginManager = FilterPluginManager(new ServiceManager());
+// Create filter using filter plugin options
+$filter = $filterPluginManager-&gt;get('pregReplace', [
+   'pattern' =&gt; '/aaa/',
+   'replacement' =&gt; 'a',
+]);
+
+var_dump(get_class($filter)); // Zend\Filter\PregReplace
+</code></pre>
+
+<p>так и с непосредственно через контейнер. </p>
+<pre><code class="php">$container = new ServiceManager();
+$container-&gt;setService('config', [
+    'filters' =&gt; [
+        'abstract_factory_config' =&gt; [
+            SimpleFilterAbstractFactory::class =&gt; [
+                'pregReplaceFilter' =&gt; [
+                    'class' =&gt; PregReplace::class,
+                    'options' =&gt; [
+                        'pattern' =&gt; '/aaa/',
+                        'replacement' =&gt; 'a',
+                    ],
+                ]
+            ]
+        ]
+    ]
+]);
+
+$filterPluginManager = FilterPluginManager($container);
+$filter = $filterPluginManager-&gt;get('pregReplace');
+
+var_dump(get_class($filter)); // Zend\Filter\PregReplace
+</code></pre>
+
+<p>Если конфигурации для плагина заданы и в конфигах контейнера и через $options
+при создание через плагин менеджер, то они не должны конфликтовать, иначе будет выброшено исключение.</p>
+<pre><code class="php">$container = new ServiceManager();
+$container-&gt;setService('config', [
+    'filters' =&gt; [
+        'abstract_factory_config' =&gt; [
+            SimpleFilterAbstractFactory::class =&gt; [
+                'pregReplaceFilter' =&gt; [
+                    'class' =&gt; PregReplace::class,
+                    'options' =&gt; [
+                        'pattern' =&gt; '/aaa/',
+                        'replacement' =&gt; 'a',
+                    ],
+                ]
+            ]
+        ]
+    ]
+]);
+$filterPluginManager = FilterPluginManager($container);
+
+// Will be thrown exception
+$filter = $filterPluginManager-&gt;get('pregReplace', [
+   'pattern' =&gt; '/aaa/',
+   'replacement' =&gt; 'a',
+]);
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"search": 83, "next": 78, "help": 191, "previous": 80};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2018-10-10 13:06:48
+-->
