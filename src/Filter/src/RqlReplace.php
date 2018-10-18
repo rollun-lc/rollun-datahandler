@@ -75,9 +75,10 @@ class RqlReplace extends AbstractFilter implements FilterInterface
      * StripSymbolFilter constructor.
      *
      * Valid $option keys are:
+     * - pattern
      * - beforePattern
      * - afterPattern
-     * - symbol
+     * - replacement
      *
      * @param array $options
      */

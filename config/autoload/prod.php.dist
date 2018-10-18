@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Production configuration.
+ *
+ * This file included only when 'prod' environment switched on.
+ * Copy it file to `prod.php` and change its settings.
+ */
+
+return [
+];

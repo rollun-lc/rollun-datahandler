@@ -22,12 +22,12 @@ abstract class AbstractValidatorDecoratorAbstractFactory extends PluginAbstractF
     /**
      *  Config key for decorated validator
      */
-    const VALIDATOR_KEY = 'validator';
+    const KEY_VALIDATOR = 'validator';
 
     /**
      * Config key for options for decorated validator
      */
-    const VALIDATOR_OPTION_KEY = 'validatorOptions';
+    const KEY_VALIDATOR_OPTION = 'validatorOptions';
 
     /**
      * @param ContainerInterface $container
@@ -36,17 +36,16 @@ abstract class AbstractValidatorDecoratorAbstractFactory extends PluginAbstractF
      */
     public function getDecoratedValidator(ContainerInterface $container, array $decoratorOptions)
     {
-        if (!isset($decoratorOptions[self::VALIDATOR_KEY])) {
+        if (!isset($decoratorOptions[self::KEY_VALIDATOR])) {
             throw new InvalidArgumentException("Missing 'validator' option");
         }
 
-        $validatorRequestedName = $decoratorOptions[self::VALIDATOR_KEY];
+        $validatorRequestedName = $decoratorOptions[self::KEY_VALIDATOR];
         $validatorPluginManager = $container->get(ValidatorPluginManager::class);
-        $validatorOptions = $decoratorOptions[self::VALIDATOR_OPTION_KEY] ?? null;
+        $validatorOptions = $decoratorOptions[self::KEY_VALIDATOR_OPTION] ?? null;
 
         if (($validatorPluginManager instanceof ValidatorPluginManager)
             && $validatorPluginManager->has($validatorRequestedName)) {
-
             $validator = $validatorPluginManager->get($validatorRequestedName, $validatorOptions);
         } elseif ($container->has($validatorRequestedName)) {
             $validator = $container->get($validatorRequestedName);
@@ -67,8 +66,8 @@ abstract class AbstractValidatorDecoratorAbstractFactory extends PluginAbstractF
      */
     protected function clearValidatorOptions(array $pluginOptions)
     {
-        unset($pluginOptions[self::VALIDATOR_KEY]);
-        unset($pluginOptions[self::VALIDATOR_OPTION_KEY]);
+        unset($pluginOptions[self::KEY_VALIDATOR]);
+        unset($pluginOptions[self::KEY_VALIDATOR_OPTION]);
 
         return $pluginOptions;
     }

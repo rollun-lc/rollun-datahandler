@@ -24,17 +24,17 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
     /**
      * Config key for abstract factories configs
      */
-    const ABSTRACT_FACTORY_CONFIG = 'abstract_factory_config';
+    const KEY_ABSTRACT_FACTORY_CONFIG = 'abstract_factory_config';
 
     /**
      * Config key for plugin options
      */
-    const OPTIONS_KEY = 'options';
+    const KEY_OPTIONS = 'options';
 
     /**
      * Config key for caused class
      */
-    const CLASS_KEY = 'class';
+    const KEY_CLASS = 'class';
 
     /**
      * @param ContainerInterface $container
@@ -61,8 +61,8 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
             $pluginOptions = $options;
         }
 
-        if (isset($serviceConfig[self::OPTIONS_KEY]) && is_array($serviceConfig[self::OPTIONS_KEY])) {
-            $intersect = array_intersect(array_keys($pluginOptions), array_keys($serviceConfig[self::OPTIONS_KEY]));
+        if (isset($serviceConfig[self::KEY_OPTIONS]) && is_array($serviceConfig[self::KEY_OPTIONS])) {
+            $intersect = array_intersect(array_keys($pluginOptions), array_keys($serviceConfig[self::KEY_OPTIONS]));
 
             if (!empty($intersect)) {
                 $columns = implode(', ', $intersect);
@@ -72,7 +72,7 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
                 );
             }
 
-            $pluginOptions = array_merge($pluginOptions, $serviceConfig[self::OPTIONS_KEY]);
+            $pluginOptions = array_merge($pluginOptions, $serviceConfig[self::KEY_OPTIONS]);
         }
 
         return $pluginOptions;
@@ -87,19 +87,19 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
      */
     public function getClass(array $serviceConfig, $required = false)
     {
-        if (!isset($serviceConfig[self::CLASS_KEY])) {
+        if (!isset($serviceConfig[self::KEY_CLASS])) {
             if (!$required) {
                 return static::DEFAULT_CLASS;
             }
 
             throw new \InvalidArgumentException("There is no 'class' config for plugin in config");
-        } else if (!is_a($serviceConfig[self::CLASS_KEY], static::DEFAULT_CLASS, true)) {
+        } elseif (!is_a($serviceConfig[self::KEY_CLASS], static::DEFAULT_CLASS, true)) {
             throw new \InvalidArgumentException(
                 'Caused class must implement or extend ' . static::DEFAULT_CLASS
             );
         }
 
-        return $serviceConfig[self::CLASS_KEY];
+        return $serviceConfig[self::KEY_CLASS];
     }
 
     /**
@@ -110,6 +110,6 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
     public function getServiceConfig(ContainerInterface $container, $requestedName)
     {
         $config = $container->get('config');
-        return $config[static::KEY][self::ABSTRACT_FACTORY_CONFIG][static::class][$requestedName] ?? null;
+        return $config[static::KEY][self::KEY_ABSTRACT_FACTORY_CONFIG][static::class][$requestedName] ?? null;
     }
 }

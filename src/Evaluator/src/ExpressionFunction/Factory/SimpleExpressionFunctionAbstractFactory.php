@@ -56,17 +56,17 @@ class SimpleExpressionFunctionAbstractFactory extends AbstractExpressionFunction
     /**
      * Config key for function compiler
      */
-    const COMPILER_KEY = 'compiler';
+    const KEY_COMPILER = 'compiler';
 
     /**
      * Config key for function evaluator
      */
-    const EVALUATOR_KEY = 'evaluator';
+    const KEY_EVALUATOR = 'evaluator';
 
     /**
      * Config key for function name
      */
-    const FUNCTION_NAME_KEY = 'functionName';
+    const KEY_FUNCTION_NAME = 'functionName';
 
     /**
      * @param ContainerInterface $container
@@ -78,14 +78,14 @@ class SimpleExpressionFunctionAbstractFactory extends AbstractExpressionFunction
     {
         $serviceConfig = $this->getServiceConfig($container, $requestedName);
 
-        if (!isset($serviceConfig[self::COMPILER_KEY])) {
+        if (!isset($serviceConfig[self::KEY_COMPILER])) {
             throw new InvalidArgumentException("Missing 'compiler' option in config");
         }
 
-        $functionName = $serviceConfig[self::FUNCTION_NAME_KEY] ?? $requestedName;
-        $compiler = $container->get($serviceConfig[self::COMPILER_KEY]);
-        $evaluator = isset($serviceConfig[self::COMPILER_KEY])
-            ? $container->get($serviceConfig[self::COMPILER_KEY])
+        $functionName = $serviceConfig[self::KEY_FUNCTION_NAME] ?? $requestedName;
+        $compiler = $container->get($serviceConfig[self::KEY_COMPILER]);
+        $evaluator = isset($serviceConfig[self::KEY_COMPILER])
+            ? $container->get($serviceConfig[self::KEY_COMPILER])
             : null;
 
         /** @var ExpressionFunction $class */

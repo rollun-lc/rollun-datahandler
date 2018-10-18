@@ -93,13 +93,4 @@ class ArrayValidatorTest extends TestCase
             'columnsToValidate' => null
         ]);
     }
-
-    public function testUnsetColumnsToValidate()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage("Missing 'columnsToValidate' option");
-        $validator = new Digits();
-        $object = new ArrayValidator($validator);
-        $object->getColumnsToValidate();
-    }
 }

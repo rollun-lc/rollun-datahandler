@@ -45,7 +45,7 @@ class ArrayValidator extends AbstractValidator
     {
         if (is_array($columnsToValidate)) {
             $this->columnsToValidate = $columnsToValidate;
-        } elseif (is_string($columnsToValidate)) {
+        } elseif (is_numeric($columnsToValidate) || is_string($columnsToValidate)) {
             $this->columnsToValidate = [$columnsToValidate];
         } else {
             throw new InvalidArgumentException("Invalid option 'columnsToValidate'");
@@ -57,11 +57,7 @@ class ArrayValidator extends AbstractValidator
      */
     public function getColumnsToValidate(): array
     {
-        if ($this->columnsToValidate === null) {
-            throw new InvalidArgumentException("Missing 'columnsToValidate' option");
-        }
-
-        return $this->columnsToValidate;
+        return $this->columnsToValidate ?? [];
     }
 
     /**
@@ -78,12 +74,16 @@ class ArrayValidator extends AbstractValidator
         $columnsToValidate = $this->getColumnsToValidate();
         $valueColumns = [];
 
-        foreach ($columnsToValidate as $column) {
-            if (!isset($value[$column])) {
-                throw new InvalidArgumentException("{$column} doesn't exist in incoming value");
-            }
+        if (count($columnsToValidate)) {
+            foreach ($columnsToValidate as $column) {
+                if (!isset($value[$column])) {
+                    throw new InvalidArgumentException("{$column} doesn't exist in incoming value");
+                }
 
-            $valueColumns[] = $value[$column];
+                $valueColumns[] = $value[$column];
+            }
+        } else {
+            $valueColumns = array_values($value);
         }
 
         foreach ($valueColumns as $column) {
