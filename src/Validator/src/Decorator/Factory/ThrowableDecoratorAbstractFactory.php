@@ -50,7 +50,7 @@ class ThrowableDecoratorAbstractFactory extends AbstractValidatorDecoratorAbstra
     /**
      * Config for exception message
      */
-    const EXCEPTION_MASSAGE_KEY = 'exceptionMassage';
+    const KEY_EXCEPTION_MASSAGE = 'exceptionMassage';
 
     /**
      * @param ContainerInterface $container
@@ -68,7 +68,7 @@ class ThrowableDecoratorAbstractFactory extends AbstractValidatorDecoratorAbstra
         // Merged $options with $serviceConfig
         $decoratorOptions = $this->getPluginOptions($serviceConfig, $options);
 
-        $exceptionMassage = $serviceConfig[self::EXCEPTION_MASSAGE_KEY] ?? '';
+        $exceptionMassage = $serviceConfig[self::KEY_EXCEPTION_MASSAGE] ?? '';
 
         $decoratedValidator = $this->getDecoratedValidator($container, $decoratorOptions);
 

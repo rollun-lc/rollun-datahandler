@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Development configuration.
+ *
+ * This file included only when 'dev' environment switched on.
+ * Copy it file to `dev.php` and change its settings.
+ */
+
+return [
+];

@@ -23,7 +23,7 @@ class BaseExpressionFunction extends ExpressionFunction
      */
     public function getEvaluatorFromCompiler(callable $compiler)
     {
-        return function() use ($compiler) {
+        return function () use ($compiler) {
             $args = func_get_args();
             // first argument is $arguments, we do not need it
             array_shift($args);

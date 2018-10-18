@@ -21,12 +21,12 @@ abstract class AbstractProcessorAbstractFactory extends PluginAbstractFactoryAbs
     /**
      *  Validator service that implement ValidatorInterface::class
      */
-    const VALIDATOR_KEY = 'validator';
+    const KEY_VALIDATOR = 'validator';
 
     /**
      * Options for validator
      */
-    const VALIDATOR_OPTION_KEY = 'validatorOptions';
+    const KEY_VALIDATOR_OPTION = 'validatorOptions';
 
     /**
      * Create validator
@@ -39,17 +39,16 @@ abstract class AbstractProcessorAbstractFactory extends PluginAbstractFactoryAbs
     {
         $validator = null;
 
-        if (!isset($processorOptions[self::VALIDATOR_KEY])) {
+        if (!isset($processorOptions[self::KEY_VALIDATOR])) {
             return $validator;
         }
 
-        $validatorRequestedName = $processorOptions[self::VALIDATOR_KEY];
+        $validatorRequestedName = $processorOptions[self::KEY_VALIDATOR];
         $validatorPluginManager = $container->get(ValidatorPluginManager::class);
-        $validatorOptions = $processorOptions[self::VALIDATOR_OPTION_KEY] ?? null;
+        $validatorOptions = $processorOptions[self::KEY_VALIDATOR_OPTION] ?? null;
 
         if (($validatorPluginManager instanceof ValidatorPluginManager)
             && $validatorPluginManager->has($validatorRequestedName)) {
-
             $validator = $validatorPluginManager->get($validatorRequestedName, $validatorOptions);
         } elseif ($container->has($validatorRequestedName)) {
             $validator = $container->get($validatorRequestedName);
@@ -64,8 +63,8 @@ abstract class AbstractProcessorAbstractFactory extends PluginAbstractFactoryAbs
      */
     protected function clearProcessorOptions(array $pluginOptions)
     {
-        unset($pluginOptions[self::VALIDATOR_KEY]);
-        unset($pluginOptions[self::VALIDATOR_OPTION_KEY]);
+        unset($pluginOptions[self::KEY_VALIDATOR]);
+        unset($pluginOptions[self::KEY_VALIDATOR_OPTION]);
 
         return $pluginOptions;
     }

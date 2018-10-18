@@ -31,7 +31,7 @@ class DuplicateSymbolTest extends TestCase
             [
                 'options' => [
                     'duplicate' => 'i',
-                    'replace' => 'm',
+                    'replacement' => 'm',
                 ],
                 'oiiiiioiiiii',
                 'omom',
@@ -39,7 +39,7 @@ class DuplicateSymbolTest extends TestCase
             [
                 'options' => [
                     'duplicate' => 'u',
-                    'replace' => 'a',
+                    'replacement' => 'a',
                     'duplicateMoreThan' => 3,
                 ],
                 'colouur',
@@ -48,7 +48,7 @@ class DuplicateSymbolTest extends TestCase
             [
                 'options' => [
                     'duplicate' => 'u',
-                    'replace' => 'a',
+                    'replacement' => 'a',
                     'duplicateMoreThan' => 2,
                     'duplicateLessThan' => 5,
                 ],

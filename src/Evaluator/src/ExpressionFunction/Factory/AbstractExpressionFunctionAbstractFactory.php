@@ -25,7 +25,7 @@ abstract class AbstractExpressionFunctionAbstractFactory implements AbstractFact
     /**
      * Config key for caused class
      */
-    const CLASS_KEY = 'class';
+    const KEY_CLASS = 'class';
 
     /**
      * @param ContainerInterface $container
@@ -44,19 +44,19 @@ abstract class AbstractExpressionFunctionAbstractFactory implements AbstractFact
      */
     public function getClass(array $serviceConfig, $required = false)
     {
-        if (!isset($serviceConfig[self::CLASS_KEY])) {
+        if (!isset($serviceConfig[self::KEY_CLASS])) {
             if (!$required) {
                 return self::DEFAULT_CLASS;
             }
 
             throw new \InvalidArgumentException("There is no 'class' config for plugin in config");
-        } else if (!is_a($serviceConfig[self::CLASS_KEY], static::DEFAULT_CLASS, true)) {
+        } elseif (!is_a($serviceConfig[self::KEY_CLASS], static::DEFAULT_CLASS, true)) {
             throw new \InvalidArgumentException(
                 'Caused class must implement or extend ' . static::DEFAULT_CLASS
             );
         }
 
-        return $serviceConfig[self::CLASS_KEY];
+        return $serviceConfig[self::KEY_CLASS];
     }
 
     /**

@@ -90,7 +90,10 @@ class PluginExpressionFunctionProvider implements ExpressionFunctionProviderInte
                 );
             };
 
-            $evaluator = function ($arguments, $value) use (
+            $evaluator = function (
+                $arguments,
+                $value
+            ) use (
                 $pluginService,
                 $pluginManager,
                 $calledMethod

@@ -121,7 +121,7 @@ class Evaluation extends AbstractProcessor
      * @param array $value
      * @return array
      */
-    public function doProcess(array $value)
+    protected function doProcess(array $value)
     {
         $resultColumn = $this->getResultColumn();
 

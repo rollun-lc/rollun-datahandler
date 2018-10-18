@@ -50,7 +50,7 @@ class CachedDecoratorAbstractFactory extends AbstractValidatorDecoratorAbstractF
     /**
      * Config for exception message
      */
-    const EXCEPTION_MASSAGE_KEY = 'exceptionMassage';
+    const KEY_EXCEPTION_MASSAGE = 'exceptionMassage';
 
     /**
      * @param ContainerInterface $container

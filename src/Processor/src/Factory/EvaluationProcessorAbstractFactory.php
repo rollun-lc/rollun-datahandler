@@ -53,7 +53,7 @@ class EvaluationProcessorAbstractFactory extends AbstractProcessorAbstractFactor
     /**
      * Config key for expression language service
      */
-    const EXPRESSION_LANGUAGE_KEY = 'expressionLanguage';
+    const KEY_EXPRESSION_LANGUAGE = 'expressionLanguage';
 
     /**
      * @param ContainerInterface $container
@@ -90,17 +90,17 @@ class EvaluationProcessorAbstractFactory extends AbstractProcessorAbstractFactor
     {
         $expressionLanguage = null;
 
-        if (!isset($processorOptions[self::EXPRESSION_LANGUAGE_KEY])) {
+        if (!isset($processorOptions[self::KEY_EXPRESSION_LANGUAGE])) {
             return $expressionLanguage;
         }
 
-        return $container->get($processorOptions[self::EXPRESSION_LANGUAGE_KEY]);
+        return $container->get($processorOptions[self::KEY_EXPRESSION_LANGUAGE]);
     }
 
     protected function clearProcessorOptions(array $processorOptions)
     {
         $processorOptions = parent::clearProcessorOptions($processorOptions);
-        unset($processorOptions[self::EXPRESSION_LANGUAGE_KEY]);
+        unset($processorOptions[self::KEY_EXPRESSION_LANGUAGE]);
 
         return $processorOptions;
     }

@@ -43,5 +43,4 @@ class PHPExpressionFunctionAbstractFactoryTest extends AbstractExpressionFunctio
 
 function someFunction()
 {
-
 }

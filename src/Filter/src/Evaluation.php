@@ -89,7 +89,7 @@ class Evaluation extends AbstractFilter
      *
      * Example:
      * $value = 'ab';
-     * $this->expression = "value + 'cd'";
+     * $this->expression = "value ~ 'cd'";
      *
      * Result will be 'abcd'
      *

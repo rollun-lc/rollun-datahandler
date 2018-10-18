@@ -42,17 +42,17 @@ class CallbackExpressionFunctionAbstractFactory extends AbstractExpressionFuncti
     /**
      * Config key for callback service
      */
-    const CALLBACK_SERVICE_KEY = 'callbackService';
+    const KEY_CALLBACK_SERVICE = 'callbackService';
 
     /**
      * Config key for callback method
      */
-    const CALLBACK_METHOD_KEY = 'callbackMethod';
+    const KEY_CALLBACK_METHOD = 'callbackMethod';
 
     /**
      * Config key for function name
      */
-    const FUNCTION_NAME_KEY = 'functionName';
+    const KEY_FUNCTION_NAME = 'functionName';
 
     /**
      * @param ContainerInterface $container
@@ -67,13 +67,13 @@ class CallbackExpressionFunctionAbstractFactory extends AbstractExpressionFuncti
         /** @var CallbackExpressionFunction $class */
         $class = $this->getClass($serviceConfig);
 
-        if (!isset($serviceConfig[self::CALLBACK_SERVICE_KEY])) {
+        if (!isset($serviceConfig[self::KEY_CALLBACK_SERVICE])) {
             throw new InvalidArgumentException("Missing 'callbackMethod' option in config");
         }
 
-        $callbackService = $container->get($serviceConfig[self::CALLBACK_SERVICE_KEY]);
-        $callbackMethod = $serviceConfig[self::CALLBACK_METHOD_KEY] ?? '__invoke';
-        $functionName = $serviceConfig[self::FUNCTION_NAME_KEY] ?? $requestedName;
+        $callbackService = $container->get($serviceConfig[self::KEY_CALLBACK_SERVICE]);
+        $callbackMethod = $serviceConfig[self::KEY_CALLBACK_METHOD] ?? '__invoke';
+        $functionName = $serviceConfig[self::KEY_FUNCTION_NAME] ?? $requestedName;
         $callback = new Callback([$callbackService, $callbackMethod]);
 
         return new $class($callback, $functionName);
