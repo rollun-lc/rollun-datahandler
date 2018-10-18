@@ -28,20 +28,10 @@ stages:
 - deploy
 
 phpunit:
-  only:
-    changes:
-    - config/*
-    - src/*
-    - test/*
   stage: test
   script: vendor/bin/phpunit --configuration phpunit.xml
 
 phpunit:7.2:
-  only:
-    changes:
-    - config/*
-    - src/*
-    - test/*
   image: php:7.2
   stage: test
   allow_failure: true
@@ -49,11 +39,6 @@ phpunit:7.2:
 
 phpcs:
   stage: analyse
-  only:
-    changes:
-    - config/*
-    - src/*
-    - test/*
   script: vendor/bin/phpcs .
 
 mkdocs:build:
