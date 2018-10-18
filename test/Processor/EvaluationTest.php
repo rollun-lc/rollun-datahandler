@@ -19,7 +19,7 @@ class EvaluationTest extends TestCase
             'resultColumn' => 'c'
         ]);
 
-        $result = $processor->doProcess([
+        $result = $processor->process([
             'a' => 1,
             'b' => 2,
         ]);
@@ -32,7 +32,7 @@ class EvaluationTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("Missing 'resultColumn' in options");
         $processor = new Evaluation();
-        $processor->doProcess([
+        $processor->process([
             'a' => 1,
             'b' => 2,
         ]);
@@ -45,7 +45,7 @@ class EvaluationTest extends TestCase
         $processor = new Evaluation([
             'resultColumn' => 'c'
         ]);
-        $processor->doProcess([
+        $processor->process([
             'a' => 1,
             'b' => 2,
         ]);

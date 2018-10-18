@@ -57,7 +57,7 @@ class EvaluationFilterAbstractFactory extends PluginAbstractFactoryAbstract
     /**
      * Config key for expression language service
      */
-    const EXPRESSION_LANGUAGE_KEY = 'expressionLanguage';
+    const KEY_EXPRESSION_LANGUAGE = 'expressionLanguage';
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
@@ -86,11 +86,11 @@ class EvaluationFilterAbstractFactory extends PluginAbstractFactoryAbstract
     {
         $expressionLanguage = null;
 
-        if (!isset($pluginOptions[self::EXPRESSION_LANGUAGE_KEY])) {
+        if (!isset($pluginOptions[self::KEY_EXPRESSION_LANGUAGE])) {
             return $expressionLanguage;
         }
 
-        return $container->get($pluginOptions[self::EXPRESSION_LANGUAGE_KEY]);
+        return $container->get($pluginOptions[self::KEY_EXPRESSION_LANGUAGE]);
     }
 
     /**
@@ -101,7 +101,7 @@ class EvaluationFilterAbstractFactory extends PluginAbstractFactoryAbstract
      */
     protected function clearFilterOptions(array $filterOptions)
     {
-        unset($filterOptions[self::EXPRESSION_LANGUAGE_KEY]);
+        unset($filterOptions[self::KEY_EXPRESSION_LANGUAGE]);
 
         return $filterOptions;
     }

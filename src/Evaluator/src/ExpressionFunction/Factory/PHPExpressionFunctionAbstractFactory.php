@@ -38,11 +38,14 @@ class PHPExpressionFunctionAbstractFactory extends AbstractExpressionFunctionAbs
     const DEFAULT_CLASS = ExpressionFunction::class;
 
     /**
-     * Config key for function
+     * Config key for function name in expression
      */
-    const EXPRESSION_FUNCTION_NAME_KEY = 'expressionFunctionName';
+    const KEY_EXPRESSION_FUNCTION_NAME = 'expressionFunctionName';
 
-    const PHP_FUNCTION_NAME_KEY = 'phpFunctionName';
+    /**
+     * Config key for real php function name
+     */
+    const KEY_PHP_FUNCTION_NAME = 'phpFunctionName';
 
     /**
      * @param ContainerInterface $container
@@ -55,12 +58,12 @@ class PHPExpressionFunctionAbstractFactory extends AbstractExpressionFunctionAbs
         $serviceConfig = $this->getServiceConfig($container, $requestedName);
         $class = $this->getClass($serviceConfig);
 
-        if (!isset($serviceConfig[self::PHP_FUNCTION_NAME_KEY])) {
+        if (!isset($serviceConfig[self::KEY_PHP_FUNCTION_NAME])) {
             throw new InvalidArgumentException("Missing 'phpFunctionName' option in config");
         }
 
-        $phpFunctionName = $serviceConfig[self::PHP_FUNCTION_NAME_KEY];
-        $expressionFunctionName = $serviceConfig[self::EXPRESSION_FUNCTION_NAME_KEY] ?? $phpFunctionName;
+        $phpFunctionName = $serviceConfig[self::KEY_PHP_FUNCTION_NAME];
+        $expressionFunctionName = $serviceConfig[self::KEY_EXPRESSION_FUNCTION_NAME] ?? $phpFunctionName;
 
         /** @var ExpressionFunction $expressionFunction */
         $expressionFunction = $class::fromPhp($phpFunctionName, $expressionFunctionName);

@@ -38,7 +38,7 @@ class PluginFunctionExpressionProviderAbstractFactory implements AbstractFactory
     /**
      * Config key for caused class
      */
-    const CLASS_KEY = 'class';
+    const KEY_CLASS = 'class';
 
     /**
      * Default caused class
@@ -48,17 +48,17 @@ class PluginFunctionExpressionProviderAbstractFactory implements AbstractFactory
     /**
      * Config for plugin manager service
      */
-    const PLUGIN_MANAGER_SERVICE_KEY = 'pluginServiceManager';
+    const KEY_PLUGIN_MANAGER_SERVICE = 'pluginServiceManager';
 
     /**
      * Config for plugin manager called method
      */
-    const CALLED_METHOD_KEY = 'calledMethod';
+    const KEY_CALLED_METHOD = 'calledMethod';
 
     /**
      * Config for services, that will be called by plugin manager
      */
-    const SERVICES_KEY = 'services';
+    const KEY_SERVICES = 'services';
 
     /**
      * @param ContainerInterface $container
@@ -80,18 +80,18 @@ class PluginFunctionExpressionProviderAbstractFactory implements AbstractFactory
     {
         $serviceConfig = $container->get('config')[self::class][$requestedName];
 
-        if (!isset($serviceConfig[self::PLUGIN_MANAGER_SERVICE_KEY])) {
+        if (!isset($serviceConfig[self::KEY_PLUGIN_MANAGER_SERVICE])) {
             throw new InvalidArgumentException("Missing 'pluginServiceManager' option in config");
         }
 
-        if (!isset($serviceConfig[self::SERVICES_KEY])) {
+        if (!isset($serviceConfig[self::KEY_SERVICES])) {
             throw new InvalidArgumentException("Missing 'services' option in config");
         }
 
         $class = $this->getClass($serviceConfig);
-        $pluginManager = $container->get($serviceConfig[self::PLUGIN_MANAGER_SERVICE_KEY]);
-        $pluginServices = $serviceConfig[self::SERVICES_KEY];
-        $calledMethod = $serviceConfig[self::CALLED_METHOD_KEY] ?? '__invoke';
+        $pluginManager = $container->get($serviceConfig[self::KEY_PLUGIN_MANAGER_SERVICE]);
+        $pluginServices = $serviceConfig[self::KEY_SERVICES];
+        $calledMethod = $serviceConfig[self::KEY_CALLED_METHOD] ?? '__invoke';
 
         return new $class($pluginManager, $pluginServices, $calledMethod);
     }
@@ -105,19 +105,19 @@ class PluginFunctionExpressionProviderAbstractFactory implements AbstractFactory
      */
     public function getClass(array $serviceConfig, $required = false)
     {
-        if (!isset($serviceConfig[self::CLASS_KEY])) {
+        if (!isset($serviceConfig[self::KEY_CLASS])) {
             if (!$required) {
                 return self::DEFAULT_CLASS;
             }
 
             throw new \InvalidArgumentException("There is no 'class' config for plugin in config");
-        } else if (!is_a($serviceConfig[self::CLASS_KEY], static::DEFAULT_CLASS, true)) {
+        } elseif (!is_a($serviceConfig[self::KEY_CLASS], static::DEFAULT_CLASS, true)) {
             throw new \InvalidArgumentException(
                 'Caused class must implement or extend ' . static::DEFAULT_CLASS
             );
         }
 
-        return $serviceConfig[self::CLASS_KEY];
+        return $serviceConfig[self::KEY_CLASS];
     }
 
     /**

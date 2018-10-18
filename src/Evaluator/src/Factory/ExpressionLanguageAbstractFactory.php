@@ -49,17 +49,17 @@ class ExpressionLanguageAbstractFactory implements AbstractFactoryInterface
     /**
      * Config key for caused class
      */
-    const CLASS_KEY = 'class';
+    const KEY_CLASS = 'class';
 
     /**
      * Config for function expression providers
      */
-    const FUNCTION_EXPRESSION_PROVIDERS_KEY = 'functionExpressionProviders';
+    const KEY_FUNCTION_EXPRESSION_PROVIDERS = 'functionExpressionProviders';
 
     /**
      * Config for function expressions
      */
-    const FUNCTION_EXPRESSIONS_KEY = 'functionExpressions';
+    const KEY_FUNCTION_EXPRESSIONS = 'functionExpressions';
 
     /**
      * @param ContainerInterface $container
@@ -85,8 +85,8 @@ class ExpressionLanguageAbstractFactory implements AbstractFactoryInterface
         /** @var ExpressionLanguage $expressionLanguage */
         $expressionLanguage = new $class();
 
-        $functionExpressionServiceNames = $serviceConfig[self::FUNCTION_EXPRESSIONS_KEY] ?? [];
-        $functionExpressionProviderServiceNames = $serviceConfig[self::FUNCTION_EXPRESSION_PROVIDERS_KEY] ?? [];
+        $functionExpressionServiceNames = $serviceConfig[self::KEY_FUNCTION_EXPRESSIONS] ?? [];
+        $functionExpressionProviderServiceNames = $serviceConfig[self::KEY_FUNCTION_EXPRESSION_PROVIDERS] ?? [];
 
         if (is_array($functionExpressionProviderServiceNames)) {
             foreach ($functionExpressionProviderServiceNames as $functionExpressionProviderServiceName) {
@@ -117,17 +117,17 @@ class ExpressionLanguageAbstractFactory implements AbstractFactoryInterface
      */
     public function getClass(array $serviceConfig)
     {
-        if (!isset($serviceConfig[self::CLASS_KEY])) {
+        if (!isset($serviceConfig[self::KEY_CLASS])) {
             return self::DEFAULT_CLASS;
         }
 
-        if (!is_a($serviceConfig[self::CLASS_KEY], static::DEFAULT_CLASS, true)) {
+        if (!is_a($serviceConfig[self::KEY_CLASS], static::DEFAULT_CLASS, true)) {
             throw new \InvalidArgumentException(
                 'Caused class must implement or extend ' . static::DEFAULT_CLASS
             );
         }
 
-        return $serviceConfig[self::CLASS_KEY];
+        return $serviceConfig[self::KEY_CLASS];
     }
 
     /**

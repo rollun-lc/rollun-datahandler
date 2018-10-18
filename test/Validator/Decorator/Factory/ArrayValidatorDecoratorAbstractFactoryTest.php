@@ -62,6 +62,5 @@ class ArrayValidatorDecoratorAbstractFactoryTest extends PluginAbstractFactoryAb
 
         $this->assertEquals($validatorDecorator->getColumnsToValidate(), $columnsToValidate);
         $this->assertEquals($validatorDecorator->getHaystack(), $haystack);
-
     }
 }

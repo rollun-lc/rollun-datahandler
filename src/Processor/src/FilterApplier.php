@@ -144,7 +144,7 @@ class FilterApplier extends AbstractProcessor
      * @return mixed
      * @throws \Exception
      */
-    public function doProcess(array $value)
+    protected function doProcess(array $value)
     {
         $argumentColumn = $this->getArgumentColumn();
 

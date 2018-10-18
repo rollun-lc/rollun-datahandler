@@ -19,7 +19,7 @@ class DuplicateSymbol extends AbstractFilter
     /**
      * @var string
      */
-    protected $replace;
+    protected $replacement;
 
     /**
      * @var array of escaped regular expression special symbols
@@ -59,7 +59,7 @@ class DuplicateSymbol extends AbstractFilter
      *
      * Valid $option keys are:
      * - duplicate - symbol[s], which duplicate in string
-     * - replace - symbol[s] to replace
+     * - replacement - symbol[s] to replace
      * - duplicateMoreThan - minimum of symbols to perform filter
      * - duplicateLessThan - maximum of symbols to perform filter
      *
@@ -91,11 +91,11 @@ class DuplicateSymbol extends AbstractFilter
     }
 
     /**
-     * @param mixed $replace
+     * @param mixed $replacement
      */
-    public function setReplace(string $replace)
+    public function setReplacement(string $replacement)
     {
-        $this->replace = $replace;
+        $this->replacement = $replacement;
     }
 
     /**
@@ -133,7 +133,7 @@ class DuplicateSymbol extends AbstractFilter
             $duplicate = str_replace($search, $replace, $duplicate);
         }
 
-        $replace = $this->replace ?? $this->duplicate;
+        $replace = $this->replacement ?? $this->duplicate;
         $reqExp = '/(' . $duplicate . '){' . $this->duplicateMoreThan . ',' . $this->duplicateLessThan . '}' . '/';
         $value = preg_replace($reqExp, $replace, $value);
 

@@ -17,9 +17,9 @@ class Concat extends AbstractProcessor
      *
      * Example:
      * [
-     *      1 => 'make',
-     *      2 => 'model',
-     *      3 => 'year',
+     *      1 => 'column1',
+     *      2 => 'column2',
+     *      3 => 'column3',
      * ]
      *
      * @var array
@@ -41,8 +41,7 @@ class Concat extends AbstractProcessor
     /**
      * Valid $option keys are:
      * - resultColumn - string, data store valid column
-     * - expression - symphony language expression
-     *  @see https://symfony.com/doc/current/components/expression_language/syntax.html
+     * - columns - array of columns to concat
      *
      * Concat constructor.
      * @param array|null $options
@@ -147,7 +146,7 @@ class Concat extends AbstractProcessor
      * @param array $value
      * @return array
      */
-    public function doProcess(array $value)
+    protected function doProcess(array $value)
     {
         $columns = $this->getColumns();
         $valueColumns = [];

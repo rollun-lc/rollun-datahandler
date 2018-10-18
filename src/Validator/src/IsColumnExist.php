@@ -20,7 +20,7 @@ class IsColumnExist extends AbstractValidator
      * IsColumnExist constructor.
      *
      * Valid $option keys are:
-     * - validateColumn - column that will be checked on existing in array
+     * - validateColumns - column that will be checked on existing in array
      *
      * @param null $options
      */
@@ -42,13 +42,13 @@ class IsColumnExist extends AbstractValidator
     }
 
     /**
-     * @param string $validateColumns
+     * @param string|array $validateColumns
      */
     public function setValidateColumns($validateColumns)
     {
         if (is_array($validateColumns)) {
             $this->validateColumns = $validateColumns;
-        } elseif (is_string($validateColumns)) {
+        } elseif (is_numeric($validateColumns) || is_string($validateColumns)) {
             $this->validateColumns = [$validateColumns];
         } else {
             throw new InvalidArgumentException("Invalid option 'validateColumns'");
