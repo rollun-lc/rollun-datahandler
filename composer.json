@@ -56,6 +56,5 @@
         "server": "php -S 0.0.0.0:8000 -t public public/index.php",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
-    },
-    "minimum-stability": "dev"
+    }
 }
