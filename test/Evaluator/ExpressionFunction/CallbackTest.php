@@ -3,7 +3,7 @@
 namespace rollun\test\datahandler\Evaluator\ExpressionFunction;
 
 use PHPUnit\Framework\TestCase;
-use rollun\callback\Callback\Callback as SerializableCallback;
+use rollun\callback\Callback\SerializedCallback as SerializableCallback;
 use rollun\datahandler\Evaluator\ExpressionFunction\Callback;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Zend\Filter\Digits;

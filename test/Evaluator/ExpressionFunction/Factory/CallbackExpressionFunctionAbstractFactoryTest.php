@@ -6,7 +6,7 @@ use InvalidArgumentException;
 use rollun\datahandler\Evaluator\ExpressionFunction\Callback;
 use rollun\datahandler\Evaluator\ExpressionFunction\Factory\CallbackExpressionFunctionAbstractFactory;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
-use rollun\callback\Callback\Callback as SerializableCallback;
+use rollun\callback\Callback\SerializedCallback as SerializableCallback;
 
 class CallbackExpressionFunctionAbstractFactoryTest extends AbstractExpressionFunctionAbstractFactoryTest
 {
