@@ -11,7 +11,7 @@
         "ext-json": "*",
         "http-interop/http-middleware": "^0.4.1",
         "rollun-com/rollun-callback": "^5.0",
-        "symfony/expression-language": "^4.1",
+        "symfony/expression-language": "^5.0",
         "zendframework/zend-filter": "^2.8",
         "zendframework/zend-servicemanager": "^3.3",
         "zendframework/zend-validator": "^2.10"
@@ -56,5 +56,6 @@
         "server": "php -S 0.0.0.0:8000 -t public public/index.php",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
-    }
+    },
+    "minimum-stability": "dev"
 }
