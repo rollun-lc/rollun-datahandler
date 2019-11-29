@@ -10,7 +10,7 @@
         "php": "^7.0",
         "ext-json": "*",
         "http-interop/http-middleware": "^0.4.1",
-        "rollun-com/rollun-callback": "^4.6",
+        "rollun-com/rollun-callback": "^5.0",
         "symfony/expression-language": "^4.1",
         "zendframework/zend-filter": "^2.8",
         "zendframework/zend-servicemanager": "^3.3",
