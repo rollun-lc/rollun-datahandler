@@ -10,7 +10,8 @@
         "php": "^7.0",
         "ext-json": "*",
         "http-interop/http-middleware": "^0.4.1",
-        "rollun-com/rollun-callback": "^4.6",
+        "rollun-com/rollun-callback": "^5.2",
+        "rollun-com/rollun-datastore": "^6",
         "symfony/expression-language": "^4.1",
         "zendframework/zend-filter": "^2.8",
         "zendframework/zend-servicemanager": "^3.3",
@@ -24,6 +25,7 @@
     },
     "autoload": {
         "psr-4": {
+            "rollun\\datahandler\\Provider\\": "src/Providers/src",
             "rollun\\datahandler\\Evaluator\\": "src/Evaluator/src",
             "rollun\\datahandler\\Factory\\": "src/Factory/src",
             "rollun\\datahandler\\Filter\\": "src/Filter/src",
