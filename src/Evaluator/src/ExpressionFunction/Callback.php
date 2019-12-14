@@ -2,7 +2,7 @@
 
 namespace rollun\datahandler\Evaluator\ExpressionFunction;
 
-use rollun\callback\Callback\Callback as SerializableCallback;
+use rollun\callback\Callback\SerializedCallback as SerializableCallback;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 
 /**

@@ -4,7 +4,7 @@ namespace rollun\datahandler\Evaluator\ExpressionFunction\Factory;
 
 use InvalidArgumentException;
 use Interop\Container\ContainerInterface;
-use rollun\callback\Callback\Callback;
+use rollun\callback\Callback\SerializedCallback;
 use rollun\datahandler\Evaluator\ExpressionFunction\Callback as CallbackExpressionFunction;
 
 /**
@@ -74,7 +74,7 @@ class CallbackExpressionFunctionAbstractFactory extends AbstractExpressionFuncti
         $callbackService = $container->get($serviceConfig[self::KEY_CALLBACK_SERVICE]);
         $callbackMethod = $serviceConfig[self::KEY_CALLBACK_METHOD] ?? '__invoke';
         $functionName = $serviceConfig[self::KEY_FUNCTION_NAME] ?? $requestedName;
-        $callback = new Callback([$callbackService, $callbackMethod]);
+        $callback = new SerializedCallback([$callbackService, $callbackMethod]);
 
         return new $class($callback, $functionName);
     }

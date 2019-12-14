@@ -10,6 +10,7 @@
         "php": "^7.0",
         "ext-json": "*",
         "http-interop/http-middleware": "^0.4.1",
+        "symfony/expression-language": "^5.0",
         "rollun-com/rollun-callback": "^5.2",
         "rollun-com/rollun-datastore": "^6",
         "symfony/expression-language": "^4.1",
