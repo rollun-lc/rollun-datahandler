@@ -26,11 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "rollun\\datahandler\\Provider\\": "src/Providers/src",
+            "rollun\\datahandler\\Providers\\": "src/Providers/src",
             "rollun\\datahandler\\Evaluator\\": "src/Evaluator/src",
             "rollun\\datahandler\\Factory\\": "src/Factory/src",
             "rollun\\datahandler\\Filter\\": "src/Filter/src",
             "rollun\\datahandler\\Validator\\": "src/Validator/src",
+            "rollun\\datahandler\\Processor\\": "src/Processor/src",
             "rollun\\datahandler\\Processor\\": "src/Processor/src"
         }
     },
