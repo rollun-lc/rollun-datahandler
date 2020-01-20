@@ -1,9 +1,9 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\DataHandlers;
+namespace rollun\datahandler\Providers\DataHandlers;
 
-use rollun\datahandlers\Providers\Callback\ExpressionHandler;
+use rollun\datahandler\Providers\Callback\ExpressionHandler;
 
 class FormulaDataProvider
 {

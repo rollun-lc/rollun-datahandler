@@ -1,7 +1,7 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers;
+namespace rollun\datahandler\Providers;
 
 
 trait ProviderObserverTrait

@@ -1,6 +1,6 @@
 <?php
 
-namespace rollun\datahandlers\Providers\DataHandlers\PluginManager;
+namespace rollun\datahandler\Providers\DataHandlers\PluginManager;
 
 use Zend\ServiceManager\AbstractPluginManager;
 

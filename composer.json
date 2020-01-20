@@ -13,7 +13,6 @@
         "symfony/expression-language": "^5.0",
         "rollun-com/rollun-callback": "^5.2",
         "rollun-com/rollun-datastore": "^6",
-        "symfony/expression-language": "^4.1",
         "zendframework/zend-filter": "^2.8",
         "zendframework/zend-servicemanager": "^3.3",
         "zendframework/zend-validator": "^2.10"
@@ -32,7 +31,6 @@
             "rollun\\datahandler\\Filter\\": "src/Filter/src",
             "rollun\\datahandler\\Validator\\": "src/Validator/src",
             "rollun\\datahandler\\Processor\\": "src/Processor/src",
-            "rollun\\datahandler\\Processor\\": "src/Processor/src"
         }
     },
     "autoload-dev": {

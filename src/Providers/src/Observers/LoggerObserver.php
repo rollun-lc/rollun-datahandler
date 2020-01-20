@@ -1,7 +1,7 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\Observers;
+namespace rollun\datahandler\Providers\Observers;
 
 
 use Psr\Log\LoggerInterface;

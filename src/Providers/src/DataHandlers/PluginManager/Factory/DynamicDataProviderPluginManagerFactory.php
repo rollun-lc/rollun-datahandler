@@ -4,11 +4,11 @@
  * @license LICENSE.md New BSD License
  */
 
-namespace rollun\datahandlers\Providers\DataHandlers\PluginManager\Factory;
+namespace rollun\datahandler\Providers\DataHandlers\PluginManager\Factory;
 
 use Interop\Container\ContainerInterface;
-use rollun\datahandlers\Providers\DataHandlers\FormulaDataProvider;
-use rollun\datahandlers\Providers\DataHandlers\PluginManager\DynamicDataProviderPluginManager;
+use rollun\datahandler\Providers\DataHandlers\FormulaDataProvider;
+use rollun\datahandler\Providers\DataHandlers\PluginManager\DynamicDataProviderPluginManager;
 use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**

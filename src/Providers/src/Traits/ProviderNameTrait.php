@@ -1,11 +1,11 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers;
+namespace rollun\datahandler\Providers;
 
 /**
  * Class ProviderNameTrait
- * @package rollun\datahandlers\Providers
+ * @package rollun\datahandler\Providers
  * FIXME: need for test
  */
 trait ProviderNameTrait

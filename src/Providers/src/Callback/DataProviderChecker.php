@@ -1,9 +1,9 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\Callback;
+namespace rollun\datahandler\Providers\Callback;
 
-use rollun\datahandlers\Providers\DataHandlers\PluginManager\DynamicDataProviderPluginManager;
+use rollun\datahandler\Providers\DataHandlers\PluginManager\DynamicDataProviderPluginManager;
 use rollun\utils\DynamicPluginManager;
 
 class DataProviderChecker

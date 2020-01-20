@@ -1,12 +1,12 @@
 <?php
 
-namespace rollun\datahandlers\Providers\DataHandlers\PluginManager;
+namespace rollun\datahandler\Providers\DataHandlers\PluginManager;
 
 use Zend\ServiceManager\AbstractPluginManager;
 
 /**
  * Class DataProviderPluginManager
- * @package rollun\datahandlers\Providers
+ * @package rollun\datahandler\Providers
  * TODO: refactor. Bad code...
  */
 class DynamicDataProviderPluginManager extends AbstractPluginManager

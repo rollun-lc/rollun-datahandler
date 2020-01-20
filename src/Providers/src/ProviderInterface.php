@@ -1,10 +1,10 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers;
+namespace rollun\datahandler\Providers;
 
 
-use rollun\datahandlers\Providers\Source\SourceInterface;
+use rollun\datahandler\Providers\Source\SourceInterface;
 
 interface ProviderInterface
 {

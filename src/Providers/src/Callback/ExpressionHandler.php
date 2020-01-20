@@ -1,7 +1,7 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\Callback;
+namespace rollun\datahandler\Providers\Callback;
 
 use RuntimeException;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;

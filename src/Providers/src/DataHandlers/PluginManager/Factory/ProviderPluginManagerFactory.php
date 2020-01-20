@@ -1,11 +1,11 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\DataHandlers\PluginManager\Factory;
+namespace rollun\datahandler\Providers\DataHandlers\PluginManager\Factory;
 
 use Psr\Container\ContainerInterface;
 use rollun\callback\Middleware\CallablePluginManager;
-use rollun\datahandlers\Providers\DataHandlers\PluginManager\ProviderPluginManager;
+use rollun\datahandler\Providers\DataHandlers\PluginManager\ProviderPluginManager;
 use Zend\ServiceManager\Config;
 
 class ProviderPluginManagerFactory

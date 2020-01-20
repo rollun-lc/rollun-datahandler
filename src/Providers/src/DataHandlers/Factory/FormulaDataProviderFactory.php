@@ -1,13 +1,13 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\DataHandlers\Factory;
+namespace rollun\datahandler\Providers\DataHandlers\Factory;
 
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
-use rollun\datahandlers\Providers\Callback\ExpressionHandler;
-use rollun\datahandlers\Providers\DataHandlers\FormulaDataProvider;
+use rollun\datahandler\Providers\Callback\ExpressionHandler;
+use rollun\datahandler\Providers\DataHandlers\FormulaDataProvider;
 use Zend\ServiceManager\Exception\ServiceNotCreatedException;
 use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Zend\ServiceManager\Factory\FactoryInterface;

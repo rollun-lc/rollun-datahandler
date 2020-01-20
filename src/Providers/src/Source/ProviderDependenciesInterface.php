@@ -1,6 +1,6 @@
 <?php
 
-namespace rollun\datahandlers\Providers\Source;
+namespace rollun\datahandler\Providers\Source;
 
 interface ProviderDependenciesInterface
 {

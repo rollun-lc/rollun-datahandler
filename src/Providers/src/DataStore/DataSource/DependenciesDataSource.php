@@ -1,6 +1,6 @@
 <?php
 
-namespace rollun\datahandlers\Providers\DataStore\DataSource;
+namespace rollun\datahandler\Providers\DataStore\DataSource;
 
 use rollun\datastore\DataSource\DataSourceInterface;
 

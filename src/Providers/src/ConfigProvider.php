@@ -1,13 +1,13 @@
 <?php
 
-namespace rollun\datahandlers\Providers;
+namespace rollun\datahandler\Providers;
 
-use rollun\datahandlers\Providers\Callback\DataProviderChecker;
-use rollun\datahandlers\Providers\DataHandlers\FormulaDataProvider;
-use rollun\datahandlers\Providers\DataHandlers\FormulaDataProviderFactory;
-use rollun\datahandlers\Providers\DataStore\DataHandlers;
-use rollun\datahandlers\Providers\DataStore\DataProvidersConfig;
-use rollun\datahandlers\Providers\ProviderConfigDataSource;
+use rollun\datahandler\Providers\Callback\DataProviderChecker;
+use rollun\datahandler\Providers\DataHandlers\FormulaDataProvider;
+use rollun\datahandler\Providers\DataHandlers\FormulaDataProviderFactory;
+use rollun\datahandler\Providers\DataStore\DataHandlers;
+use rollun\datahandler\Providers\DataStore\DataProvidersConfig;
+use rollun\datahandler\Providers\ProviderConfigDataSource;
 use rollun\utils\Factory\AbstractServiceAbstractFactory;
 
 /**

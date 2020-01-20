@@ -1,7 +1,7 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\DataStore;
+namespace rollun\datahandler\Providers\DataStore;
 
 
 use rollun\datastore\DataStore\SerializedDbTable;

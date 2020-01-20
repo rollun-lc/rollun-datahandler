@@ -1,12 +1,12 @@
 <?php
 
-namespace rollun\datahandlers\Providers;
+namespace rollun\datahandler\Providers;
 
 use SplObserver;
 
 /**
  * Trait ProviderSubjectTrait
- * @package rollun\datahandlers\Providers
+ * @package rollun\datahandler\Providers
  * FIXME: not final version
  */
 trait ProviderSubjectTrait

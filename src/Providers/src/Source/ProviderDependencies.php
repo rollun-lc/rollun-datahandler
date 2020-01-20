@@ -1,7 +1,7 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\Source;
+namespace rollun\datahandler\Providers\Source;
 
 class ProviderDependencies implements ProviderDependenciesInterface
 {

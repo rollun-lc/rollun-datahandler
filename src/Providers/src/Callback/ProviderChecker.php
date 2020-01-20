@@ -1,10 +1,10 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\Callback;
+namespace rollun\datahandler\Providers\Callback;
 
-use rollun\datahandlers\Providers\Source\Source;
-use rollun\datahandlers\Providers\Source\SourceInterface;
+use rollun\datahandler\Providers\Source\Source;
+use rollun\datahandler\Providers\Source\SourceInterface;
 
 class ProviderChecker
 {

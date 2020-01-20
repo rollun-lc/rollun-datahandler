@@ -1,16 +1,16 @@
 <?php
 
 
-namespace rollun\datahandlers\Providers\Source;
+namespace rollun\datahandler\Providers\Source;
 
-use rollun\datahandlers\Providers\DataHandlers\PluginManager\ProviderPluginManager;
+use rollun\datahandler\Providers\DataHandlers\PluginManager\ProviderPluginManager;
 use rollun\dic\InsideConstruct;
 
 /**
  *
  * Get data from provider
  * Class Source
- * @package rollun\datahandlers\Providers
+ * @package rollun\datahandler\Providers
  */
 class Source implements SourceInterface
 {

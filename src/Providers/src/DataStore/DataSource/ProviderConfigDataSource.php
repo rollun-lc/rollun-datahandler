@@ -1,9 +1,9 @@
 <?php
 
-namespace rollun\datahandlers\Providers\DataStore\DataSource;
+namespace rollun\datahandler\Providers\DataStore\DataSource;
 
 use rollun\datastore\DataSource\DataSourceInterface;
-use rollun\datahandlers\Providers\DataStore\DataProvidersConfig;
+use rollun\datahandler\Providers\DataStore\DataProvidersConfig;
 use Xiag\Rql\Parser\Query;
 
 class ProviderConfigDataSource implements DataSourceInterface
