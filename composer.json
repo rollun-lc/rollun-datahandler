@@ -30,7 +30,7 @@
             "rollun\\datahandler\\Factory\\": "src/Factory/src",
             "rollun\\datahandler\\Filter\\": "src/Filter/src",
             "rollun\\datahandler\\Validator\\": "src/Validator/src",
-            "rollun\\datahandler\\Processor\\": "src/Processor/src",
+            "rollun\\datahandler\\Processor\\": "src/Processor/src"
         }
     },
     "autoload-dev": {
