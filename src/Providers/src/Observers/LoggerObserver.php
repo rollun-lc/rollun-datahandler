@@ -36,7 +36,7 @@ class LoggerObserver
     public function update(Source $source, $name, $id)
     {
         $value = $source->provide($name, $id, [Source::OPTIONS_NOT_NULL => false]);
-        $this->logger->debug(sprintf('Provider {name}[{id}] new value `%s`.', json_encode($value)), [
+        $this->logger->debug('Provider get new value.', [
             'name' => $name,
             'id' => $id,
             'value' => $value

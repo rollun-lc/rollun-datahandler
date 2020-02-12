@@ -1,7 +1,7 @@
 <?php
 
 
-namespace rollun\datahandler\Providers;
+namespace rollun\datahandler\Providers\Traits;
 
 /**
  * Class ProviderNameTrait
