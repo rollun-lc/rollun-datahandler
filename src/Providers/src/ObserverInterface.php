@@ -4,9 +4,9 @@
 namespace rollun\datahandler\Providers;
 
 
-use rollun\datahandler\Providers\Source\Source;
+use rollun\datahandler\Providers\Source\SourceInterface;
 
 interface ObserverInterface
 {
-    public function update(Source $source, string $name, $id);
+    public function update(SourceInterface $source, string $name, $id);
 }

@@ -2,6 +2,7 @@
 
 namespace rollun\datahandler\Providers\Traits;
 
+use rollun\datahandler\Providers\ObserverInterface;
 use rollun\datahandler\Providers\Source\Source;
 use SplObserver;
 
@@ -30,7 +31,7 @@ trait ProviderSubjectTrait
      * @param $id
      * @param $observerId
      */
-    public function attach($observer, string $id, $observerId = null): void
+    public function attach(ObserverInterface $observer, string $id, $observerId = null): void
     {
         $observerId = $observerId ?? $id;
         if (!$this->isAlterayAttached($observer, $id, $observerId)) {
@@ -41,7 +42,7 @@ trait ProviderSubjectTrait
         }
     }
 
-    public function isAlterayAttached($observer, string $id, $observerId): bool
+    public function isAlterayAttached(ObserverInterface $observer, string $id, $observerId): bool
     {
         $observersInfo = $this->observers[$this->wrapId($id)] ?? [];
         foreach ($observersInfo as $observerInfo) {
@@ -59,7 +60,7 @@ trait ProviderSubjectTrait
      * @param $observer
      * @param $id
      */
-    public function detach($observer, $id): void
+    public function detach(ObserverInterface $observer, $id): void
     {
         throw new \RuntimeException('Not realized');
     }

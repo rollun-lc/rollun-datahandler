@@ -5,9 +5,11 @@ namespace rollun\datahandler\Providers\Observers;
 
 
 use Psr\Log\LoggerInterface;
+use rollun\datahandler\Providers\ObserverInterface;
+use rollun\datahandler\Providers\Source\SourceInterface;
 use rollun\dic\InsideConstruct;
 
-class LoggerObserver
+class LoggerObserver implements ObserverInterface
 {
     /**
      * @var LoggerInterface
@@ -33,7 +35,7 @@ class LoggerObserver
         InsideConstruct::initWakeup(['logger' => LoggerInterface::class]);
     }
 
-    public function update(Source $source, $name, $id)
+    public function update(SourceInterface $source, string $name, $id)
     {
         $value = $source->provide($name, $id, [Source::OPTIONS_NOT_NULL => false]);
         $this->logger->debug('Provider get new value.', [
