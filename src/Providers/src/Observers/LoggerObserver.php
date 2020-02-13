@@ -6,6 +6,7 @@ namespace rollun\datahandler\Providers\Observers;
 
 use Psr\Log\LoggerInterface;
 use rollun\datahandler\Providers\ObserverInterface;
+use rollun\datahandler\Providers\Source\Source;
 use rollun\datahandler\Providers\Source\SourceInterface;
 use rollun\dic\InsideConstruct;
 
