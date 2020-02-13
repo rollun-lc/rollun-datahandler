@@ -7,7 +7,7 @@ namespace rollun\datahandler\Providers;
 use rollun\datahandler\Providers\Source\Source;
 use rollun\datahandler\Providers\Source\SourceInterface;
 
-interface ProviderInterface
+interface ProviderInterface extends ObserverInterface
 {
     public function name(): string;
 

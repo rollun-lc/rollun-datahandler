@@ -4,6 +4,7 @@ namespace rollun\datahandler\Providers\Traits;
 
 use rollun\datahandler\Providers\ObserverInterface;
 use rollun\datahandler\Providers\Source\Source;
+use rollun\datahandler\Providers\Source\SourceInterface;
 use SplObserver;
 
 /**
@@ -65,7 +66,7 @@ trait ProviderSubjectTrait
         throw new \RuntimeException('Not realized');
     }
 
-    public function notify(Source $source, string $id): void
+    public function notify(SourceInterface $source, string $id): void
     {
         $observers = $this->observers[$this->wrapId($id)] ?? [];
         foreach ($observers as $observerInfo) {

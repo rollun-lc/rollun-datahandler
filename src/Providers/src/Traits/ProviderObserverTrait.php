@@ -5,6 +5,7 @@ namespace rollun\datahandler\Providers\Traits;
 
 
 use rollun\datahandler\Providers\Source\Source;
+use rollun\datahandler\Providers\Source\SourceInterface;
 
 trait ProviderObserverTrait
 {
@@ -12,7 +13,7 @@ trait ProviderObserverTrait
 
     abstract public function name(): string;
 
-    public function update(Source $source, string $name, $id)
+    public function update(SourceInterface $source, string $name, $id)
     {
         //TODO: check if need recalculate...
         $this->notify($source, $id);
