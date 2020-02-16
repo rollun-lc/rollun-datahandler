@@ -14,7 +14,6 @@ use SplObserver;
  */
 trait ProviderSubjectTrait
 {
-
     private $observers = [];
 
     abstract public function name(): string;
@@ -35,7 +34,7 @@ trait ProviderSubjectTrait
     public function attach(ObserverInterface $observer, string $id, $observerId = null): void
     {
         $observerId = $observerId ?? $id;
-        if (!$this->isAlterayAttached($observer, $id, $observerId)) {
+        if (!$this->isAlreadyAttached($observer, $id, $observerId)) {
             $this->observers[$this->wrapId($id)][] = [
                 'id' => $observerId,
                 'observer' => $observer
@@ -43,7 +42,7 @@ trait ProviderSubjectTrait
         }
     }
 
-    public function isAlterayAttached(ObserverInterface $observer, string $id, $observerId): bool
+    public function isAlreadyAttached(ObserverInterface $observer, string $id, $observerId): bool
     {
         $observersInfo = $this->observers[$this->wrapId($id)] ?? [];
         foreach ($observersInfo as $observerInfo) {
@@ -66,12 +65,30 @@ trait ProviderSubjectTrait
         throw new \RuntimeException('Not realized');
     }
 
+    private function getAlwaysNotifyObserver()
+    {
+        return $this->observers["#*"] ?? [];
+    }
+
+    private function isMaskId(string $id)
+    {
+        return $id === '#*';
+    }
+
     public function notify(SourceInterface $source, string $id): void
     {
-        $observers = $this->observers[$this->wrapId($id)] ?? [];
+        $observers = array_merge(
+            $this->getAlwaysNotifyObserver(),
+            $this->observers[$this->wrapId($id)] ?? []
+        );
+
         foreach ($observers as $observerInfo) {
             //TODO: add interface
             ['observer' => $observer, 'id' => $observerId] = $observerInfo;
+            if ($this->isMaskId($observerId)) {
+                //If observer id is `mask`, send to observer updated entity id
+                $observerId = $id;
+            }
             $observer->update($source, $this->name(), $observerId);
         }
     }
