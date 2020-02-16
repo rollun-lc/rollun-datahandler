@@ -75,7 +75,7 @@ trait ProviderSubjectTrait
         return $id === '*';
     }
 
-    public function notify(SourceInterface $source, string $id): void
+    public function notify(SourceInterface $source, string $id, int $updateTimestamp = null): void
     {
         $observers = array_merge(
             $this->getAlwaysNotifyObserver(),
@@ -89,7 +89,7 @@ trait ProviderSubjectTrait
                 //If observer id is `mask`, send to observer updated entity id
                 $observerId = $id;
             }
-            $observer->update($source, $this->name(), $observerId);
+            $observer->update($source, $this->name(), $observerId, $updateTimestamp ?? time());
         }
     }
 }

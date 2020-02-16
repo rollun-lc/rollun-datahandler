@@ -13,9 +13,9 @@ trait ProviderObserverTrait
 
     abstract public function name(): string;
 
-    public function update(SourceInterface $source, string $name, $id)
+    public function update(SourceInterface $source, string $name, $id, int $updateTimestamp = null)
     {
         //TODO: check if need recalculate...
-        $this->notify($source, $id);
+        $this->notify($source, $id, $updateTimestamp);
     }
 }

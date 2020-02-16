@@ -13,7 +13,7 @@ interface ProviderInterface extends ObserverInterface
 
     public function attach(ObserverInterface $observer, string $id, $observerId = null): void;
 
-    public function notify(SourceInterface $source, string $id): void;
+    public function notify(SourceInterface $source, string $id, int $updateTimestamp = null): void;
 
     public function provide(SourceInterface $source, string $id, array $options = []);
 }

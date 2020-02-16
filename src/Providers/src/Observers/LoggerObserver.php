@@ -36,13 +36,14 @@ class LoggerObserver implements ObserverInterface
         InsideConstruct::initWakeup(['logger' => LoggerInterface::class]);
     }
 
-    public function update(SourceInterface $source, string $name, $id)
+    public function update(SourceInterface $source, string $name, $id, int $updateTimestamp = null)
     {
         $value = $source->provide($name, $id, [Source::OPTIONS_NOT_NULL => false]);
         $this->logger->debug('Provider get new value.', [
             'name' => $name,
             'id' => $id,
-            'value' => $value
+            'value' => $value,
+            'update_timestamp' => $updateTimestamp
         ]);
     }
 }
