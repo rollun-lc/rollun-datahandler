@@ -72,7 +72,7 @@ trait ProviderSubjectTrait
 
     private function isMaskId(string $id)
     {
-        return $id === '#*';
+        return $id === '*';
     }
 
     public function notify(SourceInterface $source, string $id): void
