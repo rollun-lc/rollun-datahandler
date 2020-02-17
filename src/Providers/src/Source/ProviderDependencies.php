@@ -68,11 +68,20 @@ class ProviderDependencies implements ProviderDependenciesInterface
     {
         $span = array_pop($this->depthTree);
         $span['value'] = $value;
-        $lastKey = array_key_last($this->depthTree);
+        $lastKey = self::arrayKeyLast($this->depthTree);
 
         $parent = $this->depthTree[$lastKey] ?? null;
         $invert = $this->invert($this->toList($span, $parent));
         $this->depth = array_merge_recursive($this->depth, $invert);
+    }
+
+    public static function arrayKeyLast($array)
+    {
+        if (!is_array($array) || empty($array)) {
+            return NULL;
+        }
+
+        return array_keys($array)[count($array) - 1];
     }
 
     private function invert($list)
