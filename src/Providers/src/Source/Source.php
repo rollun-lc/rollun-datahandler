@@ -4,6 +4,7 @@
 namespace rollun\datahandler\Providers\Source;
 
 use rollun\datahandler\Providers\DataHandlers\PluginManager\ProviderPluginManager;
+use rollun\datahandler\Providers\ProviderInterface;
 use rollun\dic\InsideConstruct;
 
 /**
@@ -16,6 +17,8 @@ class Source implements SourceInterface
 {
 
     public const OPTIONS_NOT_NULL = 'not_null';
+    public const OPTIONS_PROVIDER_CHECK = 'provider_check';
+
     /**
      * @var ProviderPluginManager
      */
@@ -28,7 +31,7 @@ class Source implements SourceInterface
     /**
      * Source constructor.
      * @param ProviderPluginManager $providerPluginManager
-     * @param ProviderDependencies $providerDependencies
+     * @param ProviderDependenciesInterface $providerDependencies
      */
     public function __construct(
         ProviderPluginManager $providerPluginManager,
@@ -59,8 +62,16 @@ class Source implements SourceInterface
     {
         $this->providerDependencies->start($name, $id);
 
-        $provider = $this->providerPluginManager->get($name);
-        $result = $provider->provide($this, $id, $options);
+        $isProviderCheck = $options[self::OPTIONS_PROVIDER_CHECK] ?? false;
+
+        if ($isProviderCheck && !$this->providerPluginManager->has($name)) {
+            $provider = null;
+            $result = null;
+        } else {
+            $provider = $this->providerPluginManager->get($name);
+            $result = $provider->provide($this, $id, $options);
+        }
+
         $this->providerDependencies->finish($result);
 
         // Subscribe
@@ -86,4 +97,10 @@ class Source implements SourceInterface
         return $result;
     }
 
+    public function notify(string $name, string $id, int $updateTimestamp = null)
+    {
+        /** @var $provider ProviderInterface $provider */
+        $provider = $this->providerPluginManager->get($name);
+        $provider->notify($this, $id, $updateTimestamp);
+    }
 }
