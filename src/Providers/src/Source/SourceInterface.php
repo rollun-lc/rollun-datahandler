@@ -13,4 +13,11 @@ interface SourceInterface
      * @return mixed
      */
     public function provide(string $name, string $id, array $options = []);
+
+    /**
+     * Check if provider exists
+     * @param string $name
+     * @return bool
+     */
+    public function has(string $name): bool;
 }

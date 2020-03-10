@@ -103,4 +103,12 @@ class Source implements SourceInterface
         $provider = $this->providerPluginManager->get($name);
         $provider->notify($this, $id, $updateTimestamp);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function has(string $name): bool
+    {
+        return $this->providerPluginManager->has($name);
+    }
 }
