@@ -264,3 +264,5 @@ $filter = $filterPluginManager->get('pregReplace', [
    'replacement' => 'a',
 ]);
 ```
+## Пример hendler-а
+https://github.com/oblikov/rollun-service-formula
