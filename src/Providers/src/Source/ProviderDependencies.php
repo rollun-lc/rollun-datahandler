@@ -1,15 +1,16 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\Source;
 
 class ProviderDependencies implements ProviderDependenciesInterface
 {
     public const DATA_PROVIDER_DEPENDENCIES_CACHE = 'data/ProviderDependencies.cache';
 
-    private $depthTree = [];
+    private $depthStack = [];
 
     private $depth = [];
+
+    private $depthTree = [];
 
     public function __construct()
     {
@@ -35,88 +36,111 @@ class ProviderDependencies implements ProviderDependenciesInterface
     private function stash()
     {
         //TODO: need filter depth for not unique depth.
-        file_put_contents(self::DATA_PROVIDER_DEPENDENCIES_CACHE, serialize($this->depth));
+        file_put_contents(
+            self::DATA_PROVIDER_DEPENDENCIES_CACHE,
+            serialize(['depthTree' => $this->depthTree, 'depth' => $this->depth]));
     }
 
     private function pop()
     {
         if (file_exists(self::DATA_PROVIDER_DEPENDENCIES_CACHE)) {
             /** @noinspection UnserializeExploitsInspection */
-            $array = @unserialize(file_get_contents(self::DATA_PROVIDER_DEPENDENCIES_CACHE));
-            $this->depth =
-                array_merge_recursive(
-                    $this->depth,
-                    is_array($array) ? $array : []
-                );
+            ['depthTree' => $this->depthTree, 'depth' => $this->depth] =
+                @unserialize(file_get_contents(self::DATA_PROVIDER_DEPENDENCIES_CACHE));
         }
     }
 
     public function depth(): array
     {
-        return $this->depth;
+        return $this->depthTree;
     }
 
     public function start(string $name, string $id): void
     {
-        $this->depthTree[] = [
+        $this->depthStack[] = [
             'id' => $id,
             'provider' => $name,
+            'uuid' => uniqid()
         ];
     }
 
     public function finish($value): void
     {
-        $span = array_pop($this->depthTree);
-        $span['value'] = $value;
-        $lastKey = self::arrayKeyLast($this->depthTree);
+        $span = array_pop($this->depthStack);
 
-        $parent = $this->depthTree[$lastKey] ?? null;
-        $invert = $this->invert($this->toList($span, $parent));
-        $this->depth = array_merge_recursive($this->depth, $invert);
+        $spanHash = self::spanHash($span);
+
+        $this->clearUnusedDepth($spanHash, $span['uuid']);
+
+        $span['value'] = $value;
+        $parent = $this->stackLitePop();
+
+        if ($parent) {
+            $parentHash = self::spanHash($parent);
+            if (!isset($this->depthTree[$span['provider']]["#{$span['id']}"][$parentHash])) {
+                $this->depthTree[$span['provider']]["#{$span['id']}"][$parentHash] = [
+                    'provider' => $parent['provider'],
+                    'id' => $parent['id']
+                ];
+            }
+            $this->depth[$parentHash][$spanHash] = array_merge($span, ['uuid' => $parent['uuid']]);
+        }
+    }
+
+    private function stackLitePop()
+    {
+        $lastKey = self::arrayKeyLast($this->depthStack);
+        return $this->depthStack[$lastKey] ?? null;
+    }
+
+    public static function spanHash($span)
+    {
+        return md5($span['provider'] . '^@|_^_|@^' . $span['id']);
     }
 
     public static function arrayKeyLast($array)
     {
         if (!is_array($array) || empty($array)) {
-            return NULL;
+            return null;
         }
-
         return array_keys($array)[count($array) - 1];
-    }
-
-    private function invert($list)
-    {
-        return array_reduce($list, function ($result, $item) {
-            if ($item['parent']) {
-                ['id' => $parenId, 'provider' => $parenProvider] = $item['parent'];
-                ['id' => $id, 'provider' => $provider] = $item;
-
-                $newItem = ['provider' => $parenProvider, 'id' => $parenId];
-                if (!in_array($newItem, $result[$provider]["#{$id}"] ?? [], true)) {
-                    //NOT USE STRING KEY -> array_merge_recursive work otherwise
-                    $result[$provider]["#{$id}"][] = $newItem;
-                }
-            }
-            return $result;
-        }, []);
-    }
-
-    private function toList($tree, $parent = null): array
-    {
-        $id = "{$tree['provider']}[{$tree['id']}]";
-        $list["#{$id}"] = [
-            'id' => $tree['id'],
-            'provider' => $tree['provider'],
-            'parent' => $parent,
-        ];
-        return $list;
     }
 
     public function dependentProvidersInfo($name, $id = null)
     {
         if ($id) {
-            return $this->depth[$name]["#{$id}"] ?? [];
+            return $this->depthTree[$name]["#{$id}"] ?? [];
         }
-        return $this->depth[$name] ?? [];
+        return $this->depthTree[$name] ?? [];
+    }
+
+    /**
+     * @param string $spanHash
+     * @param $spanUUID
+     */
+    private function clearUnusedDepth(string $spanHash, $spanUUID): void
+    {
+        ['current' => $currentDepth, 'prev' => $forDeleted] = array_reduce(
+            $this->depth[$spanHash] ?? [],
+            function ($result, $depth) use ($spanUUID) {
+                if ($depth['uuid'] === $spanUUID) {
+                    $result['current'][self::spanHash($depth)] = $depth;
+                } else {
+                    $result['prev'][] = $depth;
+                }
+                return $result;
+            },
+            ['current' => [], 'prev' => []]
+        );
+
+        if (count($currentDepth) === 0 && isset($this->depth[$spanHash])) {
+            unset($this->depth[$spanHash]);
+        } elseif (count($currentDepth) > 0) {
+            $this->depth[$spanHash] = $currentDepth;
+        }
+
+        foreach ($forDeleted as $depth) {
+            unset($this->depthTree[$depth['provider']]["#{$depth['id']}"][$spanHash]);
+        }
     }
 }
