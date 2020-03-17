@@ -3,6 +3,7 @@
 namespace rollun\datahandler\Providers\Traits;
 
 use rollun\datahandler\Providers\ObserverInterface;
+use rollun\datahandler\Providers\ProviderInterface;
 use rollun\datahandler\Providers\Source\Source;
 use rollun\datahandler\Providers\Source\SourceInterface;
 use SplObserver;
@@ -42,6 +43,31 @@ trait ProviderSubjectTrait
         }
     }
 
+    public function setupForId(string $id, array $providersInfo): void
+    {
+        foreach ($providersInfo as $providerInfo) {
+            if (!$providerInfo['provider'] instanceof ProviderInterface) {
+                throw new \InvalidArgumentException(
+                    'Providers must bee instanceof \rollun\datahandler\Providers\ProviderInterface'
+                );
+            }
+        }
+        //save only `not provider` observers
+        $observers = array_merge(
+            array_filter($this->observers[$this->wrapId($id)] ?? [], function ($observerInfo) {
+                return !$observerInfo['observer'] instanceof ProviderInterface;
+            }),
+            array_map(function ($providerInfo) use ($id) {
+                return [
+                    'observer' => $providerInfo['provider'],
+                    'id' => $providerInfo['id'] ?? $id,
+                ];
+            }, $providersInfo)
+        );
+
+        $this->observers[$this->wrapId($id)] = $observers;
+    }
+
     public function isAlreadyAttached(ObserverInterface $observer, string $id, $observerId): bool
     {
         $observersInfo = $this->observers[$this->wrapId($id)] ?? [];
@@ -62,7 +88,16 @@ trait ProviderSubjectTrait
      */
     public function detach(ObserverInterface $observer, $id): void
     {
-        throw new \RuntimeException('Not realized');
+        $observersInfo = $this->observers[$this->wrapId($id)] ?? [];
+        foreach ($observersInfo as $key => $observerInfo) {
+            if (
+                $observerInfo['id'] === $id &&
+                $observerInfo['observer'] == $observer
+            ) {
+                unset($this->observers[$this->wrapId($id)][$key]);
+                return;
+            }
+        }
     }
 
     private function getAlwaysNotifyObserver()

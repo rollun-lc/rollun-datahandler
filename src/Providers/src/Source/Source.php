@@ -3,6 +3,7 @@
 
 namespace rollun\datahandler\Providers\Source;
 
+use Psr\Log\LoggerInterface;
 use rollun\datahandler\Providers\DataHandlers\PluginManager\ProviderPluginManager;
 use rollun\datahandler\Providers\ProviderInterface;
 use rollun\dic\InsideConstruct;
@@ -64,6 +65,7 @@ class Source implements SourceInterface
 
         $isProviderCheck = $options[self::OPTIONS_PROVIDER_CHECK] ?? false;
 
+        /** @var $provider ProviderInterface|null */
         if ($isProviderCheck && !$this->providerPluginManager->has($name)) {
             $provider = null;
             $result = null;
@@ -75,16 +77,24 @@ class Source implements SourceInterface
         $this->providerDependencies->finish($result);
 
         // Subscribe
-        if (method_exists($provider, 'attach')) {
-            foreach ($this->providerDependencies->dependentProvidersInfo($name, $id) as $dependentProviderInfo) {
-                try {
-                    $dependentProvider = $this->providerPluginManager->get($dependentProviderInfo['provider']);
-                    $provider->attach($dependentProvider, $id, $dependentProviderInfo['id']);
-                } catch (\Throwable $exception) {
-                    echo $exception->getMessage();
-                }
+        $dependentProvidersInfo = array_map(function ($dependentProviderInfo) {
+            $dependentProvider = $this->providerPluginManager->get($dependentProviderInfo['provider']);
+            return [
+                'provider' => $dependentProvider,
+                'id' => $dependentProviderInfo['id']
+            ];
+        }, $this->providerDependencies->dependentProvidersInfo($name, $id) ?? []);
+        $provider->setupForId($id, $dependentProvidersInfo);
+
+        if (method_exists($this->providerDependencies, 'deletedDepth')) {
+            $deletedDepth = $this->providerDependencies->deletedDepth($name, $id) ?? [];
+            //$depth['provider']]["#{$depth['id']}"]
+            foreach ($deletedDepth as $depth) {
+                $depthProvider = $this->providerPluginManager->get($depth['provider']);
+                $depthProvider->detach($provider, $depth['id']);
             }
         }
+
         //
 
         //up level in state

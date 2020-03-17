@@ -10,6 +10,8 @@ class ProviderDependencies implements ProviderDependenciesInterface
 
     private $depth = [];
 
+    private $deletedDepth = [];
+
     private $depthTree = [];
 
     public function __construct()
@@ -35,10 +37,10 @@ class ProviderDependencies implements ProviderDependenciesInterface
 
     private function stash()
     {
-        //TODO: need filter depth for not unique depth.
         file_put_contents(
             self::DATA_PROVIDER_DEPENDENCIES_CACHE,
-            serialize(['depthTree' => $this->depthTree, 'depth' => $this->depth]));
+            serialize(['depthTree' => $this->depthTree, 'depth' => $this->depth])
+        );
     }
 
     private function pop()
@@ -114,13 +116,22 @@ class ProviderDependencies implements ProviderDependenciesInterface
         return $this->depthTree[$name] ?? [];
     }
 
+
+    public function deletedDepth(string $name, string $id)
+    {
+        return $this->deletedDepth[self::spanHash(['provider' => $name, 'id' => $id])] ?? [];
+    }
+
     /**
      * @param string $spanHash
      * @param $spanUUID
      */
     private function clearUnusedDepth(string $spanHash, $spanUUID): void
     {
-        ['current' => $currentDepth, 'prev' => $forDeleted] = array_reduce(
+        [
+            'current' => $currentDepth,
+            'prev' => $forDeleted
+        ] = array_reduce(
             $this->depth[$spanHash] ?? [],
             function ($result, $depth) use ($spanUUID) {
                 if ($depth['uuid'] === $spanUUID) {
@@ -139,6 +150,7 @@ class ProviderDependencies implements ProviderDependenciesInterface
             $this->depth[$spanHash] = $currentDepth;
         }
 
+        $this->deletedDepth[$spanHash] = $forDeleted;
         foreach ($forDeleted as $depth) {
             unset($this->depthTree[$depth['provider']]["#{$depth['id']}"][$spanHash]);
         }
