@@ -13,16 +13,7 @@ class ProviderDependenciesTest extends TestCase
     {
         $this->providerDep = new ProviderDependencies();
     }
-
-
-    public function testProvidersSingle()
-    {
-        $this->providerDep->start('test', '1');
-        $this->providerDep->finish('1');
-
-        $this->assertEquals([], $this->providerDep->depth());
-    }
-
+    
     public function testProvidersMultiplie()
     {
         $this->providerDep->start('test', '1');

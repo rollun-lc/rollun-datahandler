@@ -39,7 +39,7 @@ class ProviderDependencies implements ProviderDependenciesInterface
     {
         file_put_contents(
             self::DATA_PROVIDER_DEPENDENCIES_CACHE,
-            serialize(['depthTree' => $this->depthTree, 'depth' => $this->depth])
+            serialize(['depthTree' => $this->depthTree, 'depth' => $this->depth, 'deletedDepth' => $this->deletedDepth])
         );
     }
 
@@ -47,7 +47,7 @@ class ProviderDependencies implements ProviderDependenciesInterface
     {
         if (file_exists(self::DATA_PROVIDER_DEPENDENCIES_CACHE)) {
             /** @noinspection UnserializeExploitsInspection */
-            ['depthTree' => $this->depthTree, 'depth' => $this->depth] =
+            ['depthTree' => $this->depthTree, 'depth' => $this->depth, 'deletedDepth' => $this->deletedDepth] =
                 @unserialize(file_get_contents(self::DATA_PROVIDER_DEPENDENCIES_CACHE));
         }
     }

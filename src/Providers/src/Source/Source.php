@@ -69,30 +69,13 @@ class Source implements SourceInterface
         if ($isProviderCheck && !$this->providerPluginManager->has($name)) {
             $provider = null;
             $result = null;
+            $this->providerDependencies->finish($result); //need finish
         } else {
             $provider = $this->providerPluginManager->get($name);
             $result = $provider->provide($this, $id, $options);
-        }
-
-        $this->providerDependencies->finish($result);
-
-        // Subscribe
-        $dependentProvidersInfo = array_map(function ($dependentProviderInfo) {
-            $dependentProvider = $this->providerPluginManager->get($dependentProviderInfo['provider']);
-            return [
-                'provider' => $dependentProvider,
-                'id' => $dependentProviderInfo['id']
-            ];
-        }, $this->providerDependencies->dependentProvidersInfo($name, $id) ?? []);
-        $provider->setupForId($id, $dependentProvidersInfo);
-
-        if (method_exists($this->providerDependencies, 'deletedDepth')) {
-            $deletedDepth = $this->providerDependencies->deletedDepth($name, $id) ?? [];
-            //$depth['provider']]["#{$depth['id']}"]
-            foreach ($deletedDepth as $depth) {
-                $depthProvider = $this->providerPluginManager->get($depth['provider']);
-                $depthProvider->detach($provider, $depth['id']);
-            }
+            $this->providerDependencies->finish($result); //need finish
+            $this->subscribeProvider($name, $id, $provider);
+            $this->detachProvider($name, $id, $provider);
         }
 
         //
@@ -107,6 +90,7 @@ class Source implements SourceInterface
         return $result;
     }
 
+
     public function notify(string $name, string $id, int $updateTimestamp = null)
     {
         /** @var $provider ProviderInterface $provider */
@@ -120,5 +104,39 @@ class Source implements SourceInterface
     public function has(string $name): bool
     {
         return $this->providerPluginManager->has($name);
+    }
+
+    /**
+     * @param string $name
+     * @param string $id
+     * @param ProviderInterface|null $provider
+     */
+    private function subscribeProvider(string $name, string $id, ProviderInterface $provider): void
+    {
+        $dependentProvidersInfo = array_map(function ($dependentProviderInfo) {
+            $dependentProvider = $this->providerPluginManager->get($dependentProviderInfo['provider']);
+            return [
+                'provider' => $dependentProvider,
+                'id' => $dependentProviderInfo['id']
+            ];
+        }, $this->providerDependencies->dependentProvidersInfo($name, $id) ?? []);
+        $provider->setupForId($id, $dependentProvidersInfo);
+    }
+
+    /**
+     * @param string $name
+     * @param string $id
+     * @param ProviderInterface|null $provider
+     */
+    private function detachProvider(string $name, string $id, ProviderInterface $provider): void
+    {
+        if (method_exists($this->providerDependencies, 'deletedDepth')) {
+            $deletedDepth = $this->providerDependencies->deletedDepth($name, $id) ?? [];
+            //$depth['provider']]["#{$depth['id']}"]
+            foreach ($deletedDepth as $depth) {
+                $depthProvider = $this->providerPluginManager->get($depth['provider']);
+                $depthProvider->detach($provider, $depth['id']);
+            }
+        }
     }
 }
