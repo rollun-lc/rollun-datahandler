@@ -13,7 +13,7 @@ class ProviderDependenciesTest extends TestCase
     {
         $this->providerDep = new ProviderDependencies();
     }
-    
+
     public function testProvidersMultiplie()
     {
         $this->providerDep->start('test', '1');
