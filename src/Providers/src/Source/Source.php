@@ -1,6 +1,5 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\Source;
 
 use Psr\Log\LoggerInterface;
@@ -28,18 +27,25 @@ class Source implements SourceInterface
      * @var ProviderDependenciesInterface
      */
     private $providerDependencies;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * Source constructor.
      * @param ProviderPluginManager $providerPluginManager
      * @param ProviderDependenciesInterface $providerDependencies
+     * @param LoggerInterface $logger
      */
     public function __construct(
         ProviderPluginManager $providerPluginManager,
-        ProviderDependenciesInterface $providerDependencies
+        ProviderDependenciesInterface $providerDependencies,
+        LoggerInterface $logger
     ) {
         $this->providerPluginManager = $providerPluginManager;
         $this->providerDependencies = $providerDependencies;
+        $this->logger = $logger;
     }
 
     public function __sleep()
@@ -49,7 +55,16 @@ class Source implements SourceInterface
 
     public function __wakeup()
     {
-        InsideConstruct::initWakeup(['providerPluginManager' => ProviderPluginManager::class]);
+        InsideConstruct::initWakeup([
+            'providerPluginManager' => ProviderPluginManager::class,
+            'logger' => LoggerInterface::class
+        ]);
+    }
+
+    protected function resolveRealName(string $name)
+    {
+        $alias = $this->providerPluginManager->getAlias($name);
+        return is_null($alias) ? $name : $alias;
     }
 
 
@@ -61,6 +76,12 @@ class Source implements SourceInterface
      */
     public function provide(string $name, string $id, array $options = [])
     {
+        $this->logger->debug('Source start provide', [
+            'name' => $name,
+            'id' => $id,
+            'options' => $options
+        ]);
+        $name = $this->resolveRealName($name);
         $this->providerDependencies->start($name, $id);
 
         $isProviderCheck = $options[self::OPTIONS_PROVIDER_CHECK] ?? false;
@@ -85,8 +106,18 @@ class Source implements SourceInterface
         $isNotNull = $options[self::OPTIONS_NOT_NULL] ?? true;
 
         if ($isNotNull && $result === null) {
+            $this->logger->debug('Source finish provide with exception', [
+                'name' => $name,
+                'id' => $id,
+                'options' => $options
+            ]);
             throw new \RuntimeException("Return value from provider {$name}[{$id}] is null.");
         }
+        $this->logger->debug('Source finish provide', [
+            'name' => $name,
+            'id' => $id,
+            'options' => $options
+        ]);
         return $result;
     }
 
@@ -95,6 +126,11 @@ class Source implements SourceInterface
     {
         /** @var $provider ProviderInterface $provider */
         $provider = $this->providerPluginManager->get($name);
+        $this->logger->debug('Source notify provider', [
+            'name' => $name,
+            'id' => $id,
+            'updateTimestamp' => $updateTimestamp,
+        ]);
         $provider->notify($this, $id, $updateTimestamp);
     }
 
@@ -120,6 +156,11 @@ class Source implements SourceInterface
                 'id' => $dependentProviderInfo['id']
             ];
         }, $this->providerDependencies->dependentProvidersInfo($name, $id) ?? []);
+        $this->logger->debug('Source subscribe provider', [
+            'name' => $name,
+            'id' => $id,
+            'provider_name' => $provider->name(),
+        ]);
         $provider->setupForId($id, $dependentProvidersInfo);
     }
 
@@ -131,6 +172,11 @@ class Source implements SourceInterface
     private function detachProvider(string $name, string $id, ProviderInterface $provider): void
     {
         if (method_exists($this->providerDependencies, 'deletedDepth')) {
+            $this->logger->debug('Source detach provider', [
+                'name' => $name,
+                'id' => $id,
+                'provider_name' => $provider->name(),
+            ]);
             $deletedDepth = $this->providerDependencies->deletedDepth($name, $id) ?? [];
             //$depth['provider']]["#{$depth['id']}"]
             foreach ($deletedDepth as $depth) {

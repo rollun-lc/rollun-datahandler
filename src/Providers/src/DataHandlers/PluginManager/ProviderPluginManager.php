@@ -9,5 +9,8 @@ class ProviderPluginManager extends AbstractPluginManager
 {
     protected $instanceOf = ProviderInterface::class;
 
-
+    public function getAlias(string $name)
+    {
+        return $this->aliases[$name] ?? null;
+    }
 }
