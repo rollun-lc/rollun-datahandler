@@ -150,7 +150,7 @@ class Source implements SourceInterface
             [
                 new StringTag('name', $name),
                 new StringTag('id', $id),
-                new LongTag('updateTimestamp', $updateTimestamp),
+                new StringTag('updateTimestamp', (new \DateTime())->setTimestamp($updateTimestamp)->format('c')),
             ]
         );
         /** @var $provider ProviderInterface $provider */
@@ -184,7 +184,7 @@ class Source implements SourceInterface
             [
                 new StringTag('name', $name),
                 new StringTag('id', $id),
-                new LongTag('provider', $provider->name()),
+                new StringTag('provider', $provider->name()),
             ]
         );
         $dependentProvidersInfo = array_map(function ($dependentProviderInfo) {
@@ -216,7 +216,7 @@ class Source implements SourceInterface
                 [
                     new StringTag('name', $name),
                     new StringTag('id', $id),
-                    new LongTag('provider', $provider->name()),
+                    new StringTag('provider', $provider->name()),
                 ]
             );
             $this->logger->debug('Source detach provider', [
