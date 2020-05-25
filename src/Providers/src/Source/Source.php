@@ -2,6 +2,9 @@
 
 namespace rollun\datahandler\Providers\Source;
 
+use Jaeger\Tag\LongTag;
+use Jaeger\Tag\StringTag;
+use Jaeger\Tracer\Tracer;
 use Psr\Log\LoggerInterface;
 use rollun\datahandler\Providers\DataHandlers\PluginManager\ProviderPluginManager;
 use rollun\datahandler\Providers\ProviderInterface;
@@ -31,21 +34,28 @@ class Source implements SourceInterface
      * @var LoggerInterface
      */
     private $logger;
+    /**
+     * @var Tracer
+     */
+    private $tracer;
 
     /**
      * Source constructor.
      * @param ProviderPluginManager $providerPluginManager
      * @param ProviderDependenciesInterface $providerDependencies
      * @param LoggerInterface $logger
+     * @param Tracer $tracer
      */
     public function __construct(
         ProviderPluginManager $providerPluginManager,
         ProviderDependenciesInterface $providerDependencies,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        Tracer $tracer
     ) {
         $this->providerPluginManager = $providerPluginManager;
         $this->providerDependencies = $providerDependencies;
         $this->logger = $logger;
+        $this->tracer = $tracer;
     }
 
     public function __sleep()
@@ -57,7 +67,8 @@ class Source implements SourceInterface
     {
         InsideConstruct::initWakeup([
             'providerPluginManager' => ProviderPluginManager::class,
-            'logger' => LoggerInterface::class
+            'logger' => LoggerInterface::class,
+            'tracer' => Tracer::class
         ]);
     }
 
@@ -81,7 +92,17 @@ class Source implements SourceInterface
             'id' => $id,
             'options' => $options
         ]);
+        $span = $this->tracer->start(
+            sprintf('%s::provide', static::class),
+            [
+                new StringTag('name', $name),
+                new StringTag('id', $id),
+                new StringTag('options', json_encode($options)),
+            ]
+        );
         $name = $this->resolveRealName($name);
+        $span->addTag(new StringTag('realName', $name));
+
         $this->providerDependencies->start($name, $id);
 
         $isProviderCheck = $options[self::OPTIONS_PROVIDER_CHECK] ?? false;
@@ -98,8 +119,7 @@ class Source implements SourceInterface
             $this->subscribeProvider($name, $id, $provider);
             $this->detachProvider($name, $id, $provider);
         }
-
-        //
+        $span->addTag(new StringTag('result', json_encode($result)));
 
         //up level in state
 
@@ -118,12 +138,21 @@ class Source implements SourceInterface
             'id' => $id,
             'options' => $options
         ]);
+        $this->tracer->finish($span);
         return $result;
     }
 
 
     public function notify(string $name, string $id, int $updateTimestamp = null)
     {
+        $span = $this->tracer->start(
+            sprintf('%s::notify', static::class),
+            [
+                new StringTag('name', $name),
+                new StringTag('id', $id),
+                new LongTag('updateTimestamp', $updateTimestamp),
+            ]
+        );
         /** @var $provider ProviderInterface $provider */
         $provider = $this->providerPluginManager->get($name);
         $this->logger->debug('Source notify provider', [
@@ -132,6 +161,7 @@ class Source implements SourceInterface
             'updateTimestamp' => $updateTimestamp,
         ]);
         $provider->notify($this, $id, $updateTimestamp);
+        $this->tracer->finish($span);
     }
 
     /**
@@ -149,6 +179,14 @@ class Source implements SourceInterface
      */
     private function subscribeProvider(string $name, string $id, ProviderInterface $provider): void
     {
+        $span = $this->tracer->start(
+            sprintf('%s::subscribeProvider', static::class),
+            [
+                new StringTag('name', $name),
+                new StringTag('id', $id),
+                new LongTag('provider', $provider->name()),
+            ]
+        );
         $dependentProvidersInfo = array_map(function ($dependentProviderInfo) {
             $dependentProvider = $this->providerPluginManager->get($dependentProviderInfo['provider']);
             return [
@@ -162,6 +200,7 @@ class Source implements SourceInterface
             'provider_name' => $provider->name(),
         ]);
         $provider->setupForId($id, $dependentProvidersInfo);
+        $this->tracer->finish($span);
     }
 
     /**
@@ -172,6 +211,14 @@ class Source implements SourceInterface
     private function detachProvider(string $name, string $id, ProviderInterface $provider): void
     {
         if (method_exists($this->providerDependencies, 'deletedDepth')) {
+            $span = $this->tracer->start(
+                sprintf('%s::detachProvider', static::class),
+                [
+                    new StringTag('name', $name),
+                    new StringTag('id', $id),
+                    new LongTag('provider', $provider->name()),
+                ]
+            );
             $this->logger->debug('Source detach provider', [
                 'name' => $name,
                 'id' => $id,
@@ -183,6 +230,7 @@ class Source implements SourceInterface
                 $depthProvider = $this->providerPluginManager->get($depth['provider']);
                 $depthProvider->detach($provider, $depth['id']);
             }
+            $this->tracer->finish($span);
         }
     }
 }
