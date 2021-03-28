@@ -11,7 +11,7 @@
         "ext-json": "*",
         "http-interop/http-middleware": "^0.4.1",
         "symfony/expression-language": "^5.0",
-        "rollun-com/rollun-callback": "^5.2",
+        "rollun-com/rollun-callback": "^6.0",
         "rollun-com/rollun-datastore": "^6",
         "zendframework/zend-filter": "^2.8",
         "zendframework/zend-servicemanager": "^3.3",
