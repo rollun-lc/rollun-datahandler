@@ -107,7 +107,7 @@ class Source implements SourceInterface
                 $this->subscribeProvider($name, $id, $provider);
                 $this->detachProvider($name, $id, $provider);
             }
-        }  finally {
+        } finally {
             $this->providerDependencies->finish(null);
         }
         //up level in state
