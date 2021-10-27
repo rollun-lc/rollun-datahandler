@@ -16,16 +16,16 @@ class DataProvidersConfig extends SerializedDbTable
     public const FIELD_DATA_HANDLER = 'data_handler';
     public const FIELD_CONFIG = 'config';
 
-    public function create($itemData, $rewriteIfExist = false)
+    public function create($itemData)
     {
         $itemData[self::FIELD_CONFIG] = Serializer::jsonSerialize($itemData['config']);
-        return parent::create($itemData, $rewriteIfExist);
+        return parent::create($itemData);
     }
 
-    public function update($itemData, $createIfAbsent = false)
+    public function update($itemData)
     {
         $itemData[self::FIELD_CONFIG] = Serializer::jsonSerialize($itemData['config']);
-        return parent::update($itemData, $createIfAbsent);
+        return parent::update($itemData);
     }
 
     public function query(Query $query)
