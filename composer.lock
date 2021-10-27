@@ -2358,16 +2358,16 @@
         },
         {
             "name": "rollun-com/rollun-logger",
-            "version": "5.6.0",
+            "version": "5.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rollun-com/rollun-logger.git",
-                "reference": "0b5105bca22dbf058d8665c02b3ef7481b6ddb81"
+                "reference": "c83f6548d7c9d1328b679c4afeebba2f87490d99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rollun-com/rollun-logger/zipball/0b5105bca22dbf058d8665c02b3ef7481b6ddb81",
-                "reference": "0b5105bca22dbf058d8665c02b3ef7481b6ddb81",
+                "url": "https://api.github.com/repos/rollun-com/rollun-logger/zipball/c83f6548d7c9d1328b679c4afeebba2f87490d99",
+                "reference": "c83f6548d7c9d1328b679c4afeebba2f87490d99",
                 "shasum": ""
             },
             "require": {
@@ -2379,6 +2379,7 @@
                 "php": "^7.2",
                 "psr/http-message": "^1.0",
                 "psr/http-server-middleware": "^1.0",
+                "rollun-com/rollun-utils": "^5.0",
                 "zendframework/zend-cache": "^2.9",
                 "zendframework/zend-http": "^2.7",
                 "zendframework/zend-mail": "^2.10",
@@ -2419,7 +2420,7 @@
                 }
             ],
             "description": "Zend style Logger",
-            "time": "2021-10-26T12:47:44+00:00"
+            "time": "2021-10-27T09:37:40+00:00"
         },
         {
             "name": "rollun-com/rollun-utils",
