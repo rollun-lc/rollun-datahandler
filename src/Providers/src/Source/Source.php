@@ -84,11 +84,11 @@ class Source implements SourceInterface
      */
     public function provide(string $name, string $id, array $options = [])
     {
-        $this->logger->debug('Source start provide', [
+        /*$this->logger->debug('Source start provide', [
             'name' => $name,
             'id' => $id,
             'options' => $options
-        ]);
+        ]);*/
         $name = $this->resolveRealName($name);
 
         $this->providerDependencies->start($name, $id);
@@ -115,18 +115,18 @@ class Source implements SourceInterface
         $isNotNull = $options[self::OPTIONS_NOT_NULL] ?? true;
 
         if ($isNotNull && $result === null) {
-            $this->logger->debug('Source finish provide with exception', [
+           /* $this->logger->debug('Source finish provide with exception', [
                 'name' => $name,
                 'id' => $id,
                 'options' => $options
-            ]);
+            ]);*/
             throw new \RuntimeException("Return value from provider {$name}[{$id}] is null.");
-        }
+        }/*
         $this->logger->debug('Source finish provide', [
             'name' => $name,
             'id' => $id,
             'options' => $options
-        ]);
+        ]);*/
 
         return $result;
     }
@@ -136,11 +136,11 @@ class Source implements SourceInterface
     {
         /** @var $provider ProviderInterface $provider */
         $provider = $this->providerPluginManager->get($name);
-        $this->logger->debug('Source notify provider', [
+        /*$this->logger->debug('Source notify provider', [
             'name' => $name,
             'id' => $id,
             'updateTimestamp' => $updateTimestamp,
-        ]);
+        ]);*/
         $provider->notify($this, $id, $updateTimestamp);
     }
 
@@ -166,11 +166,11 @@ class Source implements SourceInterface
                 'id' => $dependentProviderInfo['id']
             ];
         }, $this->providerDependencies->dependentProvidersInfo($name, $id) ?? []);
-        $this->logger->debug('Source subscribe provider', [
+        /*$this->logger->debug('Source subscribe provider', [
             'name' => $name,
             'id' => $id,
             'provider_name' => $provider->name(),
-        ]);
+        ]);*/
         $provider->setupForId($id, $dependentProvidersInfo);
     }
 
@@ -182,11 +182,11 @@ class Source implements SourceInterface
     private function detachProvider(string $name, string $id, ProviderInterface $provider): void
     {
         if (method_exists($this->providerDependencies, 'deletedDepth')) {
-            $this->logger->debug('Source detach provider', [
+            /*$this->logger->debug('Source detach provider', [
                 'name' => $name,
                 'id' => $id,
                 'provider_name' => $provider->name(),
-            ]);
+            ]);*/
             $deletedDepth = $this->providerDependencies->deletedDepth($name, $id) ?? [];
             //$depth['provider']]["#{$depth['id']}"]
             foreach ($deletedDepth as $depth) {
