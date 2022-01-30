@@ -5,6 +5,7 @@ namespace rollun\datahandler\Providers\Source;
 use Jaeger\Tracer\Tracer;
 use Psr\Log\LoggerInterface;
 use rollun\datahandler\Providers\DataHandlers\PluginManager\ProviderPluginManager;
+use rollun\datahandler\Providers\Exception\ProviderException;
 use rollun\datahandler\Providers\ProviderInterface;
 use rollun\dic\InsideConstruct;
 
@@ -107,6 +108,15 @@ class Source implements SourceInterface
                 $this->subscribeProvider($name, $id, $provider);
                 $this->detachProvider($name, $id, $provider);
             }
+        } catch (ProviderException $e) {
+            throw $e;
+        } catch (\Throwable $e) {
+            $this->logger->debug("Error in provider", [
+                'provider' => $name,
+                'id' => $id,
+                'exception' => $e,
+            ]);
+            throw new ProviderException($name, $id, $e);
         } finally {
             $this->providerDependencies->finish(null);
         }
