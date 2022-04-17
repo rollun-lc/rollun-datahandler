@@ -100,11 +100,11 @@ class Source implements SourceInterface
             /** @var $provider ProviderInterface|null */
             if ($isProviderCheck && !$this->providerPluginManager->has($name)) {
                 $result = null;
-                $this->providerDependencies->finish($result); //need finish
+                //$this->providerDependencies->finish($result); //finish in finally
             } else {
                 $provider = $this->providerPluginManager->get($name);
                 $result = $provider->provide($this, $id, $options);
-                $this->providerDependencies->finish($result); //need finish
+                //$this->providerDependencies->finish($result); //finish in finally
                 $this->subscribeProvider($name, $id, $provider);
                 $this->detachProvider($name, $id, $provider);
             }
