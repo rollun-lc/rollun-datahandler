@@ -169,11 +169,11 @@ class Source implements SourceInterface
      */
     private function subscribeProvider(string $name, string $id, ProviderInterface $provider): void
     {
-        $dependentProvidersInfo = array_map(function ($dependentProviderInfo) {
-            $dependentProvider = $this->providerPluginManager->get($dependentProviderInfo['provider']);
+        $dependentProvidersInfo = array_map(function ($dependentProviderInfo) use ($id) {
+            $dependentProvider = $this->providerPluginManager->get($dependentProviderInfo);
             return [
                 'provider' => $dependentProvider,
-                'id' => $dependentProviderInfo['id']
+                'id' => $id
             ];
         }, $this->providerDependencies->dependentProvidersInfo($name, $id) ?? []);
         /*$this->logger->debug('Source subscribe provider', [
