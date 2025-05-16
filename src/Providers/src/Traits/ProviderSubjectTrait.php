@@ -21,7 +21,7 @@ trait ProviderSubjectTrait
 
     private function wrapId(string $id)
     {
-        if (strpos($id, '#') === false) {
+        if (!str_contains($id, '#')) {
             return "#{$id}";
         }
         return $id;
@@ -34,7 +34,7 @@ trait ProviderSubjectTrait
      */
     public function attach(ObserverInterface $observer, string $id, $observerId = null): void
     {
-        $observerId = $observerId ?? $id;
+        $observerId ??= $id;
         if (!$this->isAlreadyAttached($observer, $id, $observerId)) {
             $this->observers[$this->wrapId($id)][] = [
                 'id' => $observerId,
@@ -54,15 +54,11 @@ trait ProviderSubjectTrait
         }
         //save only `not provider` observers
         $observers = array_merge(
-            array_filter($this->observers[$this->wrapId($id)] ?? [], function ($observerInfo) {
-                return !$observerInfo['observer'] instanceof ProviderInterface;
-            }),
-            array_map(function ($providerInfo) use ($id) {
-                return [
-                    'observer' => $providerInfo['provider'],
-                    'id' => $providerInfo['id'] ?? $id,
-                ];
-            }, $providersInfo)
+            array_filter($this->observers[$this->wrapId($id)] ?? [], fn($observerInfo) => !$observerInfo['observer'] instanceof ProviderInterface),
+            array_map(fn($providerInfo) => [
+                'observer' => $providerInfo['provider'],
+                'id' => $providerInfo['id'] ?? $id,
+            ], $providersInfo)
         );
 
         $this->observers[$this->wrapId($id)] = $observers;

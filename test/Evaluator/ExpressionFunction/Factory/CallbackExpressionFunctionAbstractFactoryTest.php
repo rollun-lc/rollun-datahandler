@@ -25,9 +25,7 @@ class CallbackExpressionFunctionAbstractFactoryTest extends AbstractExpressionFu
     public function testPositiveFunctionCallbackInvoke()
     {
         $requestedName = 'requestedServiceName';
-        $functionCallback = function ($value) {
-            return $value . $value;
-        };
+        $functionCallback = (fn($value) => $value . $value);
         $container = $this->getContainer($requestedName, [
             'class' => Callback::class,
             'callbackService' => 'functionCallbackService',

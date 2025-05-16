@@ -13,12 +13,8 @@ class BaseExpressionFunctionTest extends TestCase
 {
     public function testPositiveWithEvaluator()
     {
-        $evaluator = function ($arguments, $value) {
-            return $value . $value;
-        };
-        $compiler = function ($value) {
-            return "'$value' . '$value'";
-        };
+        $evaluator = (fn($arguments, $value) => $value . $value);
+        $compiler = (fn($value) => "'$value' . '$value'");
         $object = new BaseExpressionFunction('duplicate', $compiler, $evaluator);
 
         $value = 'a';
@@ -33,9 +29,7 @@ class BaseExpressionFunctionTest extends TestCase
 
     public function testPositiveWithoutEvaluator()
     {
-        $compiler = function ($value) {
-            return "'$value' . '$value'";
-        };
+        $compiler = (fn($value) => "'$value' . '$value'");
         $object = new BaseExpressionFunction('duplicate', $compiler);
 
         $value = 'a';

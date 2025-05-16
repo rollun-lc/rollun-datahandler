@@ -104,7 +104,7 @@ abstract class PluginAbstractFactoryAbstractTest extends TestCase
 
         if (!isset($constants[$name])) {
             throw new InvalidArgumentException(
-                "Undefined constant $name in " . get_class($this->object) . " class"
+                "Undefined constant $name in " . $this->object::class . " class"
             );
         }
 
@@ -123,7 +123,7 @@ abstract class PluginAbstractFactoryAbstractTest extends TestCase
         $container->setService('config', [
             $this->getConstant('KEY') => [
                 'abstract_factory_config' => [
-                    get_class($this->object) => [
+                    $this->object::class => [
                         $requestedName => $serviceConfig
                     ]
                 ]

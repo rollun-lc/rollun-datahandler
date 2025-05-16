@@ -68,7 +68,7 @@ class IsColumnExist extends AbstractValidator
         $validateColumns = $this->getValidateColumns();
 
         foreach ($validateColumns as $validateColumn) {
-            if (!key_exists($validateColumn, $value)) {
+            if (!array_key_exists($validateColumn, $value)) {
                 return false;
             }
         }

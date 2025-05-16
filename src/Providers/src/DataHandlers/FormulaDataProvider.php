@@ -8,17 +8,9 @@ use rollun\datahandler\Providers\Callback\ExpressionHandler;
 class FormulaDataProvider
 {
     /**
-     * @var string
-     */
-    private $formula;
-    /**
      * @var ExpressionHandler
      */
     private $expressionHandler;
-    /**
-     * @var string
-     */
-    private $name;
 
     /**
      * FormulaDataProvider constructor.
@@ -26,14 +18,12 @@ class FormulaDataProvider
      * @param string $formula
      * @param ExpressionHandler|null $expressionHandler
      */
-    public function __construct(string $name, string $formula, ExpressionHandler $expressionHandler = null)
+    public function __construct(private string $name, private string $formula, ExpressionHandler $expressionHandler = null)
     {
         if ($expressionHandler === null) {
             $expressionHandler = new ExpressionHandler();
         }
-        $this->formula = $formula;
         $this->expressionHandler = $expressionHandler;
-        $this->name = $name;
     }
 
     public function name(): string

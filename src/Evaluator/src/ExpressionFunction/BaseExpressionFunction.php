@@ -13,7 +13,7 @@ class BaseExpressionFunction extends ExpressionFunction
 {
     public function __construct($name, callable $compiler, callable $evaluator = null)
     {
-        $evaluator = $evaluator ?? $this->getEvaluatorFromCompiler($compiler);
+        $evaluator ??= $this->getEvaluatorFromCompiler($compiler);
         parent::__construct($name, $compiler, $evaluator);
     }
 

@@ -35,7 +35,7 @@ abstract class AbstractExpressionFunctionAbstractFactoryTest extends TestCase
 
         if (!isset($constants[$name])) {
             throw new InvalidArgumentException(
-                "Undefined constant $name in " . get_class($this->object) . " class"
+                "Undefined constant $name in " . $this->object::class . " class"
             );
         }
 
@@ -53,7 +53,7 @@ abstract class AbstractExpressionFunctionAbstractFactoryTest extends TestCase
         $container = new ServiceManager();
         $container->setService('config', [
             $this->getConstant('KEY') => [
-                get_class($this->object) => [
+                $this->object::class => [
                     $requestedName => $serviceConfig
                 ]
             ]

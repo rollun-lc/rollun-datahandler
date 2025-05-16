@@ -9,17 +9,11 @@ use rollun\utils\DynamicPluginManager;
 class DataProviderChecker
 {
     /**
-     * @var DynamicPluginManager
-     */
-    private $dataProviderPluginManager;
-
-    /**
      * DataProviderChecker constructor.
      * @param DynamicDataProviderPluginManager $dataProviderPluginManager
      */
-    public function __construct(DynamicDataProviderPluginManager $dataProviderPluginManager)
+    public function __construct(private DynamicDataProviderPluginManager $dataProviderPluginManager)
     {
-        $this->dataProviderPluginManager = $dataProviderPluginManager;
     }
 
     public function __invoke($value)

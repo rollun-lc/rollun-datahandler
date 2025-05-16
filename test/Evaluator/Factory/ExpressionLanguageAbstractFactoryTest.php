@@ -84,7 +84,7 @@ class ExpressionLanguageAbstractFactoryTest extends TestCase
     {
         $container = new ServiceManager();
         $container->setService('config', [
-            get_class($this->object) => [
+            $this->object::class => [
                 $requestedName => $serviceConfig
             ]
         ]);
@@ -116,7 +116,7 @@ class ExpressionLanguageAbstractFactoryTest extends TestCase
         try {
             $evaluation = $expressionEvaluator->evaluate($expression);
             return $evaluation === $expectedEvaluation;
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return false;
         }
     }

@@ -42,7 +42,7 @@ class Callback extends ExpressionFunction
     {
         $callback = $this->callback;
 
-        $compiler = function ($value) use ($callback) {
+        $compiler = function ($value) use ($callback): void {
             throw new LogicException(
                 "Callback expression function can't be compiled",
                 LogicException::COMPILER_NOT_SUPPORTED
@@ -59,9 +59,7 @@ class Callback extends ExpressionFunction
     {
         $callback = $this->callback;
 
-        $evaluator = function ($arguments, $value) use ($callback) {
-            return $callback($value);
-        };
+        $evaluator = (fn($arguments, $value) => $callback($value));
 
         return $evaluator;
     }

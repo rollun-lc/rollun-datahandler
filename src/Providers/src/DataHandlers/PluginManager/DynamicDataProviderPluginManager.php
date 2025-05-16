@@ -11,14 +11,11 @@ use Laminas\ServiceManager\AbstractPluginManager;
  */
 class DynamicDataProviderPluginManager extends AbstractPluginManager
 {
-    private $configDataSource;
-
     private $tmpConfig = [];
 
-    public function __construct($configDataSource, string $instanceOf, $configInstanceOrParentLocator = null, array $config = [])
+    public function __construct(private $configDataSource, string $instanceOf, $configInstanceOrParentLocator = null, array $config = [])
     {
         parent::__construct($configInstanceOrParentLocator, $config);
-        $this->configDataSource = $configDataSource;
         $this->instanceOf = $instanceOf;
     }
 
@@ -60,7 +57,7 @@ class DynamicDataProviderPluginManager extends AbstractPluginManager
 
     public function get($name, array $options = null)
     {
-        $options = $options ?? $this->getServiceConfig($name);
+        $options ??= $this->getServiceConfig($name);
 
         $dataHandler = $options['data_handler'];
 

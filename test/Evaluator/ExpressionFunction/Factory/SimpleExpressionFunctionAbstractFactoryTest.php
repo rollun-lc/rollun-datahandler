@@ -30,12 +30,10 @@ class SimpleExpressionFunctionAbstractFactoryTest extends AbstractExpressionFunc
             'evaluator' => 'evaluatorFunctionCallback',
             'functionName' => $functionName,
         ]);
-        $container->setService('compilerFunctionCallback', function ($value) {
+        $container->setService('compilerFunctionCallback', function ($value): void {
             throw new LogicException();
         });
-        $container->setService('evaluatorFunctionCallback', function ($value) {
-            return $value . $value;
-        });
+        $container->setService('evaluatorFunctionCallback', fn($value) => $value . $value);
 
         /** @var ExpressionFunction $expressionFunction */
         $expressionFunction = $this->object->__invoke($container, $requestedName);
@@ -51,7 +49,7 @@ class SimpleExpressionFunctionAbstractFactoryTest extends AbstractExpressionFunc
             'compiler' => 'compilerFunctionCallback',
             'functionName' => $functionName,
         ]);
-        $container->setService('compilerFunctionCallback', function ($value) {
+        $container->setService('compilerFunctionCallback', function ($value): void {
             throw new LogicException();
         });
 

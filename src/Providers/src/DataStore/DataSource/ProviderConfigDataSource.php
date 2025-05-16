@@ -10,17 +10,11 @@ class ProviderConfigDataSource implements DataSourceInterface
 {
 
     /**
-     * @var DataProvidersConfig
-     */
-    private $dataProvidersConfig;
-
-    /**
      * ProviderConfigDataSource constructor.
      * @param DataProvidersConfig $dataProvidersConfig
      */
-    public function __construct(DataProvidersConfig $dataProvidersConfig)
+    public function __construct(private DataProvidersConfig $dataProvidersConfig)
     {
-        $this->dataProvidersConfig = $dataProvidersConfig;
     }
 
     /**

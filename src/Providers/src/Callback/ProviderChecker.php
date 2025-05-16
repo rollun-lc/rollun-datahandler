@@ -9,17 +9,11 @@ use rollun\datahandler\Providers\Source\SourceInterface;
 class ProviderChecker
 {
     /**
-     * @var SourceInterface
-     */
-    private $source;
-
-    /**
      * ProviderChecker constructor.
      * @param SourceInterface $source
      */
-    public function __construct(SourceInterface $source)
+    public function __construct(private SourceInterface $source)
     {
-        $this->source = $source;
     }
 
     /**

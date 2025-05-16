@@ -73,7 +73,7 @@ class CachedDecoratorAbstractFactoryTest extends PluginAbstractFactoryAbstractTe
         $container->setService('config', [
             $this->getConstant('KEY') => [
                 'abstract_factory_config' => [
-                    get_class($this->object) => [
+                    $this->object::class => [
                         $requestedName1 => [
                             'options' => [
                                 'validator' => 'validatorServiceName1'

@@ -68,7 +68,7 @@ abstract class AbstractProcessor implements ProcessorInterface
             throw new InvalidArgumentException(sprintf(
                 '"%s" expects an array or Traversable; received "%s"',
                 __METHOD__,
-                (is_object($options) ? get_class($options) : gettype($options))
+                (get_debug_type($options))
             ));
         }
 

@@ -20,19 +20,6 @@ class Source implements SourceInterface
 
     public const OPTIONS_NOT_NULL = 'not_null';
     public const OPTIONS_PROVIDER_CHECK = 'provider_check';
-
-    /**
-     * @var ProviderPluginManager
-     */
-    private $providerPluginManager;
-    /**
-     * @var ProviderDependenciesInterface
-     */
-    private $providerDependencies;
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
     /**
      * @var Tracer
      */
@@ -45,15 +32,8 @@ class Source implements SourceInterface
      * @param LoggerInterface $logger
      * @param Tracer $tracer
      */
-    public function __construct(
-        ProviderPluginManager $providerPluginManager,
-        ProviderDependenciesInterface $providerDependencies,
-        LoggerInterface $logger,
-        Tracer $tracer = null
-    ) {
-        $this->providerPluginManager = $providerPluginManager;
-        $this->providerDependencies = $providerDependencies;
-        $this->logger = $logger;
+    public function __construct(private ProviderPluginManager $providerPluginManager, private ProviderDependenciesInterface $providerDependencies, private LoggerInterface $logger, Tracer $tracer = null)
+    {
     }
 
     public function __sleep()

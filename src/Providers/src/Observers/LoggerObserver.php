@@ -13,17 +13,11 @@ use rollun\dic\InsideConstruct;
 class LoggerObserver implements ObserverInterface
 {
     /**
-     * @var LoggerInterface
-     */
-    private $logger;
-
-    /**
      * LoggerObserver constructor.
      * @param LoggerInterface $logger
      */
-    public function __construct(LoggerInterface $logger)
+    public function __construct(private LoggerInterface $logger)
     {
-        $this->logger = $logger;
     }
 
     public function __sleep()

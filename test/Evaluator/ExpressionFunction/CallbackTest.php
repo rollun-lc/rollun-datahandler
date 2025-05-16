@@ -21,9 +21,7 @@ class CallbackTest extends TestCase
     public function testPositiveCallableFunction()
     {
         $expression = "duplicate('2')";
-        $callable = function ($value) {
-            return $value . $value;
-        };
+        $callable = (fn($value) => $value . $value);
 
         $expressionLanguage = $this->init(new SerializableCallback($callable), 'duplicate');
         $expressionLanguage->evaluate($expression);

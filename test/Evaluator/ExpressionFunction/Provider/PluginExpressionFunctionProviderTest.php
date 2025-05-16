@@ -71,7 +71,7 @@ class PluginExpressionFunctionProviderTest extends TestCase
         try {
             $evaluation = $expressionLanguage->evaluate($expression);
             return $evaluation === $expectedEvaluation;
-        } catch (\Exception $e) {
+        } catch (\Exception) {
             return false;
         }
     }

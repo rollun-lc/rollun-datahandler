@@ -83,7 +83,7 @@ class PluginExpressionFunctionProvider implements ExpressionFunctionProviderInte
                 $pluginService,
                 $pluginManager,
                 $calledMethod
-            ) {
+            ): void {
                 throw new LogicException(
                     "Compiler for $pluginService doesn't exist",
                     LogicException::COMPILER_NOT_SUPPORTED

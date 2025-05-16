@@ -114,7 +114,7 @@ class PluginFunctionExpressionProviderAbstractFactoryTest extends TestCase
     {
         $container = new ServiceManager();
         $container->setService('config', [
-            get_class($this->object) => [
+            $this->object::class => [
                 $requestedName => $serviceConfig
             ]
         ]);
