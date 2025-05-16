@@ -38,7 +38,7 @@ class Callback extends ExpressionFunction
     /**
      * @return callable|\Closure
      */
-    public function getCompiler()
+    public function getCompiler(): \Closure
     {
         $callback = $this->callback;
 
@@ -55,7 +55,7 @@ class Callback extends ExpressionFunction
     /**
      * @return callable|\Closure
      */
-    public function getEvaluator()
+    public function getEvaluator(): \Closure
     {
         $callback = $this->callback;
 
