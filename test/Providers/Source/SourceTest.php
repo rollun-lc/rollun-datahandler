@@ -121,11 +121,6 @@ class SourceTest extends TestCase
 
         $providerDependencies = new ProviderDependencies();
         $source = new Source($pluginManager, $providerDependencies, $this->logger);
-        
-        /** @var ProviderInterface $test1 */
-        $test1 = $pluginManager->get('test1');
-        $test2 = $pluginManager->get('test2');
-        $test3 = $pluginManager->get('test3');
 
         // First call to provide
         $this->assertEquals('test2', $source->provide('test1', '123'));
