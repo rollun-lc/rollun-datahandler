@@ -125,30 +125,29 @@ class SourceTest extends TestCase
         /** @var ProviderInterface $test1 */
         $test1 = $pluginManager->get('test1');
         $test2 = $pluginManager->get('test2');
+        $test3 = $pluginManager->get('test3');
 
         // First call to provide
         $this->assertEquals('test2', $source->provide('test1', '123'));
         
-        // Verify that test2 has test1 as an observer for id '123'
-        $reflectionProperty = new \ReflectionProperty(get_class($test2), 'observers');
-        $reflectionProperty->setAccessible(true);
-        $observers = $reflectionProperty->getValue($test2);
-
-        $this->assertArrayHasKey('#123', $observers);
-        $this->assertCount(1, $observers['#123']);
-        $observerInfo = reset($observers['#123']);
-        $this->assertArrayHasKey('observer', $observerInfo);
-        $this->assertArrayHasKey('id', $observerInfo);
-        $this->assertSame($test1, $observerInfo['observer']);
-        $this->assertEquals('123', $observerInfo['id']);
-
+        // Check dependencies after first call
+        $this->assertNotEmpty($providerDependencies->dependentProvidersInfo('test2', '123'));
+        
         // Second call to provide should switch dependency from test2 to test3
         $this->assertEquals('test3', $source->provide('test1', '123'));
         
-        // After the second call, test2 should have no observers for id '123'
-        $observers = $reflectionProperty->getValue($test2);
-        $this->assertArrayHasKey('#123', $observers);
-        $this->assertEmpty($observers['#123']);
+        // Check dependencies after second call
+        $this->assertEmpty($providerDependencies->dependentProvidersInfo('test2', '123'));
+        $this->assertNotEmpty($providerDependencies->dependentProvidersInfo('test3', '123'));
+        
+        // Get the dependencies info for test3
+        $test3Dependencies = $providerDependencies->dependentProvidersInfo('test3', '123');
+        $this->assertCount(1, $test3Dependencies);
+        
+        // The dependency should point to test1
+        $dependencyInfo = reset($test3Dependencies);
+        $this->assertEquals('test1', $dependencyInfo['provider']);
+        $this->assertEquals('123', $dependencyInfo['id']);
     }
 
     public function tearDown(): void
