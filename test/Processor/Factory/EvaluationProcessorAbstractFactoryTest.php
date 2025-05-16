@@ -5,7 +5,7 @@ namespace rollun\test\datahandler\Processor\Factory;
 use rollun\datahandler\Processor\Evaluation;
 use rollun\datahandler\Processor\Factory\EvaluationProcessorAbstractFactory;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-use Zend\Validator\Digits;
+use Laminas\Validator\Digits;
 
 /**
  * Class EvaluationProcessorAbstractFactoryTest
@@ -21,7 +21,7 @@ class EvaluationProcessorAbstractFactoryTest extends AbstractProcessorAbstractFa
     /**
      * @param $requestedName
      * @param array $serviceConfig
-     * @return \Zend\ServiceManager\ServiceManager
+     * @return \Laminas\ServiceManager\ServiceManager
      * @throws \ReflectionException
      */
     public function getContainer($requestedName, $serviceConfig = [])

@@ -5,7 +5,7 @@ namespace rollun\datahandler\Evaluator\Factory;
 use Interop\Container\ContainerInterface;
 use InvalidArgumentException;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-use Zend\ServiceManager\Factory\AbstractFactoryInterface;
+use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 
 /**
  * Create and return instance of ExpressionLanguage

@@ -3,7 +3,7 @@
 namespace rollun\test\datahandler\Processor\Factory;
 
 use rollun\test\datahandler\Factory\PluginAbstractFactoryAbstractTest;
-use Zend\Validator\ValidatorPluginManager;
+use Laminas\Validator\ValidatorPluginManager;
 
 /**
  * Class ProcessorAbstractFactoryAbstractTest
@@ -14,7 +14,7 @@ abstract class AbstractProcessorAbstractFactoryTest extends PluginAbstractFactor
     /**
      * @param $requestedName
      * @param array $serviceConfig
-     * @return \Zend\ServiceManager\ServiceManager
+     * @return \Laminas\ServiceManager\ServiceManager
      * @throws \ReflectionException
      */
     protected function getContainer($requestedName, $serviceConfig = [])

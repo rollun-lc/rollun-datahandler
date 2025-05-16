@@ -5,7 +5,7 @@ namespace rollun\test\datahandler\Processor\Factory;
 use InvalidArgumentException;
 use rollun\datahandler\Processor\Concat;
 use rollun\datahandler\Processor\Factory\SimpleProcessorAbstractFactory;
-use Zend\Validator\Digits;
+use Laminas\Validator\Digits;
 
 /**
  * Class SimpleProcessorAbstractFactoryTest

@@ -1,8 +1,8 @@
 <?php
 
 use Symfony\Component\Dotenv\Dotenv;
-use Zend\ConfigAggregator\ConfigAggregator;
-use Zend\ConfigAggregator\PhpFileProvider;
+use Laminas\ConfigAggregator\ConfigAggregator;
+use Laminas\ConfigAggregator\PhpFileProvider;
 
 // Make environment variables stored in .env accessible via getenv(), $_ENV or $_SERVER.
 (new Dotenv())->load('.env');

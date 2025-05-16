@@ -3,9 +3,9 @@
 namespace rollun\datahandler\Validator\Decorator;
 
 use BadMethodCallException;
-use Zend\Validator\AbstractValidator;
-use Zend\Validator\Exception\InvalidArgumentException;
-use Zend\Validator\ValidatorInterface;
+use Laminas\Validator\AbstractValidator;
+use Laminas\Validator\Exception\InvalidArgumentException;
+use Laminas\Validator\ValidatorInterface;
 
 /**
  * Class ArrayValidator

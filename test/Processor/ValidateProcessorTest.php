@@ -4,10 +4,10 @@ namespace rollun\test\datahandler\Processor;
 
 use rollun\datahandler\Processor\Concat;
 use PHPUnit\Framework\TestCase;
-use Zend\Validator\Callback;
-use Zend\Validator\Digits;
-use Zend\Validator\Exception\InvalidArgumentException;
-use Zend\Validator\IsCountable;
+use Laminas\Validator\Callback;
+use Laminas\Validator\Digits;
+use Laminas\Validator\Exception\InvalidArgumentException;
+use Laminas\Validator\IsCountable;
 
 /**
  * Class AbstractProcessorTest

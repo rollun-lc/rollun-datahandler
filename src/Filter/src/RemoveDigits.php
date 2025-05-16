@@ -2,7 +2,7 @@
 
 namespace rollun\datahandler\Filter;
 
-use Zend\Filter\AbstractFilter;
+use Laminas\Filter\AbstractFilter;
 
 /**
  * Class RemoveDigits

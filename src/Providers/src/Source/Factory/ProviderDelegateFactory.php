@@ -7,9 +7,9 @@ use Interop\Container\Exception\ContainerException;
 use rollun\datahandler\Providers\DataHandlers\PluginManager\ProviderPluginManager;
 use rollun\datahandler\Providers\ProviderInterface;
 use rollun\datahandler\Providers\Source\ProviderDependencies;
-use Zend\ServiceManager\Exception\ServiceNotCreatedException;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
-use Zend\ServiceManager\Factory\DelegatorFactoryInterface;
+use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
+use Laminas\ServiceManager\Exception\ServiceNotFoundException;
+use Laminas\ServiceManager\Factory\DelegatorFactoryInterface;
 
 class ProviderDelegateFactory implements DelegatorFactoryInterface
 {

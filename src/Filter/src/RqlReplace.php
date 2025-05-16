@@ -3,8 +3,8 @@
 namespace rollun\datahandler\Filter;
 
 use InvalidArgumentException;
-use Zend\Filter\AbstractFilter;
-use Zend\Filter\FilterInterface;
+use Laminas\Filter\AbstractFilter;
+use Laminas\Filter\FilterInterface;
 
 /**
  * Class RqlReplace

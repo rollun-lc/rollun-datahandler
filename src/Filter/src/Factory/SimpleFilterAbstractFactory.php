@@ -4,7 +4,7 @@ namespace rollun\datahandler\Filter\Factory;
 
 use rollun\datahandler\Factory\PluginAbstractFactoryAbstract;
 use Interop\Container\ContainerInterface;
-use Zend\Filter\FilterInterface;
+use Laminas\Filter\FilterInterface;
 
 /**
  * Create and return instance of FilterInterface

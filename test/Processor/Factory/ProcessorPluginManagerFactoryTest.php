@@ -5,8 +5,8 @@ namespace rollun\test\datahandler\Processor\Factory;
 use PHPUnit\Framework\TestCase;
 use rollun\datahandler\Processor\Factory\ProcessorPluginManagerFactory;
 use rollun\datahandler\Processor\ProcessorPluginManager;
-use Zend\ServiceManager\Factory\FactoryInterface;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\ServiceManager;
 
 /**
  * Class ProcessorPluginManagerFactoryTest

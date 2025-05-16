@@ -3,7 +3,7 @@
 namespace rollun\datahandler\Filter;
 
 use InvalidArgumentException;
-use Zend\Filter\AbstractFilter;
+use Laminas\Filter\AbstractFilter;
 
 /**
  * Class DuplicateSymbol

@@ -3,7 +3,7 @@
 namespace rollun\datahandler\Providers\DataHandlers\PluginManager;
 
 use rollun\datahandler\Providers\ProviderInterface;
-use Zend\ServiceManager\AbstractPluginManager;
+use Laminas\ServiceManager\AbstractPluginManager;
 
 class ProviderPluginManager extends AbstractPluginManager
 {

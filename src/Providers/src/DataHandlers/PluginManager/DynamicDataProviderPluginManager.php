@@ -2,7 +2,7 @@
 
 namespace rollun\datahandler\Providers\DataHandlers\PluginManager;
 
-use Zend\ServiceManager\AbstractPluginManager;
+use Laminas\ServiceManager\AbstractPluginManager;
 
 /**
  * Class DataProviderPluginManager

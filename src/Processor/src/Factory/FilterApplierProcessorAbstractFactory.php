@@ -4,7 +4,7 @@ namespace rollun\datahandler\Processor\Factory;
 
 use rollun\datahandler\Processor\FilterApplier;
 use Interop\Container\ContainerInterface;
-use Zend\Filter\FilterPluginManager;
+use Laminas\Filter\FilterPluginManager;
 
 /**
  * Create and return instance of FilterApplier processor

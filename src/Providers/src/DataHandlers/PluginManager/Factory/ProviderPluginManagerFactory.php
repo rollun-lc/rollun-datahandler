@@ -6,7 +6,7 @@ namespace rollun\datahandler\Providers\DataHandlers\PluginManager\Factory;
 use Psr\Container\ContainerInterface;
 use rollun\callback\Middleware\CallablePluginManager;
 use rollun\datahandler\Providers\DataHandlers\PluginManager\ProviderPluginManager;
-use Zend\ServiceManager\Config;
+use Laminas\ServiceManager\Config;
 
 class ProviderPluginManagerFactory
 {

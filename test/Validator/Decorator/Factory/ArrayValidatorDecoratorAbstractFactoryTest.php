@@ -5,8 +5,8 @@ namespace rollun\test\datahandler\Validator\Decorator\Factory;
 use rollun\datahandler\Validator\Decorator\ArrayValidator;
 use rollun\datahandler\Validator\Decorator\Factory\ArrayDecoratorAbstractFactory;
 use rollun\test\datahandler\Factory\PluginAbstractFactoryAbstractTest;
-use Zend\Validator\InArray;
-use Zend\Validator\ValidatorPluginManager;
+use Laminas\Validator\InArray;
+use Laminas\Validator\ValidatorPluginManager;
 
 /**
  * Class ArrayValidatorAbstractFactoryTest
@@ -31,7 +31,7 @@ class ArrayValidatorDecoratorAbstractFactoryTest extends PluginAbstractFactoryAb
     /**
      * @param $requestedName
      * @param array $serviceConfig
-     * @return \Zend\ServiceManager\ServiceManager
+     * @return \Laminas\ServiceManager\ServiceManager
      * @throws \ReflectionException
      */
     protected function getContainer($requestedName, $serviceConfig = [])

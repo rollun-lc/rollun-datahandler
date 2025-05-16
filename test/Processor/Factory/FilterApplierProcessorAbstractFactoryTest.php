@@ -4,8 +4,8 @@ namespace rollun\test\datahandler\Processor\Factory;
 
 use rollun\datahandler\Processor\Factory\FilterApplierProcessorAbstractFactory;
 use rollun\datahandler\Processor\FilterApplier;
-use Zend\Filter\FilterPluginManager;
-use Zend\Validator\Digits;
+use Laminas\Filter\FilterPluginManager;
+use Laminas\Validator\Digits;
 
 /**
  * Class FilterApplierAbstractFactoryTest
@@ -21,7 +21,7 @@ class FilterApplierProcessorAbstractFactoryTest extends AbstractProcessorAbstrac
     /**
      * @param $requestedName
      * @param array $serviceConfig
-     * @return \Zend\ServiceManager\ServiceManager
+     * @return \Laminas\ServiceManager\ServiceManager
      * @throws \ReflectionException
      */
     public function getContainer($requestedName, $serviceConfig = [])

@@ -5,7 +5,7 @@ namespace rollun\datahandler\Evaluator\ExpressionFunction\Providers;
 use rollun\datahandler\Evaluator\ExpressionFunction\LogicException;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
-use Zend\ServiceManager\AbstractPluginManager;
+use Laminas\ServiceManager\AbstractPluginManager;
 
 /**
  * Class Plugin

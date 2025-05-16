@@ -1,14 +1,14 @@
 # rollun-datahandler
 
 Библиотека `rollun-datahandler` расширяет стандартные библиотеки 
-[`zendframework\zend-filter`](https://github.com/zendframework/zend-filter),
-[`zendframework\zend-validator`](https://github.com/zendframework/zend-validator) и 
-[`symfony\expression-language`](https://github.com/symfony/expression-language), 
+[`laminas/laminas-filter`](https://github.com/laminas/laminas-filter),
+[`laminas/laminas-validator`](https://github.com/laminas/laminas-validator) и 
+[`symfony/expression-language`](https://github.com/symfony/expression-language), 
 а так же добавляет процессоры.
 
 ## Фильтры
 
-Фильтры расширяют стандартную библиотеку [`zendframework\zend-filter`](https://github.com/zendframework/zend-filter).
+Фильтры расширяют стандартную библиотеку [`laminas/laminas-filter`](https://github.com/laminas/laminas-filter).
 
 **Список фильтров:**
 
@@ -103,7 +103,7 @@ var_dump($processor->process(['1a2b3', '123'])); // displays ['1a2b3', '321']
 
 ## Валидаторы
 
-Валидаторы расширяют стандартную библиотеку [`zendframework\zend-validator`](https://github.com/zendframework/zend-validator).
+Валидаторы расширяют стандартную библиотеку [`laminas/laminas-validator`](https://github.com/laminas/laminas-validator).
 
 Список валидаторов:
 
@@ -140,7 +140,7 @@ var_dump($validator->isValid($array2)); // false
 
 ## Язык выражений (Expression Language)
 
-Расширение до библиотеки [`symfony\expression-language`](https://github.com/symfony/expression-language).
+Расширение до библиотеки [`symfony/expression-language`](https://github.com/symfony/expression-language).
 Компонент ExpressionLanguage может компилировать и вычислять выражения.
 
 Пример:
@@ -207,7 +207,7 @@ $filter = $filterPluginManager->get('pregReplace', [
    'replacement' => 'a',
 ]);
 
-var_dump(get_class($filter)); // Zend\Filter\PregReplace
+var_dump(get_class($filter)); // Laminas\Filter\PregReplace
 ```
 
 так и с непосредственно через контейнер. 
@@ -233,7 +233,7 @@ $container->setService('config', [
 $filterPluginManager = FilterPluginManager($container);
 $filter = $filterPluginManager->get('pregReplace');
 
-var_dump(get_class($filter)); // Zend\Filter\PregReplace
+var_dump(get_class($filter)); // Laminas\Filter\PregReplace
 ```
 
 Если конфигурации для плагина заданы и в конфигах контейнера и через $options

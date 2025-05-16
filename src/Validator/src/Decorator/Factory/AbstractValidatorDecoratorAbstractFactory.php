@@ -5,8 +5,8 @@ namespace rollun\datahandler\Validator\Decorator\Factory;
 use Interop\Container\ContainerInterface;
 use InvalidArgumentException;
 use rollun\datahandler\Factory\PluginAbstractFactoryAbstract;
-use Zend\Validator\ValidatorInterface;
-use Zend\Validator\ValidatorPluginManager;
+use Laminas\Validator\ValidatorInterface;
+use Laminas\Validator\ValidatorPluginManager;
 
 /**
  * Class AbstractValidatorDecoratorAbstractFactory

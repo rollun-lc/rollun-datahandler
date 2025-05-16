@@ -2,7 +2,7 @@
 
 namespace rollun\datahandler\Filter;
 
-use Zend\Filter\AbstractFilter;
+use Laminas\Filter\AbstractFilter;
 
 /**
  * Class SortWords
@@ -12,9 +12,9 @@ class SortWords extends AbstractFilter
 {
     /**
      * @param mixed $value
-     * @return mixed|string
+     * @return mixed
      */
-    public function filter($value)
+    public function filter(mixed $value): mixed
     {
         if (!is_string($value)) {
             return $value;

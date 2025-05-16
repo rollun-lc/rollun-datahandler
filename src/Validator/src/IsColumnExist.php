@@ -2,8 +2,8 @@
 
 namespace rollun\datahandler\Validator;
 
-use Zend\Validator\Exception\InvalidArgumentException;
-use Zend\Validator\AbstractValidator;
+use Laminas\Validator\Exception\InvalidArgumentException;
+use Laminas\Validator\AbstractValidator;
 
 /**
  * Class IsColumnExist

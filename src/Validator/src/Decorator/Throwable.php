@@ -3,8 +3,8 @@
 namespace rollun\datahandler\Validator\Decorator;
 
 use BadMethodCallException;
-use Zend\Validator\Exception\RuntimeException;
-use Zend\Validator\ValidatorInterface;
+use Laminas\Validator\Exception\RuntimeException;
+use Laminas\Validator\ValidatorInterface;
 
 /**
  * Class ExceptionInterfaceDecorator

@@ -3,7 +3,7 @@
 // Example of Throwable validator decorator
 
 use rollun\datahandler\Validator\Decorator\Throwable;
-use Zend\Validator\Digits;
+use Laminas\Validator\Digits;
 
 echo '<b>Throwable validator:</b>';
 echo '<br />';

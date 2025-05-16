@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use rollun\callback\Callback\SerializedCallback as SerializableCallback;
 use rollun\datahandler\Evaluator\ExpressionFunction\Callback;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-use Zend\Filter\Digits;
+use Laminas\Filter\Digits;
 
 class CallbackTest extends TestCase
 {

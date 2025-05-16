@@ -4,8 +4,8 @@ namespace rollun\test\datahandler\Validator\Decorator;
 
 use PHPUnit\Framework\TestCase;
 use rollun\datahandler\Validator\Decorator\ArrayValidator;
-use Zend\Validator\Digits;
-use Zend\Validator\Exception\InvalidArgumentException;
+use Laminas\Validator\Digits;
+use Laminas\Validator\Exception\InvalidArgumentException;
 
 /**
  * Class ArrayValidatorTest

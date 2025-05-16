@@ -3,7 +3,7 @@
 namespace rollun\datahandler\Processor;
 
 use InvalidArgumentException;
-use Zend\Validator\ValidatorInterface;
+use Laminas\Validator\ValidatorInterface;
 
 /**
  * Class Concat

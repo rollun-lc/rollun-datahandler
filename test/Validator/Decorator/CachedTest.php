@@ -4,7 +4,7 @@ namespace rollun\test\datahandler\Validator\Decorator;
 
 use PHPUnit\Framework\TestCase;
 use rollun\datahandler\Validator\Decorator\Cached;
-use Zend\Validator\Digits;
+use Laminas\Validator\Digits;
 
 /**
  * Class CachedTest

@@ -9,7 +9,7 @@ namespace rollun\datahandler\Providers\DataHandlers\PluginManager\Factory;
 use Interop\Container\ContainerInterface;
 use rollun\datahandler\Providers\DataHandlers\FormulaDataProvider;
 use rollun\datahandler\Providers\DataHandlers\PluginManager\DynamicDataProviderPluginManager;
-use Zend\ServiceManager\Factory\FactoryInterface;
+use Laminas\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Concrete DataStorePluginManager factory

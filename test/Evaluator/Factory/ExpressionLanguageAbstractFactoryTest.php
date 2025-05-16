@@ -8,9 +8,9 @@ use rollun\datahandler\Evaluator\ExpressionFunction\LogicException;
 use rollun\datahandler\Evaluator\ExpressionFunction\Providers\PluginExpressionFunctionProvider;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-use Zend\Filter\FilterPluginManager;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Validator\ValidatorPluginManager;
+use Laminas\Filter\FilterPluginManager;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Validator\ValidatorPluginManager;
 
 class ExpressionLanguageAbstractFactoryTest extends TestCase
 {

@@ -4,7 +4,7 @@ namespace rollun\datahandler\Validator\Factory;
 
 use rollun\datahandler\Factory\PluginAbstractFactoryAbstract;
 use Interop\Container\ContainerInterface;
-use Zend\Validator\ValidatorInterface;
+use Laminas\Validator\ValidatorInterface;
 
 /**
  * Create and return instance of ValidatorInterface

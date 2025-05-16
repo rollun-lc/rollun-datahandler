@@ -3,7 +3,7 @@
 namespace rollun\datahandler\Validator\Decorator;
 
 use BadMethodCallException;
-use Zend\Validator\ValidatorInterface;
+use Laminas\Validator\ValidatorInterface;
 
 /**
  * Class CachedValidator

@@ -5,7 +5,7 @@ namespace rollun\test\datahandler\Factory;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use rollun\datahandler\Factory\PluginAbstractFactoryAbstract;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 
 /**
  * Class PluginAbstractFactoryAbstractTest

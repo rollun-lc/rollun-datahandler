@@ -4,7 +4,7 @@ namespace rollun\datahandler\Processor\Factory;
 
 use rollun\datahandler\Processor\ProcessorInterface;
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\AbstractFactoryInterface;
+use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 
 /**
  * Create and return instance of ProcessorInterface

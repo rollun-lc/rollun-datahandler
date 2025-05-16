@@ -3,10 +3,10 @@
 namespace rollun\datahandler\Processor;
 
 use InvalidArgumentException;
-use Zend\Filter\FilterInterface;
-use Zend\Filter\FilterPluginManager;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Validator\ValidatorInterface;
+use Laminas\Filter\FilterInterface;
+use Laminas\Filter\FilterPluginManager;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Validator\ValidatorInterface;
 
 /**
  * Class FilterApplier

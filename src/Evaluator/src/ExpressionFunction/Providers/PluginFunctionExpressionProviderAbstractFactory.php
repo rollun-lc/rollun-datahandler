@@ -4,7 +4,7 @@ namespace rollun\datahandler\Evaluator\ExpressionFunction\Providers;
 
 use InvalidArgumentException;
 use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\AbstractFactoryInterface;
+use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 
 /**
  * Create and return instance of ExpressionFunctionProviderInterface

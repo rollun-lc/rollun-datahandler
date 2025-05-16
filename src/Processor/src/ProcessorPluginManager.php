@@ -2,7 +2,7 @@
 
 namespace rollun\datahandler\Processor;
 
-use Zend\ServiceManager\AbstractPluginManager;
+use Laminas\ServiceManager\AbstractPluginManager;
 
 /**
  * Class ProcessorPluginManager

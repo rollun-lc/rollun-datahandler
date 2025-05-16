@@ -4,7 +4,7 @@ namespace rollun\datahandler\Evaluator\ExpressionFunction\Factory;
 
 use Interop\Container\ContainerInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
-use Zend\ServiceManager\Factory\AbstractFactoryInterface;
+use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 
 /**
  * Class AbstractExpressionFunctionAbstractFactory

@@ -6,7 +6,7 @@ use InvalidArgumentException;
 use rollun\datahandler\Filter\Factory\SimpleFilterAbstractFactory;
 use rollun\datahandler\Filter\RqlReplace;
 use rollun\test\datahandler\Factory\PluginAbstractFactoryAbstractTest;
-use Zend\Filter\StringTrim;
+use Laminas\Filter\StringTrim;
 
 /**
  * Class SimpleFilterAbstractFactoryTest

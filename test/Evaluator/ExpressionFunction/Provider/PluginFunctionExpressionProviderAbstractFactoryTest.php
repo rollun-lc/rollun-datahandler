@@ -6,9 +6,9 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use rollun\datahandler\Evaluator\ExpressionFunction\Providers\PluginFunctionExpressionProviderAbstractFactory;
 use rollun\datahandler\Evaluator\ExpressionFunction\Providers\PluginExpressionFunctionProvider;
-use Zend\Filter\FilterPluginManager;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Validator\ValidatorPluginManager;
+use Laminas\Filter\FilterPluginManager;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Validator\ValidatorPluginManager;
 
 /**
  * Class PluginFunctionExpressionProviderAbstractFactoryTest

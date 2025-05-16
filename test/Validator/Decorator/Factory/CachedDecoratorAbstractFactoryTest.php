@@ -5,9 +5,9 @@ namespace rollun\test\datahandler\Validator\Decorator\Factory;
 use rollun\datahandler\Validator\Decorator\Cached;
 use rollun\datahandler\Validator\Decorator\Factory\CachedDecoratorAbstractFactory;
 use rollun\test\datahandler\Factory\PluginAbstractFactoryAbstractTest;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Validator\InArray;
-use Zend\Validator\ValidatorPluginManager;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Validator\InArray;
+use Laminas\Validator\ValidatorPluginManager;
 
 /**
  * Class CachedDecoratorAbstractFactoryTest
@@ -32,7 +32,7 @@ class CachedDecoratorAbstractFactoryTest extends PluginAbstractFactoryAbstractTe
     /**
      * @param $requestedName
      * @param array $serviceConfig
-     * @return \Zend\ServiceManager\ServiceManager
+     * @return \Laminas\ServiceManager\ServiceManager
      * @throws \ReflectionException
      */
     protected function getContainer($requestedName, $serviceConfig = [])

@@ -4,8 +4,8 @@ namespace rollun\datahandler\Processor\Factory;
 
 use Interop\Container\ContainerInterface;
 use rollun\datahandler\Factory\PluginAbstractFactoryAbstract;
-use Zend\Validator\ValidatorInterface;
-use Zend\Validator\ValidatorPluginManager;
+use Laminas\Validator\ValidatorInterface;
+use Laminas\Validator\ValidatorPluginManager;
 
 /**
  * Class AbstractProcessorAbstractFactory

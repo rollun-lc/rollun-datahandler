@@ -5,7 +5,7 @@ namespace rollun\test\datahandler\Evaluator\ExpressionFunction\Factory;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use rollun\datahandler\Evaluator\ExpressionFunction\Factory\AbstractExpressionFunctionAbstractFactory;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 
 abstract class AbstractExpressionFunctionAbstractFactoryTest extends TestCase
 {

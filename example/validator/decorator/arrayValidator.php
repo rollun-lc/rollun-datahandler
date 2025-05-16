@@ -3,7 +3,7 @@
 // Example of ArrayValidator validator decorator
 
 use rollun\datahandler\Validator\Decorator\ArrayValidator;
-use Zend\Validator\Digits;
+use Laminas\Validator\Digits;
 
 echo '<b>IsColumnExist validator:</b>';
 echo '<br />';

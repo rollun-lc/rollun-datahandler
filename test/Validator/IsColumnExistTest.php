@@ -2,7 +2,7 @@
 
 namespace rollun\test\datahandler\Validator;
 
-use Zend\Validator\Exception\InvalidArgumentException;
+use Laminas\Validator\Exception\InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use rollun\datahandler\Validator\IsColumnExist;
 

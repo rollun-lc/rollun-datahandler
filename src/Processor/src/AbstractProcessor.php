@@ -4,7 +4,7 @@ namespace rollun\datahandler\Processor;
 
 use InvalidArgumentException;
 use Traversable;
-use Zend\Validator\ValidatorInterface;
+use Laminas\Validator\ValidatorInterface;
 
 /**
  * Class AbstractProcessor

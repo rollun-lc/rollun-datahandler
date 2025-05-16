@@ -4,8 +4,8 @@ namespace rollun\test\datahandler\Validator\Decorator;
 
 use PHPUnit\Framework\TestCase;
 use rollun\datahandler\Validator\Decorator\Throwable;
-use Zend\Validator\Digits;
-use Zend\Validator\Exception\RuntimeException;
+use Laminas\Validator\Digits;
+use Laminas\Validator\Exception\RuntimeException;
 
 /**
  * Class ThrowableDecoratorTest

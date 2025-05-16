@@ -2,8 +2,8 @@
 
 namespace rollun\datahandler\Factory;
 
-use Interop\Container\ContainerInterface;
-use Zend\ServiceManager\Factory\AbstractFactoryInterface;
+use Psr\Container\ContainerInterface;
+use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 
 /**
  * Class PluginAbstractFactoryAbstract
@@ -14,50 +14,50 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
     /**
      * Parent class for plugin
      */
-    const DEFAULT_CLASS = null;
+    public const DEFAULT_CLASS = null;
 
     /**
      * Common namespace name for plugin config
      */
-    const KEY = null;
+    public const KEY = null;
 
     /**
      * Config key for abstract factories configs
      */
-    const KEY_ABSTRACT_FACTORY_CONFIG = 'abstract_factory_config';
+    public const KEY_ABSTRACT_FACTORY_CONFIG = 'abstract_factory_config';
 
     /**
      * Config key for plugin options
      */
-    const KEY_OPTIONS = 'options';
+    public const KEY_OPTIONS = 'options';
 
     /**
      * Config key for caused class
      */
-    const KEY_CLASS = 'class';
+    public const KEY_CLASS = 'class';
 
     /**
      * @param ContainerInterface $container
      * @param string $requestedName
      * @return bool
      */
-    public function canCreate(ContainerInterface $container, $requestedName)
+    public function canCreate(ContainerInterface $container, string $requestedName): bool
     {
-        return !is_null($this->getServiceConfig($container, $requestedName));
+        return $this->getServiceConfig($container, $requestedName) !== null;
     }
 
     /**
      * Get options for plugin (merged service config and options passed through __invoke)
      *
-     * @param $serviceConfig
+     * @param array $serviceConfig
      * @param array|null $options
      * @return array
      */
-    public function getPluginOptions($serviceConfig, array $options = null)
+    public function getPluginOptions(array $serviceConfig, ?array $options = null): array
     {
         $pluginOptions = [];
 
-        if (isset($options) && is_array($options)) {
+        if ($options !== null) {
             $pluginOptions = $options;
         }
 
@@ -83,9 +83,9 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
      *
      * @param array $serviceConfig
      * @param bool $required
-     * @return string
+     * @return string|null
      */
-    public function getClass(array $serviceConfig, $required = false)
+    public function getClass(array $serviceConfig, bool $required = false): ?string
     {
         if (!isset($serviceConfig[self::KEY_CLASS])) {
             if (!$required) {
@@ -104,10 +104,10 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
 
     /**
      * @param ContainerInterface $container
-     * @param $requestedName
-     * @return null|array
+     * @param string $requestedName
+     * @return array|null
      */
-    public function getServiceConfig(ContainerInterface $container, $requestedName)
+    public function getServiceConfig(ContainerInterface $container, string $requestedName): ?array
     {
         $config = $container->get('config');
         return $config[static::KEY][self::KEY_ABSTRACT_FACTORY_CONFIG][static::class][$requestedName] ?? null;

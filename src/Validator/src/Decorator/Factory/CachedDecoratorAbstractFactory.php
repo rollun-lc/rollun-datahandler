@@ -4,7 +4,7 @@ namespace rollun\datahandler\Validator\Decorator\Factory;
 
 use Interop\Container\ContainerInterface;
 use rollun\datahandler\Validator\Decorator\Cached;
-use Zend\ServiceManager\ServiceManager;
+use Laminas\ServiceManager\ServiceManager;
 
 /**
  * Create and return instance of CachedValidator

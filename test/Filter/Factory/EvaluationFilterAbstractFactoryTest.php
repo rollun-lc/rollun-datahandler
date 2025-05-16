@@ -9,7 +9,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 class EvaluationFilterAbstractFactoryTest extends PluginAbstractFactoryAbstractTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new EvaluationFilterAbstractFactory();
     }
@@ -25,7 +25,7 @@ class EvaluationFilterAbstractFactoryTest extends PluginAbstractFactoryAbstractT
     /**
      * @param $requestedName
      * @param array $serviceConfig
-     * @return \Zend\ServiceManager\ServiceManager
+     * @return \Laminas\ServiceManager\ServiceManager
      * @throws \ReflectionException
      */
     public function getContainer($requestedName, $serviceConfig = [])

@@ -5,8 +5,8 @@ namespace rollun\test\datahandler\Validator\Factory;
 use InvalidArgumentException;
 use rollun\datahandler\Validator\Factory\SimpleValidatorAbstractFactory;
 use rollun\test\datahandler\Factory\PluginAbstractFactoryAbstractTest;
-use Zend\Validator\Digits;
-use Zend\Validator\Regex;
+use Laminas\Validator\Digits;
+use Laminas\Validator\Regex;
 
 /**
  * Class SimpleValidatorAbstractFactoryTest
@@ -14,7 +14,7 @@ use Zend\Validator\Regex;
  */
 class SimpleValidatorAbstractFactoryTest extends PluginAbstractFactoryAbstractTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new SimpleValidatorAbstractFactory();
     }
