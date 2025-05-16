@@ -1,3 +1,5 @@
 .idea/
 site/
 vendor/
+data/
+*.cache

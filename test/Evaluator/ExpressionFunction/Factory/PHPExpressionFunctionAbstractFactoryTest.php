@@ -8,7 +8,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 
 class PHPExpressionFunctionAbstractFactoryTest extends AbstractExpressionFunctionAbstractFactoryTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new PHPExpressionFunctionAbstractFactory();
     }

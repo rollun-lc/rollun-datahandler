@@ -10,7 +10,7 @@ use rollun\callback\Callback\SerializedCallback as SerializableCallback;
 
 class CallbackExpressionFunctionAbstractFactoryTest extends AbstractExpressionFunctionAbstractFactoryTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new CallbackExpressionFunctionAbstractFactory();
     }

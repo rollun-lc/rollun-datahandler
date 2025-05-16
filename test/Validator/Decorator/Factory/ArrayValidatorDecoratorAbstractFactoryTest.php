@@ -14,7 +14,7 @@ use Laminas\Validator\ValidatorPluginManager;
  */
 class ArrayValidatorDecoratorAbstractFactoryTest extends PluginAbstractFactoryAbstractTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new ArrayDecoratorAbstractFactory();
     }

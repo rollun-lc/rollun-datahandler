@@ -15,7 +15,7 @@ use Laminas\Validator\ValidatorPluginManager;
  */
 class CachedDecoratorAbstractFactoryTest extends PluginAbstractFactoryAbstractTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new CachedDecoratorAbstractFactory();
     }

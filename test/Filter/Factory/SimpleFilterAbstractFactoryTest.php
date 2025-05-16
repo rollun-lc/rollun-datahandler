@@ -14,7 +14,7 @@ use Laminas\Filter\StringTrim;
  */
 class SimpleFilterAbstractFactoryTest extends PluginAbstractFactoryAbstractTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new SimpleFilterAbstractFactory();
     }

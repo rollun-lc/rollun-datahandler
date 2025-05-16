@@ -9,7 +9,7 @@ class ProviderDependenciesTest extends TestCase
 {
     private $providerDep;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->providerDep = new ProviderDependencies();
     }

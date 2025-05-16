@@ -13,7 +13,7 @@ use Laminas\Validator\Digits;
  */
 class EvaluationProcessorAbstractFactoryTest extends AbstractProcessorAbstractFactoryTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new EvaluationProcessorAbstractFactory();
     }

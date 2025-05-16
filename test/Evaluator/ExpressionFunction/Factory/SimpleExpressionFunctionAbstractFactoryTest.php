@@ -9,7 +9,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 
 class SimpleExpressionFunctionAbstractFactoryTest extends AbstractExpressionFunctionAbstractFactoryTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new SimpleExpressionFunctionAbstractFactory();
     }

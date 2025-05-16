@@ -10,7 +10,7 @@ use Laminas\Validator\ValidatorPluginManager;
 
 class ThrowableDecoratorAbstractFactoryTest extends PluginAbstractFactoryAbstractTest
 {
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->object = new ThrowableDecoratorAbstractFactory();
     }
