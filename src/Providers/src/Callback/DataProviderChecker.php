@@ -1,6 +1,5 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\Callback;
 
 use rollun\datahandler\Providers\DataHandlers\PluginManager\DynamicDataProviderPluginManager;
@@ -12,9 +11,7 @@ class DataProviderChecker
      * DataProviderChecker constructor.
      * @param DynamicDataProviderPluginManager $dataProviderPluginManager
      */
-    public function __construct(private DynamicDataProviderPluginManager $dataProviderPluginManager)
-    {
-    }
+    public function __construct(private DynamicDataProviderPluginManager $dataProviderPluginManager) {}
 
     public function __invoke($value)
     {

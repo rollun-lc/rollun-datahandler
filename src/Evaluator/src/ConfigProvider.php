@@ -29,7 +29,7 @@ class ConfigProvider
         return [
             'dependencies' => $this->getDependencyConfig(),
             ExpressionLanguageAbstractFactory::class => [
-                ExpressionLanguage::class => []
+                ExpressionLanguage::class => [],
             ],
         ];
     }
@@ -48,7 +48,7 @@ class ConfigProvider
                 PHPExpressionFunctionAbstractFactory::class,
                 SimpleExpressionFunctionAbstractFactory::class,
                 PluginFunctionExpressionProviderAbstractFactory::class,
-            ]
+            ],
         ];
     }
 }

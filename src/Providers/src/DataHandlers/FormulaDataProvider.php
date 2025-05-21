@@ -1,6 +1,5 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\DataHandlers;
 
 use rollun\datahandler\Providers\Callback\ExpressionHandler;
@@ -36,8 +35,8 @@ class FormulaDataProvider
         return call_user_func($this->expressionHandler, [
             'expression' => $this->formula,
             'values' => [
-                'param' => $param
-            ]
+                'param' => $param,
+            ],
         ]);
     }
 }

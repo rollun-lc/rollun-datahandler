@@ -17,17 +17,17 @@ abstract class AbstractValidatorDecoratorAbstractFactory extends PluginAbstractF
     /**
      * Common namespace name for plugin config
      */
-    const KEY = 'validators';
+    public const KEY = 'validators';
 
     /**
      *  Config key for decorated validator
      */
-    const KEY_VALIDATOR = 'validator';
+    public const KEY_VALIDATOR = 'validator';
 
     /**
      * Config key for options for decorated validator
      */
-    const KEY_VALIDATOR_OPTION = 'validatorOptions';
+    public const KEY_VALIDATOR_OPTION = 'validatorOptions';
 
     /**
      * @param ContainerInterface $container

@@ -56,7 +56,7 @@ class EvaluationProcessorAbstractFactoryTest extends AbstractProcessorAbstractFa
                 'resultColumn' => $resultColumn,
                 'expressionLanguage' => 'expressionLanguage',
                 'validator' => $validatorClassName,
-            ]
+            ],
         ]);
 
         $this->assertEquals($processor->getResultColumn(), $resultColumn);

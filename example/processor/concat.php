@@ -8,7 +8,7 @@ echo '<b>Concat processor:</b>';
 
 $concat = new Concat([
     'columns' => [0, 1], // columns to concat
-    'resultColumn' => 2 // column where to save result
+    'resultColumn' => 2, // column where to save result
 ]);
 
 echo '<pre>';
@@ -18,7 +18,7 @@ echo '<br />';
 
 $concat->setColumns([
     'column1',
-    'column2'
+    'column2',
 ]);
 $concat->setDelimiter(' ');
 

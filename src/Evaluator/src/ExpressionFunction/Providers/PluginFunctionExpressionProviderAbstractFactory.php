@@ -38,27 +38,27 @@ class PluginFunctionExpressionProviderAbstractFactory implements AbstractFactory
     /**
      * Config key for caused class
      */
-    const KEY_CLASS = 'class';
+    public const KEY_CLASS = 'class';
 
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = PluginExpressionFunctionProvider::class;
+    public const DEFAULT_CLASS = PluginExpressionFunctionProvider::class;
 
     /**
      * Config for plugin manager service
      */
-    const KEY_PLUGIN_MANAGER_SERVICE = 'pluginServiceManager';
+    public const KEY_PLUGIN_MANAGER_SERVICE = 'pluginServiceManager';
 
     /**
      * Config for plugin manager called method
      */
-    const KEY_CALLED_METHOD = 'calledMethod';
+    public const KEY_CALLED_METHOD = 'calledMethod';
 
     /**
      * Config for services, that will be called by plugin manager
      */
-    const KEY_SERVICES = 'services';
+    public const KEY_SERVICES = 'services';
 
     /**
      * @param ContainerInterface $container

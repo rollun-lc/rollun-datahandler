@@ -1,11 +1,9 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\Source;
 
 class NoopProviderDependencies implements ProviderDependenciesInterface
 {
-
     public function depth(): array
     {
         return [];

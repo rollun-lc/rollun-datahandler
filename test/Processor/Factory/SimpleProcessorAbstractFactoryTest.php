@@ -49,7 +49,7 @@ class SimpleProcessorAbstractFactoryTest extends AbstractProcessorAbstractFactor
                 'columns' => $columns,
                 'resultColumn' => $resultColumn,
                 'validator' => $validatorClassName,
-            ]
+            ],
         ]);
 
         $this->assertEquals($processor->getResultColumn(), $resultColumn);

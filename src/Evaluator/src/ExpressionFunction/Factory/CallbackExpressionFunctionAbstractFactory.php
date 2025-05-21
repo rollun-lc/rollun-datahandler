@@ -37,22 +37,22 @@ class CallbackExpressionFunctionAbstractFactory extends AbstractExpressionFuncti
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = CallbackExpressionFunction::class;
+    public const DEFAULT_CLASS = CallbackExpressionFunction::class;
 
     /**
      * Config key for callback service
      */
-    const KEY_CALLBACK_SERVICE = 'callbackService';
+    public const KEY_CALLBACK_SERVICE = 'callbackService';
 
     /**
      * Config key for callback method
      */
-    const KEY_CALLBACK_METHOD = 'callbackMethod';
+    public const KEY_CALLBACK_METHOD = 'callbackMethod';
 
     /**
      * Config key for function name
      */
-    const KEY_FUNCTION_NAME = 'functionName';
+    public const KEY_FUNCTION_NAME = 'functionName';
 
     /**
      * @param ContainerInterface $container

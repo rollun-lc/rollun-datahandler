@@ -46,7 +46,7 @@ class SimpleProcessorAbstractFactory extends AbstractProcessorAbstractFactory
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = ProcessorInterface::class;
+    public const DEFAULT_CLASS = ProcessorInterface::class;
 
     /**
      * @param ContainerInterface $container

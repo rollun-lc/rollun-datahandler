@@ -1,8 +1,6 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\Observers;
-
 
 use Psr\Log\LoggerInterface;
 use rollun\datahandler\Providers\ObserverInterface;
@@ -16,9 +14,7 @@ class LoggerObserver implements ObserverInterface
      * LoggerObserver constructor.
      * @param LoggerInterface $logger
      */
-    public function __construct(private LoggerInterface $logger)
-    {
-    }
+    public function __construct(private LoggerInterface $logger) {}
 
     public function __sleep()
     {
@@ -37,7 +33,7 @@ class LoggerObserver implements ObserverInterface
             'name' => $name,
             'id' => $id,
             'value' => $value,
-            'update_timestamp' => $updateTimestamp
+            'update_timestamp' => $updateTimestamp,
         ]);
     }
 }

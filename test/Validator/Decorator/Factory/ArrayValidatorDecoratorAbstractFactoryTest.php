@@ -55,9 +55,9 @@ class ArrayValidatorDecoratorAbstractFactoryTest extends PluginAbstractFactoryAb
                 'columnsToValidate' => $columnsToValidate,
                 'validator' => InArray::class,
                 'validatorOptions' => [
-                    'haystack' => $haystack
+                    'haystack' => $haystack,
                 ],
-            ]
+            ],
         ]);
 
         $this->assertEquals($validatorDecorator->getColumnsToValidate(), $columnsToValidate);

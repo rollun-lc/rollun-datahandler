@@ -38,7 +38,7 @@ trait ProviderSubjectTrait
         if (!$this->isAlreadyAttached($observer, $id, $observerId)) {
             $this->observers[$this->wrapId($id)][] = [
                 'id' => $observerId,
-                'observer' => $observer
+                'observer' => $observer,
             ];
         }
     }

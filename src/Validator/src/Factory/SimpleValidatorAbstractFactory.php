@@ -46,12 +46,12 @@ class SimpleValidatorAbstractFactory extends PluginAbstractFactoryAbstract
     /**
      * Parent class for plugin
      */
-    const DEFAULT_CLASS = ValidatorInterface::class;
+    public const DEFAULT_CLASS = ValidatorInterface::class;
 
     /**
      * Common namespace name for plugin config
      */
-    const KEY = 'validators';
+    public const KEY = 'validators';
 
     /**
      * @param ContainerInterface $container

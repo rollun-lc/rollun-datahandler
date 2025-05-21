@@ -46,7 +46,7 @@ class EvaluationFilterAbstractFactoryTest extends PluginAbstractFactoryAbstractT
             'options' => [
                 'expression' => $expression,
                 'expressionLanguage' => 'expressionLanguage',
-            ]
+            ],
         ]);
 
         $this->assertEquals($filter->getExpression(), $expression);

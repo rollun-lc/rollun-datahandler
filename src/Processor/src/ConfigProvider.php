@@ -47,8 +47,8 @@ class ConfigProvider
                 'PluginManager' => ProcessorPluginManager::class,
             ],
             'factories' => [
-                ProcessorPluginManager::class => ProcessorPluginManagerFactory::class
-            ]
+                ProcessorPluginManager::class => ProcessorPluginManagerFactory::class,
+            ],
         ];
     }
 
@@ -83,7 +83,7 @@ class ConfigProvider
             'abstract_factories' => [
                 FilterApplierProcessorAbstractFactory::class,
                 SimpleProcessorAbstractFactory::class,
-            ]
+            ],
         ];
     }
 }

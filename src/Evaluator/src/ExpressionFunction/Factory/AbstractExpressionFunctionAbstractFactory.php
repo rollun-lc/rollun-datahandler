@@ -15,17 +15,17 @@ abstract class AbstractExpressionFunctionAbstractFactory implements AbstractFact
     /**
      * Config key for function expression configs
      */
-    const KEY = 'functionExpressions';
+    public const KEY = 'functionExpressions';
 
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = ExpressionFunction::class;
+    public const DEFAULT_CLASS = ExpressionFunction::class;
 
     /**
      * Config key for caused class
      */
-    const KEY_CLASS = 'class';
+    public const KEY_CLASS = 'class';
 
     /**
      * @param ContainerInterface $container

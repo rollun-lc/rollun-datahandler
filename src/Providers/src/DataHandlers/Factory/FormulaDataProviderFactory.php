@@ -1,8 +1,6 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\DataHandlers\Factory;
-
 
 use Interop\Container\ContainerInterface;
 use Interop\Container\Exception\ContainerException;
@@ -14,7 +12,6 @@ use Laminas\ServiceManager\Factory\FactoryInterface;
 
 class FormulaDataProviderFactory implements FactoryInterface
 {
-
     /**
      * @inheritDoc
      */

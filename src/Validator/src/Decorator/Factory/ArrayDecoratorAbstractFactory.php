@@ -46,7 +46,7 @@ class ArrayDecoratorAbstractFactory extends AbstractValidatorDecoratorAbstractFa
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = ArrayValidator::class;
+    public const DEFAULT_CLASS = ArrayValidator::class;
 
     /**
      * @param ContainerInterface $container

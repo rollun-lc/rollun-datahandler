@@ -48,8 +48,8 @@ class CachedDecoratorAbstractFactoryTest extends PluginAbstractFactoryAbstractTe
         $requestedName = 'requestedServiceName';
         $container = $this->getContainer($requestedName, [
             'options' => [
-                'validator' => 'validatorServiceName'
-            ]
+                'validator' => 'validatorServiceName',
+            ],
         ]);
         $container->setService('validatorServiceName', new InArray(['haystack' => ['a']]));
 
@@ -76,17 +76,17 @@ class CachedDecoratorAbstractFactoryTest extends PluginAbstractFactoryAbstractTe
                     $this->object::class => [
                         $requestedName1 => [
                             'options' => [
-                                'validator' => 'validatorServiceName1'
+                                'validator' => 'validatorServiceName1',
                             ],
                         ],
                         $requestedName2 => [
                             'options' => [
-                                'validator' => 'validatorServiceName2'
+                                'validator' => 'validatorServiceName2',
                             ],
-                        ]
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
 
         /** @var Cached $object1 */

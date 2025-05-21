@@ -27,15 +27,15 @@ class ProviderDependenciesTest extends TestCase
             'test2' => [
                 '#2' => [
                     ProviderDependencies::spanHash(['provider' => 'test', 'id' => '1']) =>
-                        ['provider' => 'test', 'id' => '1']
-                ]
+                        ['provider' => 'test', 'id' => '1'],
+                ],
             ],
             'test3' => [
                 '#3' => [
                     ProviderDependencies::spanHash(['provider' => 'test', 'id' => '1']) =>
-                        ['provider' => 'test', 'id' => '1']
-                ]
-            ]
+                        ['provider' => 'test', 'id' => '1'],
+                ],
+            ],
         ], $this->providerDep->depth());
     }
 
@@ -52,15 +52,15 @@ class ProviderDependenciesTest extends TestCase
             'test2' => [
                 '#2' => [
                     ProviderDependencies::spanHash(['provider' => 'test', 'id' => '1']) =>
-                        ['provider' => 'test', 'id' => '1']
-                ]
+                        ['provider' => 'test', 'id' => '1'],
+                ],
             ],
             'test3' => [
                 '#3' => [
                     ProviderDependencies::spanHash(['provider' => 'test', 'id' => '1']) =>
-                        ['provider' => 'test', 'id' => '1']
-                ]
-            ]
+                        ['provider' => 'test', 'id' => '1'],
+                ],
+            ],
         ], $this->providerDep->depth());
 
         $this->providerDep->start('test', '1');
@@ -72,14 +72,14 @@ class ProviderDependenciesTest extends TestCase
             'test2' => [
                 '#2' => [
 
-                ]
+                ],
             ],
             'test3' => [
                 '#3' => [
                     ProviderDependencies::spanHash(['provider' => 'test', 'id' => '1']) =>
-                        ['provider' => 'test', 'id' => '1']
-                ]
-            ]
+                        ['provider' => 'test', 'id' => '1'],
+                ],
+            ],
         ], $this->providerDep->depth());
     }
 }

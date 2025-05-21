@@ -1,6 +1,5 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\DataHandlers\PluginManager\Factory;
 
 use Psr\Container\ContainerInterface;

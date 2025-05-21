@@ -45,12 +45,12 @@ class SimpleFilterAbstractFactory extends PluginAbstractFactoryAbstract
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = FilterInterface::class;
+    public const DEFAULT_CLASS = FilterInterface::class;
 
     /**
      * Common namespace name for plugin config. By default doesn't set
      */
-    const KEY = 'filters';
+    public const KEY = 'filters';
 
     /**
      * @param ContainerInterface $container

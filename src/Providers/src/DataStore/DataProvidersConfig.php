@@ -1,8 +1,6 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\DataStore;
-
 
 use rollun\datastore\DataStore\SerializedDbTable;
 use rollun\utils\Json\Serializer;

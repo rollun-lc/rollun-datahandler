@@ -17,10 +17,10 @@ class ArrayValidatorTest extends TestCase
     {
         $validator = new Digits();
         $object = new ArrayValidator($validator, [
-            'columnsToValidate' => 'key1'
+            'columnsToValidate' => 'key1',
         ]);
         $isValid = $object->isValid([
-            'key1' => '1234'
+            'key1' => '1234',
         ]);
 
         $this->assertTrue($isValid);
@@ -30,10 +30,10 @@ class ArrayValidatorTest extends TestCase
     {
         $validator = new Digits();
         $object = new ArrayValidator($validator, [
-            'columnsToValidate' => 'key1'
+            'columnsToValidate' => 'key1',
         ]);
         $isValid = $object->isValid([
-            'key1' => 'abcd1234'
+            'key1' => 'abcd1234',
         ]);
 
         $this->assertFalse($isValid);
@@ -43,7 +43,7 @@ class ArrayValidatorTest extends TestCase
     {
         $validator = new Digits();
         $object = new ArrayValidator($validator, [
-            'columnsToValidate' => ['key1', 'key2', 'key3']
+            'columnsToValidate' => ['key1', 'key2', 'key3'],
         ]);
         $isValid = $object->isValid([
             'key1' => '12345',
@@ -58,7 +58,7 @@ class ArrayValidatorTest extends TestCase
     {
         $validator = new Digits();
         $object = new ArrayValidator($validator, [
-            'columnsToValidate' => ['key1', 'key2', 'key3']
+            'columnsToValidate' => ['key1', 'key2', 'key3'],
         ]);
         $isValid = $object->isValid([
             'key1' => '12345',
@@ -75,7 +75,7 @@ class ArrayValidatorTest extends TestCase
         $this->expectExceptionMessage("INVALID_COLUMN doesn't exist in incoming value");
         $validator = new Digits();
         $object = new ArrayValidator($validator, [
-            'columnsToValidate' => ['key1', 'key2', 'INVALID_COLUMN']
+            'columnsToValidate' => ['key1', 'key2', 'INVALID_COLUMN'],
         ]);
         $object->isValid([
             'key1' => '12345',
@@ -90,7 +90,7 @@ class ArrayValidatorTest extends TestCase
         $this->expectExceptionMessage("Invalid option 'columnsToValidate'");
         $validator = new Digits();
         new ArrayValidator($validator, [
-            'columnsToValidate' => null
+            'columnsToValidate' => null,
         ]);
     }
 }

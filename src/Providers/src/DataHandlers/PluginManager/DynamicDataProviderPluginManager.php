@@ -30,7 +30,7 @@ class DynamicDataProviderPluginManager extends AbstractPluginManager
         $options = null;
         if (isset($this->tmpConfig[$name])) {
             $config = $this->tmpConfig;
-        } else if (method_exists($this->configDataSource, 'getAll')) {
+        } elseif (method_exists($this->configDataSource, 'getAll')) {
             $config = $this->configDataSource->getAll();
             $config = array_combine(array_column($config, 'id'), array_values($config));
         } else {

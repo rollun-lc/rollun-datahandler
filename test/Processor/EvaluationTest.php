@@ -16,7 +16,7 @@ class EvaluationTest extends TestCase
     {
         $processor = new Evaluation([
             'expression' => 'a + b',
-            'resultColumn' => 'c'
+            'resultColumn' => 'c',
         ]);
 
         $result = $processor->process([
@@ -43,7 +43,7 @@ class EvaluationTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("Missing 'expression' in options");
         $processor = new Evaluation([
-            'resultColumn' => 'c'
+            'resultColumn' => 'c',
         ]);
         $processor->process([
             'a' => 1,

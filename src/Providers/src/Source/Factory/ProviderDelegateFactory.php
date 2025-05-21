@@ -13,7 +13,6 @@ use Laminas\ServiceManager\Factory\DelegatorFactoryInterface;
 
 class ProviderDelegateFactory implements DelegatorFactoryInterface
 {
-
     public const STATIC_OBSERVERS = 'static_observer';
 
 

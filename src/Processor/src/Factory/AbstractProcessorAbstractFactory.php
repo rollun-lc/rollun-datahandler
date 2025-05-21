@@ -16,17 +16,17 @@ abstract class AbstractProcessorAbstractFactory extends PluginAbstractFactoryAbs
     /**
      *  Config key for all processors config
      */
-    const KEY = 'processors';
+    public const KEY = 'processors';
 
     /**
      *  Validator service that implement ValidatorInterface::class
      */
-    const KEY_VALIDATOR = 'validator';
+    public const KEY_VALIDATOR = 'validator';
 
     /**
      * Options for validator
      */
-    const KEY_VALIDATOR_OPTION = 'validatorOptions';
+    public const KEY_VALIDATOR_OPTION = 'validatorOptions';
 
     /**
      * Create validator

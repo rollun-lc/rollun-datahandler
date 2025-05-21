@@ -47,17 +47,17 @@ class EvaluationFilterAbstractFactory extends PluginAbstractFactoryAbstract
     /**
      * Common namespace name for plugin config. By default doesn't set
      */
-    const KEY = 'filters';
+    public const KEY = 'filters';
 
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = EvaluationFilter::class;
+    public const DEFAULT_CLASS = EvaluationFilter::class;
 
     /**
      * Config key for expression language service
      */
-    const KEY_EXPRESSION_LANGUAGE = 'expressionLanguage';
+    public const KEY_EXPRESSION_LANGUAGE = 'expressionLanguage';
 
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

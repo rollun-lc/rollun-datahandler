@@ -39,7 +39,7 @@ class ConfigProvider
             'abstract_factories' => [
                 EvaluationFilterAbstractFactory::class,
                 SimpleFilterAbstractFactory::class,
-            ]
+            ],
         ];
     }
 
@@ -85,7 +85,7 @@ class ConfigProvider
             'abstract_factories' => [
                 EvaluationFilterAbstractFactory::class,
                 SimpleFilterAbstractFactory::class,
-            ]
+            ],
         ];
     }
 }

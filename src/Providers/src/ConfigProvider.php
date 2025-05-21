@@ -32,7 +32,7 @@ class ConfigProvider
             DataStoreAbstractFactory::KEY_DATASTORE => $this->getDataStore(),
             CallablePluginManagerFactory::KEY_INTERRUPTERS => [
                 'aliases' => [
-                    'DataProviderChecker' => DataProviderChecker::class
+                    'DataProviderChecker' => DataProviderChecker::class,
                 ],
             ],
             TableGatewayAbstractFactory::KEY_TABLE_GATEWAY => [
@@ -41,7 +41,7 @@ class ConfigProvider
             ],
             AbstractServiceAbstractFactory::KEY => [
                 DataProviderChecker::class => [
-                    'dataProviderPluginManager' => 'DataProviderPluginManager'
+                    'dataProviderPluginManager' => 'DataProviderPluginManager',
                 ],
                 ProviderConfigDataSource::class => [
                     'dataProvidersConfig' => DataProvidersConfig::class,
@@ -52,11 +52,11 @@ class ConfigProvider
                     DynamicDataProviderPluginManagerFactory::KEY_SERVICE_CONFIG => ProviderConfigDataSource::class,
                     DynamicDataProviderPluginManagerFactory::KEY_DEPENDENCIES_CONFIG => [
                         'factories' => [
-                            'FormulaDataProvider' => FormulaDataProviderFactory::class
-                        ]
+                            'FormulaDataProvider' => FormulaDataProviderFactory::class,
+                        ],
                     ],
 
-                ]
+                ],
             ],
         ];
     }
@@ -71,15 +71,15 @@ class ConfigProvider
         return [
             'invokables' => [],
             'abstract_factories' => [
-                ParcelBarcodeAspectAbstractFactory::class
+                ParcelBarcodeAspectAbstractFactory::class,
             ],
             'factories' => [
-                'DataProviderPluginManager' => DynamicDataProviderPluginManagerFactory::class
+                'DataProviderPluginManager' => DynamicDataProviderPluginManagerFactory::class,
             ],
             'aliases' => [
                 'DataHandlers' => DataHandlers::class,
                 'DataProvidersConfig' => DataProvidersConfig::class,
-                'DataProviderChecker' => DataProviderChecker::class
+                'DataProviderChecker' => DataProviderChecker::class,
             ],
         ];
     }

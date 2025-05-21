@@ -8,7 +8,7 @@ echo '<b>Evaluation processor:</b>';
 
 $evaluation = new Evaluation([
     'expression' => 'a + b + c',
-    'resultColumn' => 'd'
+    'resultColumn' => 'd',
 ]);
 
 $res = $evaluation->process([

@@ -51,22 +51,22 @@ class SimpleExpressionFunctionAbstractFactory extends AbstractExpressionFunction
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = BaseExpressionFunction::class;
+    public const DEFAULT_CLASS = BaseExpressionFunction::class;
 
     /**
      * Config key for function compiler
      */
-    const KEY_COMPILER = 'compiler';
+    public const KEY_COMPILER = 'compiler';
 
     /**
      * Config key for function evaluator
      */
-    const KEY_EVALUATOR = 'evaluator';
+    public const KEY_EVALUATOR = 'evaluator';
 
     /**
      * Config key for function name
      */
-    const KEY_FUNCTION_NAME = 'functionName';
+    public const KEY_FUNCTION_NAME = 'functionName';
 
     /**
      * @param ContainerInterface $container

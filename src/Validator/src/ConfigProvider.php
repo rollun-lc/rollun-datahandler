@@ -43,7 +43,7 @@ class ConfigProvider
                 ArrayDecoratorAbstractFactory::class,
                 SimpleValidatorAbstractFactory::class,
                 ThrowableDecoratorAbstractFactory::class,
-            ]
+            ],
         ];
     }
 
@@ -85,7 +85,7 @@ class ConfigProvider
                 ArrayDecoratorAbstractFactory::class,
                 SimpleValidatorAbstractFactory::class,
                 ThrowableDecoratorAbstractFactory::class,
-            ]
+            ],
         ];
     }
 }

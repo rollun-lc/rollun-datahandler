@@ -41,9 +41,7 @@ class PluginFunctionExpressionProviderAbstractFactoryTest extends TestCase
             "Caused class must implement or extend rollun\datahandler\Evaluator\ExpressionFunction\Providers\Plugin"
         );
         $serviceConfig = [
-            'class' => new class()
-            {
-            },
+            'class' => new class {},
         ];
         $this->object->getClass($serviceConfig);
     }
@@ -62,7 +60,7 @@ class PluginFunctionExpressionProviderAbstractFactoryTest extends TestCase
 
         $requestedName = 'requestedServiceName';
         $container = $this->getContainer($requestedName, [
-            'pluginServiceManager' => FilterPluginManager::class
+            'pluginServiceManager' => FilterPluginManager::class,
         ]);
         $container->setService(FilterPluginManager::class, new FilterPluginManager($container));
         $this->object->__invoke($container, $requestedName);
@@ -115,8 +113,8 @@ class PluginFunctionExpressionProviderAbstractFactoryTest extends TestCase
         $container = new ServiceManager();
         $container->setService('config', [
             $this->object::class => [
-                $requestedName => $serviceConfig
-            ]
+                $requestedName => $serviceConfig,
+            ],
         ]);
 
         return $container;

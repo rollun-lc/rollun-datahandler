@@ -8,7 +8,7 @@ echo '<br />';
 echo '<br />';
 
 $rqlReplace = new RqlReplace([
-    'pattern' => 'bc'
+    'pattern' => 'bc',
 ]);
 
 // Default replacement value is '' (nothing, actually remove);

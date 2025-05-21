@@ -35,17 +35,17 @@ class PHPExpressionFunctionAbstractFactory extends AbstractExpressionFunctionAbs
     /**
      * Parent class for function
      */
-    const DEFAULT_CLASS = ExpressionFunction::class;
+    public const DEFAULT_CLASS = ExpressionFunction::class;
 
     /**
      * Config key for function name in expression
      */
-    const KEY_EXPRESSION_FUNCTION_NAME = 'expressionFunctionName';
+    public const KEY_EXPRESSION_FUNCTION_NAME = 'expressionFunctionName';
 
     /**
      * Config key for real php function name
      */
-    const KEY_PHP_FUNCTION_NAME = 'phpFunctionName';
+    public const KEY_PHP_FUNCTION_NAME = 'phpFunctionName';
 
     /**
      * @param ContainerInterface $container

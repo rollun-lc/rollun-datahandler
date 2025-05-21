@@ -16,14 +16,14 @@ class DuplicateSymbolTest extends TestCase
         return [
             [
                 'options' => [
-                    'duplicate' => 'a'
+                    'duplicate' => 'a',
                 ],
                 'aaaaa',
                 'a',
             ],
             [
                 'options' => [
-                    'duplicate' => 'ab'
+                    'duplicate' => 'ab',
                 ],
                 'abababab',
                 'ab',

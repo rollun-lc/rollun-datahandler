@@ -124,21 +124,21 @@ class SourceTest extends TestCase
 
         // First call to provide
         $this->assertEquals('test2', $source->provide('test1', '123'));
-        
+
         // Check dependencies after first call
         $this->assertNotEmpty($providerDependencies->dependentProvidersInfo('test2', '123'));
-        
+
         // Second call to provide should switch dependency from test2 to test3
         $this->assertEquals('test3', $source->provide('test1', '123'));
-        
+
         // Check dependencies after second call
         $this->assertEmpty($providerDependencies->dependentProvidersInfo('test2', '123'));
         $this->assertNotEmpty($providerDependencies->dependentProvidersInfo('test3', '123'));
-        
+
         // Get the dependencies info for test3
         $test3Dependencies = $providerDependencies->dependentProvidersInfo('test3', '123');
         $this->assertCount(1, $test3Dependencies);
-        
+
         // The dependency should point to test1
         $dependencyInfo = reset($test3Dependencies);
         $this->assertEquals('test1', $dependencyInfo['provider']);

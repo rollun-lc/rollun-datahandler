@@ -45,7 +45,7 @@ abstract class PluginAbstractFactoryAbstractTest extends TestCase
             'options' => [
                 'a' => [],
                 'b' => null,
-            ]
+            ],
         ];
         $options = [
             'a' => null,
@@ -86,7 +86,7 @@ abstract class PluginAbstractFactoryAbstractTest extends TestCase
     protected function assertPositiveGetClass($class)
     {
         $serviceConfig = [
-            'class' => $class
+            'class' => $class,
         ];
 
         $this->assertEquals($this->object->getClass($serviceConfig), $class);
@@ -124,10 +124,10 @@ abstract class PluginAbstractFactoryAbstractTest extends TestCase
             $this->getConstant('KEY') => [
                 'abstract_factory_config' => [
                     $this->object::class => [
-                        $requestedName => $serviceConfig
-                    ]
-                ]
-            ]
+                        $requestedName => $serviceConfig,
+                    ],
+                ],
+            ],
         ]);
 
         return $container;

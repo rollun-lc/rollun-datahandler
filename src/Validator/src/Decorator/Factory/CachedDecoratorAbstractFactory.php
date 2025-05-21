@@ -45,12 +45,12 @@ class CachedDecoratorAbstractFactory extends AbstractValidatorDecoratorAbstractF
     /**
      * Parent class for plugin
      */
-    const DEFAULT_CLASS = Cached::class;
+    public const DEFAULT_CLASS = Cached::class;
 
     /**
      * Config for exception message
      */
-    const KEY_EXCEPTION_MASSAGE = 'exceptionMassage';
+    public const KEY_EXCEPTION_MASSAGE = 'exceptionMassage';
 
     /**
      * @param ContainerInterface $container

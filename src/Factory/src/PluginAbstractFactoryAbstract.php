@@ -43,7 +43,7 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
      */
     public function canCreate(ContainerInterface $container, $requestedName)
     {
-        return $this->getServiceConfig($container, (string)$requestedName) !== null;
+        return $this->getServiceConfig($container, (string) $requestedName) !== null;
     }
 
     /**
@@ -110,6 +110,6 @@ abstract class PluginAbstractFactoryAbstract implements AbstractFactoryInterface
     public function getServiceConfig(ContainerInterface $container, $requestedName): ?array
     {
         $config = $container->get('config');
-        return $config[static::KEY][self::KEY_ABSTRACT_FACTORY_CONFIG][static::class][(string)$requestedName] ?? null;
+        return $config[static::KEY][self::KEY_ABSTRACT_FACTORY_CONFIG][static::class][(string) $requestedName] ?? null;
     }
 }

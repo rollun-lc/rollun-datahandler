@@ -37,7 +37,7 @@ abstract class AbstractProcessorAbstractFactoryTest extends PluginAbstractFactor
             'class' => $processorClassName,
             'options' => [
                 'validator' => $validatorClassName,
-            ]
+            ],
         ];
 
         $processor = $this->invoke($serviceConfig);
@@ -55,7 +55,7 @@ abstract class AbstractProcessorAbstractFactoryTest extends PluginAbstractFactor
     public function assertInvokeWithConfig($processorClassName, $validatorClassName)
     {
         $serviceConfig = [
-            'class' => $processorClassName
+            'class' => $processorClassName,
         ];
         $options = [
             'validator' => $validatorClassName,

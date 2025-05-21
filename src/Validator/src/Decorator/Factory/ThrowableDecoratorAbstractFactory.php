@@ -45,12 +45,12 @@ class ThrowableDecoratorAbstractFactory extends AbstractValidatorDecoratorAbstra
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = Throwable::class;
+    public const DEFAULT_CLASS = Throwable::class;
 
     /**
      * Config for exception message
      */
-    const KEY_EXCEPTION_MASSAGE = 'exceptionMassage';
+    public const KEY_EXCEPTION_MASSAGE = 'exceptionMassage';
 
     /**
      * @param ContainerInterface $container

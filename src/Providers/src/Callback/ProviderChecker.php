@@ -1,6 +1,5 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\Callback;
 
 use rollun\datahandler\Providers\Source\Source;
@@ -12,9 +11,7 @@ class ProviderChecker
      * ProviderChecker constructor.
      * @param SourceInterface $source
      */
-    public function __construct(private SourceInterface $source)
-    {
-    }
+    public function __construct(private SourceInterface $source) {}
 
     /**
      * @param $value

@@ -6,7 +6,6 @@ use rollun\datastore\DataSource\DataSourceInterface;
 
 class DependenciesDataSource implements DataSourceInterface
 {
-
     /**
      * @var ProviderDependencies
      */

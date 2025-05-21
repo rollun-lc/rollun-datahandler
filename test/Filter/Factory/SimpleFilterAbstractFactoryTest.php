@@ -48,7 +48,7 @@ class SimpleFilterAbstractFactoryTest extends PluginAbstractFactoryAbstractTest
                 'beforePattern' => $beforePattern,
                 'replacement' => $replacement,
                 'afterPattern' => $afterPattern,
-            ]
+            ],
         ]);
 
         $this->assertEquals($filter->getReplacement(), $replacement);

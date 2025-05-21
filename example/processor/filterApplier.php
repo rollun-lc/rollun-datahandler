@@ -9,16 +9,16 @@ $filterApplier = new FilterApplier([
     'argumentColumn' => 0,
     'filters' => [
         [
-            'service' => 'stringTrim'
+            'service' => 'stringTrim',
         ],
         [
-            'service' => 'digits'
+            'service' => 'digits',
         ],
-    ]
+    ],
 ]);
 
 $res = $filterApplier->process([
-    '  dsad3213d '
+    '  dsad3213d ',
 ]);
 
 echo '<pre>';
@@ -29,7 +29,7 @@ echo '<br />';
 $filterApplier->setResultColumn(1);
 
 $res = $filterApplier->process([
-    '  dsad3213d '
+    '  dsad3213d ',
 ]);
 echo '<pre>';
 var_dump($res); // ['  dsad3213d ', '3213'],

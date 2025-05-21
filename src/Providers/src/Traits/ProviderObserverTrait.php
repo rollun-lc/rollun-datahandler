@@ -1,8 +1,6 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\Traits;
-
 
 use rollun\datahandler\Providers\Source\Source;
 use rollun\datahandler\Providers\Source\SourceInterface;

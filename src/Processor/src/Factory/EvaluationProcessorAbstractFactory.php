@@ -48,12 +48,12 @@ class EvaluationProcessorAbstractFactory extends AbstractProcessorAbstractFactor
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = EvaluationProcessor::class;
+    public const DEFAULT_CLASS = EvaluationProcessor::class;
 
     /**
      * Config key for expression language service
      */
-    const KEY_EXPRESSION_LANGUAGE = 'expressionLanguage';
+    public const KEY_EXPRESSION_LANGUAGE = 'expressionLanguage';
 
     /**
      * @param ContainerInterface $container

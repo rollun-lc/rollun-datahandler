@@ -17,7 +17,6 @@ use rollun\dic\InsideConstruct;
  */
 class Source implements SourceInterface
 {
-
     public const OPTIONS_NOT_NULL = 'not_null';
     public const OPTIONS_PROVIDER_CHECK = 'provider_check';
     /**
@@ -32,9 +31,7 @@ class Source implements SourceInterface
      * @param LoggerInterface $logger
      * @param Tracer $tracer
      */
-    public function __construct(private ProviderPluginManager $providerPluginManager, private ProviderDependenciesInterface $providerDependencies, private LoggerInterface $logger, Tracer $tracer = null)
-    {
-    }
+    public function __construct(private ProviderPluginManager $providerPluginManager, private ProviderDependenciesInterface $providerDependencies, private LoggerInterface $logger, Tracer $tracer = null) {}
 
     public function __sleep()
     {
@@ -46,7 +43,7 @@ class Source implements SourceInterface
         InsideConstruct::initWakeup([
             'providerPluginManager' => ProviderPluginManager::class,
             'logger' => LoggerInterface::class,
-            'tracer' => Tracer::class
+            'tracer' => Tracer::class,
         ]);
     }
 
@@ -105,11 +102,11 @@ class Source implements SourceInterface
         $isNotNull = $options[self::OPTIONS_NOT_NULL] ?? true;
 
         if ($isNotNull && $result === null) {
-           /* $this->logger->debug('Source finish provide with exception', [
-                'name' => $name,
-                'id' => $id,
-                'options' => $options
-            ]);*/
+            /* $this->logger->debug('Source finish provide with exception', [
+                 'name' => $name,
+                 'id' => $id,
+                 'options' => $options
+             ]);*/
             throw new \RuntimeException("Return value from provider {$name}[{$id}] is null.");
         }/*
         $this->logger->debug('Source finish provide', [
@@ -153,7 +150,7 @@ class Source implements SourceInterface
             $dependentProvider = $this->providerPluginManager->get($dependentProviderInfo['provider']);
             return [
                 'provider' => $dependentProvider,
-                'id' => $dependentProviderInfo['id']
+                'id' => $dependentProviderInfo['id'],
             ];
         }, $this->providerDependencies->dependentProvidersInfo($name, $id) ?? []);
         /*$this->logger->debug('Source subscribe provider', [

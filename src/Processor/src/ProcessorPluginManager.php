@@ -8,7 +8,4 @@ use Laminas\ServiceManager\AbstractPluginManager;
  * Class ProcessorPluginManager
  * @package rollun\datahandler\Processor
  */
-class ProcessorPluginManager extends AbstractPluginManager
-{
-
-}
+class ProcessorPluginManager extends AbstractPluginManager {}

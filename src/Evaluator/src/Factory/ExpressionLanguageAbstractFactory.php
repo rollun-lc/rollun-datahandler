@@ -44,22 +44,22 @@ class ExpressionLanguageAbstractFactory implements AbstractFactoryInterface
     /**
      * Parent class for expression evaluation
      */
-    const DEFAULT_CLASS = ExpressionLanguage::class;
+    public const DEFAULT_CLASS = ExpressionLanguage::class;
 
     /**
      * Config key for caused class
      */
-    const KEY_CLASS = 'class';
+    public const KEY_CLASS = 'class';
 
     /**
      * Config for function expression providers
      */
-    const KEY_FUNCTION_EXPRESSION_PROVIDERS = 'functionExpressionProviders';
+    public const KEY_FUNCTION_EXPRESSION_PROVIDERS = 'functionExpressionProviders';
 
     /**
      * Config for function expressions
      */
-    const KEY_FUNCTION_EXPRESSIONS = 'functionExpressions';
+    public const KEY_FUNCTION_EXPRESSIONS = 'functionExpressions';
 
     /**
      * @param ContainerInterface $container

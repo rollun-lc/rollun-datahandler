@@ -40,7 +40,7 @@ class ExpressionLanguageAbstractFactoryTest extends TestCase
             'functionExpressions' => [
                 'expressionFunction1',
                 'expressionFunction2',
-            ]
+            ],
         ]);
         $container->setService('expressionFunction1', ExpressionFunction::fromPhp('trim'));
         $container->setService('expressionFunction2', ExpressionFunction::fromPhp('ucfirst'));
@@ -58,7 +58,7 @@ class ExpressionLanguageAbstractFactoryTest extends TestCase
             'functionExpressionProviders' => [
                 'expressionFunctionProvider1',
                 'expressionFunctionProvider2',
-            ]
+            ],
         ]);
         $container->setService(
             'expressionFunctionProvider1',
@@ -85,8 +85,8 @@ class ExpressionLanguageAbstractFactoryTest extends TestCase
         $container = new ServiceManager();
         $container->setService('config', [
             $this->object::class => [
-                $requestedName => $serviceConfig
-            ]
+                $requestedName => $serviceConfig,
+            ],
         ]);
 
         return $container;

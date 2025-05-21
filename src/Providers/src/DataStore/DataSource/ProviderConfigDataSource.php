@@ -8,14 +8,11 @@ use Xiag\Rql\Parser\Query;
 
 class ProviderConfigDataSource implements DataSourceInterface
 {
-
     /**
      * ProviderConfigDataSource constructor.
      * @param DataProvidersConfig $dataProvidersConfig
      */
-    public function __construct(private DataProvidersConfig $dataProvidersConfig)
-    {
-    }
+    public function __construct(private DataProvidersConfig $dataProvidersConfig) {}
 
     /**
      * @inheritDoc

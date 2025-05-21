@@ -49,9 +49,9 @@ class ThrowableDecoratorAbstractFactoryTest extends PluginAbstractFactoryAbstrac
             'options' => [
                 'validator' => InArray::class,
                 'validatorOptions' => [
-                    'haystack' => $haystack
+                    'haystack' => $haystack,
                 ],
-            ]
+            ],
         ]);
 
         $this->assertEquals($validatorDecorator->getHaystack(), $haystack);

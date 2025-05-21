@@ -54,9 +54,9 @@ abstract class AbstractExpressionFunctionAbstractFactoryTest extends TestCase
         $container->setService('config', [
             $this->getConstant('KEY') => [
                 $this->object::class => [
-                    $requestedName => $serviceConfig
-                ]
-            ]
+                    $requestedName => $serviceConfig,
+                ],
+            ],
         ]);
 
         return $container;

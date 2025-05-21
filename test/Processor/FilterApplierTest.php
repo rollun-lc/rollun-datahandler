@@ -31,10 +31,10 @@ class FilterApplierTest extends TestCase
                         [
                             'service' => 'pregReplace',
                             'options' => [
-                                'pattern' => '/cd/'
-                            ]
-                        ]
-                    ]
+                                'pattern' => '/cd/',
+                            ],
+                        ],
+                    ],
                 ],
                 [
                     'some column' => 'abcdf',
@@ -54,7 +54,7 @@ class FilterApplierTest extends TestCase
                         [
                             'service' => 'stringTrim',
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'some column' => '   abcd   ',

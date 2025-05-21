@@ -106,7 +106,7 @@ class Concat extends AbstractProcessor
         return [
             '-',
             ' ',
-            '_'
+            '_',
         ];
     }
 

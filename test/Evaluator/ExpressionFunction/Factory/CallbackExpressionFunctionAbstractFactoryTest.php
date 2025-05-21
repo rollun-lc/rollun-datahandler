@@ -46,8 +46,7 @@ class CallbackExpressionFunctionAbstractFactoryTest extends AbstractExpressionFu
     public function testPositiveObjectCallbackInvoke()
     {
         $requestedName = 'requestedServiceName';
-        $objectCallback = new class
-        {
+        $objectCallback = new class {
             public function foo($value)
             {
                 return $value . $value;

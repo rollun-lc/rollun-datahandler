@@ -42,7 +42,7 @@ class SimpleValidatorAbstractFactoryTest extends PluginAbstractFactoryAbstractTe
             'class' => $validatorClassName,
             'options' => [
                 'pattern' => $pattern,
-            ]
+            ],
         ]);
 
         $this->assertEquals($validator->getPattern(), $pattern);

@@ -48,7 +48,7 @@ class FilterApplierProcessorAbstractFactory extends AbstractProcessorAbstractFac
     /**
      * Default caused class
      */
-    const DEFAULT_CLASS = FilterApplier::class;
+    public const DEFAULT_CLASS = FilterApplier::class;
 
     /**
      * @param ContainerInterface $container

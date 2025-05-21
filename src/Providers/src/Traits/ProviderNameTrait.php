@@ -1,6 +1,5 @@
 <?php
 
-
 namespace rollun\datahandler\Providers\Traits;
 
 /**

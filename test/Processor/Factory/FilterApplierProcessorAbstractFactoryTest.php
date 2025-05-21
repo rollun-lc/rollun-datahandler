@@ -47,7 +47,7 @@ class FilterApplierProcessorAbstractFactoryTest extends AbstractProcessorAbstrac
     {
         $class = FilterApplier::class;
         $serviceConfig = [
-            'class' => FilterApplier::class
+            'class' => FilterApplier::class,
         ];
 
         $this->assertEquals($this->object->getClass($serviceConfig), $class);
@@ -58,8 +58,8 @@ class FilterApplierProcessorAbstractFactoryTest extends AbstractProcessorAbstrac
         $processorClassName = FilterApplier::class;
         $filters = [
             'filter1' => [
-                'someFilterOptions'
-            ]
+                'someFilterOptions',
+            ],
         ];
         $argumentColumn = 1;
         $resultColumn = 2;
@@ -73,7 +73,7 @@ class FilterApplierProcessorAbstractFactoryTest extends AbstractProcessorAbstrac
                 'argumentColumn' => $argumentColumn,
                 'resultColumn' => $resultColumn,
                 'validator' => $validatorClassName,
-            ]
+            ],
         ]);
 
         $this->assertEquals($processor->getResultColumn(), $resultColumn);

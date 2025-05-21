@@ -31,12 +31,12 @@ class ConcatTest extends TestCase
                 [
                     'first column' => 'a',
                     'second column' => 'b',
-                    'third column' => 'c'
+                    'third column' => 'c',
                 ],
                 [
                     'column' => 'result column',
                     'result' => 'a_b_c',
-                ]
+                ],
             ],
             [
                 [
@@ -50,7 +50,7 @@ class ConcatTest extends TestCase
                 [
                     'first column' => 'a',
                     'second column' => 'b',
-                    'third column' => 'c'
+                    'third column' => 'c',
                 ],
                 [
                     'column' => 'result column',

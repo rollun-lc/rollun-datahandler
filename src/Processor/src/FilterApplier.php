@@ -14,7 +14,7 @@ use Laminas\Validator\ValidatorInterface;
  */
 class FilterApplier extends AbstractProcessor
 {
-    const FILTER_PROCESSOR_SERVICE_PREFIX = 'filterProcess_';
+    public const FILTER_PROCESSOR_SERVICE_PREFIX = 'filterProcess_';
 
     /**
      * Data store column which need to filter

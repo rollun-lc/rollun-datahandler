@@ -16,7 +16,7 @@ class IsColumnExistTest extends TestCase
     {
         $validatedColumn = 'key';
         $validator = new IsColumnExist([
-            'validateColumns' => $validatedColumn
+            'validateColumns' => $validatedColumn,
         ]);
 
         $this->assertTrue($validator->isValid(['key' => 'value']));
@@ -26,10 +26,10 @@ class IsColumnExistTest extends TestCase
     {
         $validatedColumn = [
             'key1',
-            'key2'
+            'key2',
         ];
         $validator = new IsColumnExist([
-            'validateColumns' => $validatedColumn
+            'validateColumns' => $validatedColumn,
         ]);
 
         $this->assertTrue(
@@ -44,10 +44,10 @@ class IsColumnExistTest extends TestCase
     {
         $validatedColumn = [
             'key1',
-            'key2'
+            'key2',
         ];
         $validator = new IsColumnExist([
-            'validateColumns' => $validatedColumn
+            'validateColumns' => $validatedColumn,
         ]);
 
         $this->assertFalse(
@@ -70,7 +70,7 @@ class IsColumnExistTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage("Invalid option 'validateColumns'");
         $validator = new IsColumnExist([
-            'validateColumns' => null
+            'validateColumns' => null,
         ]);
     }
 }

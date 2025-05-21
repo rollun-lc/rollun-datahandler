@@ -62,7 +62,7 @@ class ProviderDependencies implements ProviderDependenciesInterface
         $this->depthStack[] = [
             'id' => $id,
             'provider' => $name,
-            'uuid' => uniqid()
+            'uuid' => uniqid(),
         ];
     }
 
@@ -82,7 +82,7 @@ class ProviderDependencies implements ProviderDependenciesInterface
             if (!isset($this->depthTree[$span['provider']]["#{$span['id']}"][$parentHash])) {
                 $this->depthTree[$span['provider']]["#{$span['id']}"][$parentHash] = [
                     'provider' => $parent['provider'],
-                    'id' => $parent['id']
+                    'id' => $parent['id'],
                 ];
             }
             $this->depth[$parentHash][$spanHash] = array_merge($span, ['uuid' => $parent['uuid']]);
